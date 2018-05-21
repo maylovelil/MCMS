@@ -120,12 +120,12 @@
 			<classifier>classes</classifier>
 			<scope>provided</scope>
 		</dependency>
-		<!-- 铭飞升级器，如果不需要MStore的内容支持可以删除该依赖，这部为MStore客户端代码不提供开源jar包-->
+		<!-- 铭飞升级器，如果不需要MStore的内容支持可以删除该依赖，这部为MStore客户端代码不提供开源jar包
 		<dependency>
 			<groupId>net.mingsoft</groupId>
 			<artifactId>ms-upgrader</artifactId>
 			<version>1.0.4-SNAPSHOT</version>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>javax.xml.ws</groupId>
