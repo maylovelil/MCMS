@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head> 
-  <title>木叶草CMS</title>
+  <title>文章发布系统</title>
   <meta content="IE=edge" http-equiv="X-UA-Compatible" /> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
@@ -18,8 +18,6 @@ body{  height: 100%;}
     height: 300px;
     padding-top: 200px;
     vertical-align: middle;
-"><h2>欢迎进入MS系统</h2><p>欢迎加群： ①231212174 ②221335098 或到<a href="http://ms.mingsoft.net/mbbs/main.do" target="_blank"  style="
-    text-decoration: none;
-">官方论坛进行技术交流</a></p></div>
+"><h2>欢迎进入文章发布系统系统</h2></div>
 </body>
 </html>
