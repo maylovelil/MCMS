@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+	{ms:include filename=headFile.htm/}
+	<body>
+		{ms:include filename=header.htm/}
+		<div id="bannerny" style="background:url({ms:globalskin.url/}images/banner_about.jpg) no-repeat center"></div>
+		<div id="box">
+			<div class="box">
+				<p class="box_top"></p>
+				<div class="box_left">
+					<p class="boxleft_title" style="background:url({ms:globalskin.url/}images/listico_case.png) no-repeat left;">关于我们<span>About us</span></p>
+					<ul class="boxleft_content">
+						{ms:channel typeid=93 size=5}
+						<li>
+							<a href='[field.typelink/]'>[field.typetitle/]</a>
+						</li>
+						{/ms:channel}
+					</ul>
+				</div>
+				<div class="box_right">
+					<p class="boxright_title">
+						<span>当前位置：
+						<a href='{ms:global.host/}'>主页</a> > 
+						<a href='{ms:global.url/}/93/index.html'>关于我们</a>
+						</span>
+					</p>
+					<div class="boxright_content">
+						<div class="newContent">
+							<div class="newcon_content" style="margin-top:20px;">
+								<div class="myContent" id="myContent">
+									<div> {ms:field.content/} </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{ms:include filename=footer.htm/}
+	</body>
+</html>

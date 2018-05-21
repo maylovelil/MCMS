@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/m11/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{ms:global.name/}</title>
+<meta name="keywords" content="{ms:global.keyword/}"/m11/>
+<meta name="description" content="{ms:global.keyword/}"/m11/>
+<meta name="robots" content="all"/m11/>
+{ms:include filename=headFile.htm/}
+</head>
+<body class="custom-background">
+
+{ms:include filename=head.htm/}
+<div class="clearfix"></div>
+<div class="breadcrumb">
+	<div class="inner">
+		<h2 class="cur-title"><a href="{ms:global.url/}/69/76/index.html" title="新闻资讯">新闻资讯</a></h2>
+		<div class="crumb-box">当前位置:<a href='{ms:global.host/}'>主页</a> > <a href='{ms:field.typelink/}'>{ms:field.typetitle/}</a> > </div>
+	</div>
+</div>
+<div class="shadow"></div>
+<div class="inner container">
+	<div class="column-fluid">
+		<div class="content">
+			<h2 class="cur-title"> <a href="{ms:global.url/}/59/index.html" title="新闻资讯">新闻资讯</a></h2>
+			<ul class="postlist">
+			{ms:arclist typeid=59 ispaging=true}
+				<li><a href="[field.link/]" title="[field.title/]">[field.title/]</a><span>[field.date fmt=yyyy-MM-dd/]</span></li>
+			{/ms:arclist}
+				
+			</ul>
+			<div class="clearfix"></div>
+			<div class="wpagenavi">
+				<li><span class="pageinfo">首页 1 <a href='list_14_2.html'>2</a> <a href='list_14_2.html'>下一页</a> <a href='list_14_2.html'>末页</a> </span></li>
+			</div>
+		</div>
+	</div>
+	{ms:include filename=menu-left.htm/}
+	
+	<div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>
+{ms:include filename=foot.htm/}
+
+</body>
+</html>

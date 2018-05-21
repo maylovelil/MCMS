@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/m11/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{ms:global.name/}</title>
+<meta name="keywords" content="{ms:global.keyword/}"/m11/>
+<meta name="description" content="{ms:global.keyword/}"/m11/>
+<meta name="robots" content="all"/m11/>
+{ms:include filename=headFile.htm/}
+</head>
+<body class="custom-background">
+
+{ms:include filename=head.htm/}
+<div class="clearfix"></div>
+<div class="breadcrumb">
+	<div class="inner">
+		<h2 class="cur-title"><a href="{ms:global.url/}/112/114/index.html" title="在线留言">在线留言</a></h2>
+		<div class="crumb-box">当前位置:<a href='{ms:global.host/}'>主页</a>  > <a href='{ms:global.url/}/112/114/index.html'>在线留言</a> </div>
+	</div>
+</div>
+<div class="shadow"></div>
+<div class="inner container">
+	<div class="column-fluid">
+		<div class="content">
+			<article class="post">
+				<h1 class="page-title">在线留言</h1>
+				<div class="entry"> <br>
+					<p> 在线提交您对我们产品的留言评论，我们会及时的为您答复。 </p>
+					<div id="respond">
+						<h3 id="addcomment">发表留言</h3>
+						<div class="clearfix"></div>
+						<form action="" enctype="multipart/form-data" method="post">
+							<input type="hidden" name="action" value="post">
+							<input type="hidden" name="diyid" value="1">
+							<input type="hidden" name="do" value="2">
+							<p>
+								<label>姓名:</label>
+								<input type="text" name="name" id="name" value="" size="22" tabindex="1"/m11/>
+								*</p>
+							<p>
+								<label>电话:</label>
+								<input type="text" name="tel" id="tel" value="" size="22" tabindex="1"/m11/>
+							</p>
+							<p>
+								<label>传真:</label>
+								<input type="text" name="cz" id="fax" value="" size="22" tabindex="1"/m11/>
+							</p>
+							<p>
+								<label>E-mail:</label>
+								<input type="text" name="email" id="email" value="" size="22" tabindex="1"/m11/>
+								*</p>
+							<p>
+								<label>内容:</label>
+								<textarea name="content" id="comment" tabindex="4"></textarea>
+								*</p>
+							<input type="hidden" name="dede_fields" value="name,text;tel,text;cz,text;email,text;content,text">
+							<input type="hidden" name="dede_fieldshash" value="0a03d79e6fe33cea59d7de21ea68b92e">
+							<p style="float:left; margin-left:80px;">
+								<input name="submit" type="button" id="button" tabindex="5" value="提交留言"/m11/>
+							</p>
+							<!--p><label>验证码:</label><input type="text" name="code" id="code" value="" size="12" tabindex="1"/m11/> *</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{ms:globalskin.url/}/images/code.asp" border="0" style=" margin-left:30px;"/m11/></p-->
+						</form>
+						<script language="javascript">
+     function checkadd()
+     {
+         if (document.feedback.name.value=='')
+         {alert('请输入联系人姓名!');
+         document.feedback.name.focus
+         return false
+         }
+          if (document.feedback.email.value=='')
+         {alert('请输入您的E-mail地址!');
+         document.feedback.email.focus
+         return false
+         }
+         var Mail = document.feedback.email.value;
+         if(Mail.indexOf('@',0) == -1 || Mail.indexOf('.',0) == -1)
+         {
+          alert('请输入正确的E-mail地址！');
+          document.feedback.email.focus();
+          return false;
+         }
+          if (document.feedback.content.value=='')
+         {alert('请输入留言内容!');
+         document.feedback.content.focus
+         return false
+         }
+		 if (document.feedback.code.value=='')
+         {alert('请输入验证码!');
+         document.feedback.code.focus
+         return false
+         }
+     }
+      </script>
+					</div>
+				</div>
+			</article>
+		</div>
+	</div>
+	
+<aside class="sidebar">
+		<ul>
+			<li class="widget_nav_menu">
+				<ul>
+				{ms:channel type=level}
+					<li><a href='[field.typelink/]'>[field.typetitle/]</a> </li>
+					{/ms:channel}
+					
+				</ul>
+			</li>
+			<li>
+				<h3><span>新闻动态</span></h3>
+				<ul>
+				{ms:arclist typeid=54 size=8}
+					<li><a href="[field.link/]" title="[field.title/]">[field.title/]</a></li>
+					{/ms:arclist}
+				
+				</ul>
+			</li>
+			<li>
+				<h3>联系方式</h3>
+				<div> <a href="/m11/a/lianxiwomen/lianxifangshi/"> <img src="{ms:globalskin.url/}/images/contact-us.jpg" width="228" alt="联系我们" title="联系我们"/m11/></a> <b>全国服务热线:000-000-000</b><br>
+					<b>客户服务</b>：0000-000000<br>
+					<b>技术支持</b>：0000-000000 | 672602132<br>
+					<b>客服Q Q</b>： <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=672602132&amp;site=WPYOU.com&amp;menu=yes" title="客服QQ:672602132">672602132</a><br>
+					<b>电子邮箱</b>： <a target="_blank" href="mailto:672602132@qq.com">672602132@qq.com</a><br>
+					<b>官方网站</b>： <a target="_blank" href="http://ms.mingsoft.net">ms.mingsoft.net</a><br>
+				</div>
+			</li>
+		</ul>
+	</aside>
+	<div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>
+{ms:include filename=foot.htm/}
+
+</body>
+</html>

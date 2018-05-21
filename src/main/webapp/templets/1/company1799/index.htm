@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html>
+	{ms:include filename=headFile.htm/}
+	<body>
+		{ms:include filename=header.htm/}
+		<div id="banner">
+			<ul class="ulBanner">
+				<li class="banner">
+					<img src="{ms:globalskin.url/}images/1511161899.jpg" height="100%" width="100%" />
+				</li>
+				<li class="banner"> 
+					<img src="{ms:globalskin.url/}images/1511244209.jpg" height="100%" width="100%"/>
+				</li>
+				<li class="banner"> 
+				    <img src="{ms:globalskin.url/}images/1511161899.jpg" height="100%" width="100%"/>
+				</li>
+			</ul>
+			<ul class="ulBannerNav">
+				<li class="on"></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#banner").Slide({
+					effect: "fade",
+					speed: "normal",
+					timer: 3500,
+					autoPlay: true,
+					defIndex: 0,
+					claNav: "ulBannerNav",
+					claCon: "ulBanner",
+					steps: 1
+				});
+			});
+		</script>
+		<div class="main bgf8">
+			<ul class="bannerBottom">
+				<li>
+					<a href="">
+						<p class="bannerBottomImage"><img src="{ms:globalskin.url/}images/gaoceng.png" /></p>
+						<p class="bannerBottomTitle">高层办公区<br/>
+							<span class="bben">HIGH-RISE OFFICE</span></p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<p class="bannerBottomImage"><img src="{ms:globalskin.url/}images/zhongceng.jpg" /></p>
+						<p class="bannerBottomTitle">中层办公区<br/>
+							<span class="bben">MIDDLE OFFICE</span></p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<p class="bannerBottomImage"><img src="{ms:globalskin.url/}images/zhiyuan.jpg" /></p>
+						<p class="bannerBottomTitle">员工办公区<br/>
+							<span class="bben">STAFF OFFICE</span></p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<p class="bannerBottomImage"><img src="{ms:globalskin.url/}images/huiyi.jpg" /></p>
+						<p class="bannerBottomTitle">会议区域<br/>
+							<span class="bben">MEETING ROOM</span></p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<p class="bannerBottomImage"><img src="{ms:globalskin.url/}images/qiantai.jpg" /></p>
+						<p class="bannerBottomTitle">前台区<br/>
+							<span class="bben">FRONT DEST</span></p>
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<p class="bannerBottomImage"><img src="{ms:globalskin.url/}images/jiedai.jpg" /></p>
+						<p class="bannerBottomTitle">接待/会客区<br/>
+							<span class="bben">RECEPTION ARE</span></p>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="main bgfff">
+			<div class="showCaseHome">
+				<p class="showCase_title">产品列表<span class="spanen">Product</span></p>
+				<div class="showCase_content  align:center">
+					<p class="scc_title" style="position: relative;left: 251px;">
+						<span id="span1" class="hover" onclick="changeTabs('1')">产品一类</span>
+						<span id="span2" class="" onclick="changeTabs('2')">产品二类</span>
+						<span id="span3" class="" onclick="changeTabs('3')">全部</span>
+					</p>
+					<ul class="scc_content " id="scc_content1">
+						{ms:arclist typeid=107 size=8}
+						<li>
+							<a href="[field.link/]" title="[field.title/]">
+								<p class="case_image"><img src="{ms:global.host/}[field.litpic/]" width="235" height="145" /></p>
+								<p class="case_title">[field.title/]</p>
+							</a>
+						</li>
+						{/ms:arclist}
+					</ul>
+					<ul class="scc_content hide" id="scc_content2">
+						{ms:arclist typeid=108 size=1}
+						<li>
+							<a href="[field.link/]" title="[field.title/]">
+								<p class="case_image"><img src="{ms:global.host/}[field.litpic/]" width="235" height="145" /></p>
+								<p class="case_title">[field.title/]</p>
+							</a>
+						</li>
+						{/ms:arclist}
+					</ul>
+					<ul class="scc_content hide" id="scc_content3">
+						{ms:arclist typeid=106 size=10}
+						<li>
+							<a href="[field.link/]" title="[field.title/]">
+								<p class="case_image"><img src="{ms:global.host/}[field.litpic/]" width="235" height="145" /></p>
+								<p class="case_title">[field.title/]</p>
+							</a>
+						</li>
+						{/ms:arclist}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="main bgf6">
+			<div class="aboutUs">
+				<div class="aboutUs_left">
+					{ms:arclist typeid=93 size=1}
+					<img src="{ms:global.host/}[field.litpic/]" height="262px"width="410px"/> 
+					{/ms:arclist}
+				</div>
+				<div class="aboutUs_right">
+					<p class="aboutUs_right_title">关于我们<span class="spanen">ABOUT YANGFAN</span></p>
+					{ms:arclist typeid=93 size=1}
+					<div class="aboutUs_right_content">[field.content/] </div>
+					{/ms:arclist}
+				</div>
+				<div style="clear:both"></div>
+			</div>
+		</div>
+		<div class="main bgfff">
+			<div class="ourTeam">
+				<p class="showCase_title" style="margin:10px 0 30px 0;">客户案例<span class="spanen">Case Presentation</span></p>
+				<ul class="teamList" style="width:1220px;">
+					{ms:arclist typeid=61 size=5}
+					<li>
+						<a href="[field.link/]"><img src="{ms:global.host/}[field.litpic/]" width="195" height="250" />
+							<div class="teamHover">
+								[field.title/]<br />
+						</a>
+					</li>
+					{/ms:arclist}
+					<li style="margin-right:0; ">
+						<a href="{ms:global.url/}/106/index.html"><img src="{ms:globalskin.url/}images/image8.jpg" width="195" height="250" /></a>
+					</li>
+				</ul>
+				</div>
+			</div>
+			<div class="main bgf8">
+				<div class="news">
+					<p class="showCase_title" style="margin:10px 0 30px 0;">新闻中心<span class="spanen">NEWS</span></p>
+					<div class="news_content" id="news_left">
+						<div class="news_left_div" id="news_left_div">
+							<ul class="news_left">
+								{ms:arclist typeid=59 size=3}
+								<li>
+									<p class="news_left_image">
+										<a href="[field.link/]"><img src="{ms:global.host/}[field.litpic/]" /></a>
+									</p>
+									<div class="news_left_title">[field.title/]</div>
+								</li>
+								{/ms:arclist}
+							</ul>
+							<ul class="news_leftNav">
+								<li class="on"></li>
+								<li></li>
+								<li></li>
+							</ul>
+							<script type="text/javascript">
+								$(document).ready(function() {
+									$("#news_left_div").Slide({
+										effect: "fade",
+										speed: "normal",
+										timer: 2000,
+										autoPlay: true,
+										defIndex: 0,
+										claNav: "news_leftNav",
+										claCon: "news_left",
+										steps: 1
+									});
+								});
+							</script>
+						</div>
+						<ul class="news_center">
+							{ms:arclist typeid=59 size=3}
+							<li>
+								<p class="news_center_title">
+									<a href="[field.link/]" title="[field.title/]">[field.title/]</a>
+								</p>
+								<div class="news_center_content">
+									[field.descrip/]
+								</div>
+							</li>
+							{/ms:arclist}
+						</ul>
+						<div class="news_right">
+							<ul class="news_right_content">
+								{ms:arclist typeid=59 size=7}
+								<li><span>[04-27]</span>
+									<a href="[field.link/]" title="[field.title/]">[field.title/]</a>
+								</li>
+								{/ms:arclist}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="main bgfff">
+				<div class="customer">
+					<p class="showCase_title" style="margin:0 0 20px 0;">合作客户<span class="spanen">CUSTOMER</span></p>
+					<div class="leftIco"></div>
+					<div class="customer_content">
+						<ul>
+							<li>
+								<a title="华建铝业"><img src="{ms:globalskin.url/}images/huajian.jpg" /></a>
+							</li>
+							<li>
+								<a title="潍柴动力"><img src="{ms:globalskin.url/}images/weichaidong.jpg" /></a>
+							</li>
+							<li>
+								<a title="国家电网"><img src="{ms:globalskin.url/}images/guojiadian.jpg" /></a>
+							</li>
+							<li>
+								<a title="山东农村信用社"><img src="{ms:globalskin.url/}images/nongcunxin.jpg" /></a>
+							</li>
+							<li>
+								<a title="邮政储蓄"><img src="{ms:globalskin.url/}images/kehu7.jpg" /></a>
+							</li>
+							<li>
+								<a title="招商银行"><img src="{ms:globalskin.url/}images/kehu13.jpg" /></a>
+							</li>
+						</ul>
+					</div>
+					<div class="rightIco"></div>
+					<script type="text/javascript">
+						$(document).ready(function() {
+							$(".customer_content").jCarouselLite({
+								btnNext: ".leftIco",
+								btnPrev: ".rightIco",
+								visible: 6,
+								scroll: 1,
+								auto: 2500,
+								speed: 1000
+							});
+						})
+					</script>
+				</div>
+			</div>
+			<div id="link">
+				<div class="link"> <span><img src="http://cdn.mingsoft.net/global/images/MStore.png"/ style="width: 79px;position: relative;top:-5px;"></span>
+					<div>
+						<a href='http://ms.mingsoft.net/' target='_blank'>铭飞科技</a>
+						<a href='http://www.baidu.com' target='_blank'>百度一下</a>
+						<a href='http://www.163.com' target='_blank'>网易新闻</a>
+						<a href='http://www.1688.com' target='_blank'>阿里巴巴</a>
+						<a href='http://www.qq.com' target='_blank'>腾讯网</a>
+						<a href='http://www.weibo.com' target='_blank'>新浪微博</a>
+						<a href='http://www.hao123.com' target='_blank'>HAO123导航网</a>
+					</div>
+				</div>
+			</div>
+			{ms:include filename=footer.htm/}
+	</body>
+</html>

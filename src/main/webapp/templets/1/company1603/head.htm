@@ -1,0 +1,74 @@
+<div class="topbar">
+	<div class="inner">
+		<div class="topbar-rt">
+			<div class="sub-nav"> <a href="{ms:global.url/}/52/index.html">关于我们</a> <a href="{ms:global.url/}/19/141/index.html">联系我们</a> <span> |</span> <a href="#">EN</a><a href="#">CN</a> </div>
+		</div>
+	</div>
+</div>
+<header class="header opacity">
+	<div class="inner">
+		 <a href="{ms:global.host/}" rel="Home"> <img src="{ms:globalskin.url/}/images/MStore300.png" alt="/"></a>
+		<a id="btn-so"> </a>
+		<nav class="main-menu">
+			<ul id="menu-headermenu" class="navi">
+				<li class="menu-item current-menu-item "><a href="{ms:global.host/}">主页</a></li>
+				<li class="menu-item page_item"> <a href="{ms:global.url/}/53/133/index.html">关于公司</a>
+				
+					<ul class="sub-menu you">
+					{ms:channel typeid=53}
+						<li class="menu-item "><a href="[field.typelink/]">[field.typetitle/]</a>
+							<ul class="sub-menu">
+							</ul>
+						</li>
+						{/ms:channel}
+					
+					</ul>
+				</li>
+				<li class="menu-item page_item"> <a href="{ms:global.url/}/106/107/index.html">产品展示</a>
+					<ul class="sub-menu you">
+						{ms:channel typeid=106}
+						<li class="menu-item "><a href="[field.typelink/]">[field.typetitle/]</a>
+							<ul class="sub-menu">
+							</ul>
+						</li>
+						{/ms:channel}
+						
+					</ul>
+				</li>
+				<li class="menu-item page_item"> <a href="{ms:global.url/}/59/68/index.html">新闻资讯</a>
+					<ul class="sub-menu you">
+						{ms:channel typeid=59}
+						<li class="menu-item "><a href="[field.typelink/]">[field.typetitle/]</a>
+							<ul class="sub-menu">
+							</ul>
+						</li>
+						{/ms:channel}						
+					</ul>
+				</li>
+				<li class="menu-item page_item"> <a href="{ms:global.url/}/99/101/index.html">技术支持</a>
+					<ul class="sub-menu you">
+	
+					</ul>
+				</li>
+				<li class="menu-item page_item"> <a href="{ms:global.url/}/19/141/index.html">联系我们</a>
+					<ul class="sub-menu you">
+					{ms:channel typeid=19}
+						<li class="menu-item "><a href="[field.typelink/]">[field.typetitle/]</a>
+							<ul class="sub-menu">
+							</ul>
+						</li>
+					{/ms:channel}						
+					</ul>
+				</li>
+			</ul>
+		</nav>
+		<div id="search-box">
+			<form  name="formsearch" id="searchform" action="/m11/plus/search.php">
+				<input type="hidden" name="kwtype" value="0"/m11/>
+				<input type="text" placeholder="输入关键词" name="q" id="ls" class="searchInput" x-webkit-speech />
+				<input type="button" id="searchsubmit" title="OK" value="OK"/m11/>
+			</form>
+		</div>
+	</div>
+	<div id="mobile-nav"> <a id="mobile-menu"></a> <a id="mobile-so"></a> </div>
+</header>
