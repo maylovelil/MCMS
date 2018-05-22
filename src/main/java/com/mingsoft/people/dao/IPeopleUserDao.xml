@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mingsoft.people.dao.IPeopleUserDao">
+	
+	<resultMap id="resultMap" type="com.mingsoft.people.entity.PeopleUserEntity">
+		<id column="PU_PEOPLE_ID" property="puPeopleId" /><!--用户ID关联people表的（people_id） -->
+		<result column="PU_REAL_NAME" property="puRealName" /><!--用户真实名称 -->
+		<result column="PU_ADDRESS" property="puAddress" /><!--用户地址 -->
+		<result column="PU_ICON" property="puIcon" /><!--用户头像图标地址 -->
+		<result column="PU_NICKNAME" property="puNickname" /><!--用户昵称 -->
+		<result column="PU_SEX" property="puSex" /><!--用户性别(0.未知、1.男、2.女) -->
+		<result column="PU_BIRTHDAY" property="puBirthday" /><!--用户出生年月日 -->
+		<result column="PU_CARD" property="puCard" /><!--身份证 -->
+		<result column="PU_PROVINCE" property="puProvince" /><!--省 -->
+		<result column="PU_CITY" property="puCity" /><!--城市 -->
+		<result column="PU_DISTRICT" property="puDistrict" /><!--区 -->
+		<result column="PU_STREET" property="puStreet" /><!--街道 -->
+		
+		<result column="PEOPLE_PHONE" property="peoplePhone"/><!-- 将实体的peoplePhone属性与表的peoplePhone字段对接 -->
+		<result column="PEOPLE_NAME" property="peopleName"/><!-- 将实体的peopleName属性与表的peopleName字段对接 -->
+		<result column="PEOPLE_PASSWORD" property="peoplePassword"/><!-- 将实体的peoplePwd属性与表的peoplePwd字段对接 -->
+		<result column="PEOPLE_DATETIME" property="peopleDateTime"/><!-- 将实体的peopleDateTime属性与表的peopleDateTime字段对接 -->
+		<result column="PEOPLE_APP_ID" property="peopleAppId"/><!-- 用户所属的应用ID -->
+		<result column="PEOPLE_STATE" property="peopleState"/><!-- 用户邮箱 -->
+		<result column="PEOPLE_MAIL" property="peopleMail"/><!-- 用户邮箱 -->	
+		<result column="PEOPLE_MAILLCHECK" property="peopleMailCheck"/>
+		<result column="PEOPLE_PHONECHECK" property="peoplePhoneCheck"/>
+	</resultMap>
+	
+	<!--保存-->	
+	<insert id="saveEntity" useGeneratedKeys="true" keyProperty="puPeopleId"
+		parameterType="com.mingsoft.people.entity.PeopleUserEntity" >
+		insert into people_user
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="peopleId &gt; 0">PU_PEOPLE_ID,</if>
+			<if test="puRealName != null and puRealName != ''">PU_REAL_NAME,</if>
+			<if test="puAddress != null and puAddress != ''">PU_ADDRESS,</if>
+			<if test="puIcon != null and puIcon != ''">PU_ICON,</if>
+			<if test="puNickname != null and puNickname != ''">PU_NICKNAME,</if>
+			<if test="puSex != null">PU_SEX,</if>
+			<if test="puBirthday != null">PU_BIRTHDAY,</if>
+			<if test="puCard != null and puCard != ''">PU_CARD,</if>
+			<if test="puProvince != null and puProvince &gt; 0">PU_PROVINCE,</if>
+			<if test="puCity != null and puCity &gt; 0">PU_CITY,</if>
+			<if test="puDistrict != null and puDistrict &gt; 0">PU_DISTRICT,</if>
+			<if test="puStreet != null and puStreet &gt; 0">PU_STREET,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="peopleId">#{peopleId},</if>
+			<if test="puRealName != null and puRealName != ''">#{puRealName},</if>
+			<if test="puAddress != null and puAddress != ''">#{puAddress},</if>
+			<if test="puIcon != null and puIcon != ''">#{puIcon},</if>
+			<if test="puNickname != null and puNickname != ''">#{puNickname},</if>
+			<if test="puSex != null">#{puSex},</if>
+			<if test="puBirthday != null">#{puBirthday},</if>
+			<if test="puCard != null and puCard != ''">#{puCard},</if>
+			<if test="puProvince != null and puProvince &gt; 0">#{puProvince},</if>
+			<if test="puCity != null and puCity &gt; 0">#{puCity},</if>
+			<if test="puDistrict != null and puDistrict &gt; 0">#{puDistrict},</if>
+			<if test="puStreet != null and puStreet &gt; 0">#{puStreet},</if>
+		</trim>
+	</insert>
+	
+	<!--更新-->	
+	<update id="updateEntity" parameterType="com.mingsoft.people.entity.PeopleUserEntity">
+		update people_user
+		<set>
+			PU_PEOPLE_ID=#{puPeopleId},		
+			<if test="puRealName != null and puRealName != ''">PU_REAL_NAME=#{puRealName},</if>			
+			<if test="puAddress != null and puAddress != ''">PU_ADDRESS=#{puAddress},</if>			
+			<if test="puIcon != null ">PU_ICON=#{puIcon},</if>			
+			<if test="puNickname != null and puNickname != ''">PU_NICKNAME=#{puNickname},</if>			
+			<if test="puSex != null">PU_SEX=#{puSex},</if>			
+			<if test="puBirthday != null">PU_BIRTHDAY=#{puBirthday},</if>			
+			<if test="puCard != null and puCard != ''">PU_CARD=#{puCard},</if>			
+			<if test="puProvince != null and puProvince &gt; 0">PU_PROVINCE=#{puProvince},</if>			
+			<if test="puCity != null and puCity &gt; 0">PU_CITY=#{puCity},</if>			
+			<if test="puDistrict != null and puDistrict &gt; 0">PU_DISTRICT=#{puDistrict},</if>			
+			<if test="puStreet != null and puStreet &gt; 0">PU_STREET=#{puStreet},</if>			
+		</set>
+		where PU_PEOPLE_ID = #{puPeopleId}
+	</update>
+	
+	<!--根据id获取-->	
+	<select id="getEntity" resultMap="resultMap" parameterType="int">
+		select * from people p left join people_user on
+		people_id=pu_people_id where PU_PEOPLE_ID=#{puPeopleId}
+	</select>
+	
+	<!--根据实体获取-->
+	<select id="getByEntity" resultMap="resultMap" parameterType="com.mingsoft.people.entity.PeopleUserEntity">
+		select * from people_user 
+		<where>
+			<if test="puRealName != null and puRealName != ''"> and PU_REAL_NAME=#{puRealName} </if>				
+			<if test="puAddress != null and puAddress != ''"> and PU_ADDRESS=#{puAddress} </if>				
+			<if test="puIcon != null and puIcon != ''"> and PU_ICON=#{puIcon} </if>				
+			<if test="puNickname != null and puNickname != ''"> and PU_NICKNAME=#{puNickname} </if>				
+			<if test="puSex != null"> and PU_SEX=#{puSex} </if>				
+			<if test="puBirthday != null"> and PU_BIRTHDAY=#{puBirthday} </if>				
+			<if test="puCard != null and puCard != ''"> and PU_CARD=#{puCard} </if>				
+			<if test="puProvince != null and puProvince &gt; 0"> and PU_PROVINCE=#{puProvince} </if>				
+			<if test="puCity != null and puCity &gt; 0"> and PU_CITY=#{puCity} </if>				
+			<if test="puDistrict != null and puDistrict &gt; 0"> and PU_DISTRICT=#{puDistrict} </if>				
+			<if test="puStreet != null and puStreet &gt; 0"> and PU_STREET=#{puStreet} </if>				
+		</where>
+		limit 0,1
+	</select>	
+	
+	
+	<!--删除-->	
+	<delete id="deleteEntity" parameterType="int">
+		delete from people_user  where PU_PEOPLE_ID=#{peopleId}
+	</delete>	
+	
+	<!--批量删除-->	
+	<delete id="delete" >
+		delete from people_user
+		<where>
+			 PU_PEOPLE_ID  in <foreach collection="ids" item="item" index="index" 
+			open="(" separator="," close=")">#{item}</foreach>
+		</where>
+	</delete>
+	<!--查询全部-->	
+	<select id="queryAll" resultMap="resultMap">
+		select * from people_user order by PU_PEOPLE_ID desc
+	</select>
+	<!--条件查询-->	
+	<select id="query" resultMap="resultMap">
+		select * from people p left join people_user on
+		people_id=pu_people_id  
+		<where>
+			and PEOPLE_APP_ID=#{peopleAppId}
+				<if test="peopleState &gt; -1 and peopleState != null"> and PEOPLE_STATE=#{peopleState} </if>
+				<if test="peopleName != null and peopleName != ''"> and PEOPLE_NAME like CONCAT('%',#{peopleName},'%') </if>
+				<if test="puRealName != null and puRealName != ''"> and PU_REAL_NAME like CONCAT('%',#{puRealName},'%') </if>				
+				<if test="puAddress != null and puAddress != ''"> and PU_ADDRESS=#{puAddress} </if>				
+				<if test="puIcon != null and puIcon != ''"> and PU_ICON=#{puIcon} </if>				
+				<if test="puNickname != null and puNickname != ''"> and PU_NICKNAME like CONCAT('%',#{puNickname},'%')</if>				
+				<if test="puSex &gt; 0"> and PU_SEX=#{puSex} </if>				
+				<if test="puBirthday != null"> and PU_BIRTHDAY=#{puBirthday} </if>				
+				<if test="puCard != null and puCard != ''"> and PU_CARD=#{puCard} </if>				
+				<if test="puProvince != null and puProvince &gt; 0"> and PU_PROVINCE=#{puProvince} </if>				
+				<if test="puCity != null and puCity &gt; 0"> and PU_CITY=#{puCity} </if>				
+				<if test="puDistrict != null and puDistrict &gt; 0"> and PU_DISTRICT=#{puDistrict} </if>				
+				<if test="puStreet != null and puStreet &gt; 0"> and PU_STREET=#{puStreet} </if>
+				<if test="startTime != null and endTime != null">
+					and date_format(PEOPLE_DATETIME,'%Y-%m-%d') between #{startTime} and #{endTime}
+				</if>	
+				
+		</where>		
+		order by PU_PEOPLE_ID desc
+	</select>
+	
+</mapper>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mingsoft.mdiy.dao.IPageDao">
+	
+	<resultMap id="resultMap" type="com.mingsoft.mdiy.entity.PageEntity">
+		<id column="page_id" property="pageId" /><!--自增长id -->
+		<result column="page_model_id" property="pageModelId" /><!--模块id -->
+		<result column="page_app_id" property="pageAppId" /><!--应用id -->
+		<result column="page_path" property="pagePath" /><!--自定义页面绑定模板的路径 -->
+		<result column="page_title" property="pageTitle" /><!--自定义页面标题 -->
+		<result column="page_key" property="pageKey" /><!--自定义页面访问路径 -->
+	</resultMap>
+	
+	<!--保存-->	
+	<insert id="saveEntity" useGeneratedKeys="true" keyProperty="pageId"
+		parameterType="com.mingsoft.mdiy.entity.PageEntity" >
+		insert into mdiy_page
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="pageModelId != null">page_model_id,</if>
+			<if test="pageAppId != null">page_app_id,</if>
+			<if test="pagePath != null and pagePath != ''">page_path,</if>
+			<if test="pageTitle != null and pageTitle != ''">page_title,</if>
+			<if test="pageKey != null and pageKey != ''">page_key,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="pageModelId != null">#{pageModelId},</if>
+			<if test="pageAppId != null">#{pageAppId},</if>
+			<if test="pagePath != null and pagePath != ''">#{pagePath},</if>
+			<if test="pageTitle != null and pageTitle != ''">#{pageTitle},</if>
+			<if test="pageKey != null and pageKey != ''">#{pageKey},</if>
+		</trim>
+	</insert>
+	
+	<!--更新-->	
+	<update id="updateEntity" parameterType="com.mingsoft.mdiy.entity.PageEntity">
+		update mdiy_page
+		<set>
+			<if test="pageModelId != null">page_model_id=#{pageModelId},</if>			
+			<if test="pageAppId != null">page_app_id=#{pageAppId},</if>			
+			<if test="pagePath != null and pagePath != ''">page_path=#{pagePath},</if>			
+			<if test="pageTitle != null and pageTitle != ''">page_title=#{pageTitle},</if>			
+			<if test="pageKey != null and pageKey != ''">page_key=#{pageKey},</if>			
+		</set>
+		where page_id = #{pageId}
+	</update>
+	
+	<!--根据id获取-->	
+	<select id="getEntity" resultMap="resultMap" parameterType="int">
+		select * from mdiy_page where page_id=#{pageId}
+	</select>
+	
+	<!--根据实体获取-->
+	<select id="getByEntity" resultMap="resultMap" parameterType="com.mingsoft.mdiy.entity.PageEntity">
+		select * from mdiy_page 
+		<where>
+			<if test="pageModelId != null"> and page_model_id=#{pageModelId} </if>				
+			<if test="pageAppId != null"> and page_app_id=#{pageAppId} </if>				
+			<if test="pagePath != null and pagePath != ''"> and page_path=#{pagePath} </if>				
+			<if test="pageTitle != null and pageTitle != ''"> and page_title=#{pageTitle} </if>				
+			<if test="pageKey != null and pageKey != ''"> and page_key=#{pageKey} </if>				
+		</where>
+		limit 0,1
+	</select>	
+	
+	
+	<!--删除-->	
+	<delete id="deleteEntity" parameterType="int">
+		delete from mdiy_page  where page_id=#{pageId}
+	</delete>	
+	
+	<!--批量删除-->	
+	<delete id="delete" >
+		delete from mdiy_page
+		<where>
+			 page_id  in <foreach collection="ids" item="item" index="index" 
+			open="(" separator="," close=")">#{item}</foreach>
+		</where>
+	</delete>
+	<!--查询全部-->	
+	<select id="queryAll" resultMap="resultMap">
+		select * from mdiy_page order by page_id desc
+	</select>
+	<!--条件查询-->	
+	<select id="query" resultMap="resultMap">
+		select * from mdiy_page  
+		<where>
+				<if test="pageModelId != null"> and page_model_id=#{pageModelId} </if>				
+				<if test="pageAppId != null"> and page_app_id=#{pageAppId} </if>				
+				<if test="pagePath != null and pagePath != ''"> and page_path=#{pagePath} </if>				
+				<if test="pageTitle != null and pageTitle != ''"> and page_title=#{pageTitle} </if>				
+				<if test="pageKey != null and pageKey != ''"> and page_key=#{pageKey} </if>				
+		</where>		
+		order by page_id desc
+	</select>
+	
+</mapper>

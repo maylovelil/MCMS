@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 表单内容模型管理持久化层配置文件 -->
+<mapper namespace="com.mingsoft.mdiy.dao.IContentModelDao">
+	<!-- 表字段名开始 -->
+	<sql id="column_list">
+		CM_ID,CM_TIPS_NAME,CM_TABLE_NAME
+	</sql>
+	<!-- 表字段名结束 -->
+	
+	<!-- 字段绑定开始 -->
+	<resultMap type="com.mingsoft.mdiy.entity.ContentModelEntity" id="resultMap">
+		<id column="CM_ID" property="cmId"></id> <!--实体字段cmId 与表中的cmId绑定 -->
+		<result column="CM_TIPS_NAME" property="cmTipsName"/><!--实体字段cmTipsName 与表中的表单提示文字绑定 -->
+		<result column="CM_TABLE_NAME" property="cmTableName"/><!--实体字段cmTableName 与表中的表单表名绑定 -->
+		<result column="CM_MODEL_ID" property="cmModelId"/>
+		<result column="CM_APP_ID" property="appId"/>
+	</resultMap>
+	<!-- 字段绑定结束 -->
+	
+	<!-- 新增表单内容模型开始 -->
+	<insert id="saveEntity" parameterType="com.mingsoft.mdiy.entity.ContentModelEntity">
+		insert into mdiy_content_model
+		<!-- 注入表字段 -->
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="cmId != null">CM_ID,</if><!-- 内容模型id -->
+			<if test="cmTipsName != null">CM_TIPS_NAME,</if><!-- 表单提示文字 -->
+			<if test="cmTableName != null">CM_TABLE_NAME,</if>
+			<if test="cmModelId != null">CM_MODEL_ID,</if>
+			<if test="appId != null">CM_APP_ID,</if>
+		</trim>
+		
+		<!-- 注入控制层字段 -->
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="cmId != null">#{cmId},</if>
+			<if test="cmTipsName != null">#{cmTipsName},</if>
+			<if test="cmTableName != null">#{cmTableName},</if>
+			<if test="cmModelId != null">#{cmModelId},</if>
+			<if test="appId != null">#{appId},</if>
+		</trim>
+	</insert>
+	<!-- 新增表单内容模型结束 -->
+	
+	<!-- 更新表单内容模型开始 -->
+	<update id="updateEntity" parameterType="com.mingsoft.mdiy.entity.ContentModelEntity">
+		update mdiy_content_model
+		<set>
+			<if test="cmTipsName != null">CM_TIPS_NAME=#{cmTipsName},</if>
+		</set>
+		where CM_ID = #{cmId}
+	</update>
+	<!-- 更新表单内容模型结束-->
+	
+	<!-- 根据id删除内容模型表单记录开始 -->
+	<delete id="deleteEntity" parameterType="int">
+		delete from mdiy_content_model
+		where CM_ID = #{cmId}
+	</delete>
+	<!-- 根据id删除内容模型表单记录结束 -->
+	
+	<!-- 根据id查找内容模型实体信息 -->
+	<select id="getEntity" resultMap="resultMap" parameterType="int">
+		select <include refid="column_list"/>
+		from mdiy_content_model
+		where CM_ID = #{cmId}
+		
+	</select>
+	<!-- 根据id查找内容模型实体信息 -->
+	
+	<!--条件查询-->	
+	<select id="query" resultMap="resultMap" parameterType="com.mingsoft.mdiy.entity.ContentModelEntity">
+		select * from mdiy_content_model  
+		<where>
+				CM_APP_ID = #{appId}
+				<if test="cmTipsName != null and cmTipsName != ''"> and CM_TIPS_NAME=#{cmTipsName} </if>				
+				<if test="cmTableName != null and cmTableName != ''"> and CM_TABLE_NAME=#{cmTableName} </if>				
+				<if test="cmModelId &gt; 0"> and CM_MODEL_ID=#{cmModelId} </if>				
+		</where>		
+	</select>
+	
+	<!--根据实体获取-->
+	<select id="getByEntity" resultMap="resultMap" parameterType="com.mingsoft.mdiy.entity.ContentModelEntity">
+		select * from mdiy_content_model 
+		<where>
+			<if test="cmTipsName != null and cmTipsName != ''"> and CM_TIPS_NAME=#{cmTipsName} </if>				
+			<if test="cmTableName != null and cmTableName != ''"> and CM_TABLE_NAME=#{cmTableName} </if>				
+			<if test="cmModelId &gt; 0"> and CM_MODEL_ID=#{cmModelId} </if>				
+		</where>
+		limit 0,1
+	</select>	
+</mapper>

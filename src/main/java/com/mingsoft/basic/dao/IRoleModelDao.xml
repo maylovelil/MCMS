@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 角色模块关联持久化层XML配置继承IRoleModelDao -->
+<mapper namespace="com.mingsoft.basic.dao.IRoleModelDao">
+	<resultMap id="resultMap" type="com.mingsoft.basic.entity.RoleModelEntity">
+		<id column="RM_ROLEID" property="roleId"/><!-- 将实体的ID属性与表的ID字段对接 -->
+		<result column="RM_MODELID" property="modelId"/><!-- 将实体的roleName属性与表的roleName字段对接 -->
+	</resultMap>
+	<!-- 在角色模块表中保存数据，一个角色存在多个功能模块开始 -->
+	<insert id="saveEntity" parameterType="java.util.List">
+		insert into role_model (RM_MODELID,RM_ROLEID) values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.modelId},#{item.roleId})
+		</foreach>
+	</insert>
+	<insert id="saveBatch" parameterType="java.util.List">
+		insert into role_model (RM_MODELID,RM_ROLEID) values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.modelId},#{item.roleId})
+		</foreach>
+	</insert>
+	<!-- 在角色模块表中保存数据，一个角色存在多个功能模块结束 -->
+	
+	<!--为角色批量修改模块开始 -->
+	<update id="updateEntity" parameterType="java.util.List">  
+	    replace into role_model (RM_MODELID,RM_ROLEID) values 
+	    <foreach collection="list" item="item" index="index" separator=",">  
+	         (#{item.modelId},#{item.roleId})
+	    </foreach>
+	</update> 
+	<!--为角色批量修改模块结束 -->
+	
+	<!--删除指定角色的模块开始 -->
+	<update id="deleteEntity" parameterType="int">  
+	   delete from role_model where RM_ROLEID=#{roleId}
+	</update> 
+	<update id="deleteByRoleId" parameterType="int">  
+	   delete from role_model where RM_ROLEID=#{roleId}
+	</update> 	
+	<!--删除指定角色的模块结束 -->
+	<!-- 通过角色id获取所有的关联模块id -->
+	<select id="queryByRoleId" resultMap="resultMap" parameterType="int" >
+		select * from role_model where RM_ROLEID=#{roleId}
+	</select>
+	<!-- 通过角色id获取所有的关联模块id -->
+</mapper>

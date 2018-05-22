@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 搜索管理持久化层XML配置继承ISearchDao -->
+<mapper namespace="com.mingsoft.mdiy.dao.ISearchDao">
+	<sql id="column_list">
+		SEARCH_ID,SEARCH_NAME,SEARCH_TEMPLETS,SEARCH_APP_ID,SEARCH_TYPE
+	</sql>
+
+	<!-- 表搜索与实体属性对应，供返回实体信息时使用 -->
+	<resultMap id="resultMap" type="com.mingsoft.mdiy.entity.SearchEntity">
+		<id column="SEARCH_ID" property="searchId" />
+		<result column="SEARCH_NAME" property="searchName" />
+		<result column="SEARCH_TEMPLETS" property="searchTemplets" />
+		<result column="SEARCH_APP_ID" property="appId" />
+		<result column="SEARCH_TYPE" property="searchType" />
+	</resultMap>
+
+	<!-- 查询所有搜索开始 -->
+	<select id="queryAll" resultMap="resultMap">
+		select * from mdiy_search;
+	</select>
+	<!-- 查询所有搜索结束 -->
+
+	<!-- 增加搜索实体开始 -->
+	<insert id="saveEntity" useGeneratedKeys="true" keyProperty="searchId"
+		parameterType="com.mingsoft.base.entity.BaseEntity">
+		insert into mdiy_search
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="searchName != null">SEARCH_NAME,</if>
+			<if test="searchTemplets != null">SEARCH_TEMPLETS,</if>
+			<if test="appId != null">SEARCH_APP_ID,</if>
+			<if test="searchType != null">SEARCH_TYPE,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="searchName != null">#{searchName},</if>
+			<if test="searchTemplets != null">#{searchTemplets},</if>
+			<if test="appId != null">#{appId},</if>
+			<if test="searchType != null">#{searchType},</if>
+		</trim>
+	</insert>
+	<!-- 增加搜索实体结束 -->
+
+	<!--删除-->	
+	<delete id="deleteEntity" parameterType="int">
+		delete from mdiy_search  where SEARCH_ID=#{searchId}
+	</delete>	
+	
+	<!--批量删除-->	
+	<delete id="delete" >
+		delete from mdiy_search
+		<where>
+			 SEARCH_ID  in <foreach collection="ids" item="item" index="index" 
+			open="(" separator="," close=")">#{item}</foreach>
+		</where>
+	</delete>
+
+	<!-- 查询搜索实体开始 -->
+	<select id="getByEntity" resultMap="resultMap" parameterType="com.mingsoft.mdiy.entity.SearchEntity">
+		select
+		<include refid="column_list" />
+		from mdiy_search 
+		<where>
+			SEARCH_ID=#{searchId}
+			<if test="appId &gt; 0 "> and SEARCH_APP_ID=#{appId} </if>	
+		</where>
+	</select>
+	<!-- 查询搜索实体结束 -->
+
+
+	<!-- 查询搜索实体开始 -->
+	<select id="query" resultMap="resultMap" parameterType="com.mingsoft.mdiy.entity.SearchEntity">
+		select
+		<include refid="column_list" />
+		from mdiy_search 
+		where SEARCH_APP_ID=#{appId}
+		<if test="searchName != null and searchName != ''"> and SEARCH_NAME=#{searchName} </if>				
+		<if test="searchTemplets != null and searchTemplets != ''"> and SEARCH_TEMPLETS=#{searchTemplets} </if>		
+		<if test="searchType != null and searchType != ''"> and SEARCH_TYPE=#{searchType} </if>	
+	</select>
+	<!-- 查询搜索实体结束 -->
+
+	<!-- 更新搜索开始 -->
+	<update id="updateEntity" parameterType="com.mingsoft.mdiy.entity.SearchEntity">
+		update mdiy_search
+		<set>
+			<if test="searchName != null">SEARCH_NAME=#{searchName},</if>
+			<if test="searchTemplets != null">SEARCH_TEMPLETS=#{searchTemplets},</if>
+			<if test="searchType != null">SEARCH_TYPE=#{searchType},</if>
+		</set>
+		where SEARCH_ID=#{searchId};
+	</update>
+	<!-- 更新搜索结束 -->
+
+
+
+
+</mapper>

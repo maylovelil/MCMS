@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mingsoft.basic.dao.ICategoryDao">
+	<sql id="category_list">
+		category_id,category_title,category_sort,category_datetime,category_managerid,category_modelId,category_categoryid,category_smallimg,category_description,del,
+		category_parent_id,category_dict_id,create_by,create_date,update_date,update_by
+	</sql>
+	<resultMap id="resultMap" type="com.mingsoft.basic.entity.CategoryEntity">
+		<id column="category_id" property="categoryId" /><!-- 关联表category的类比ID 
+			category_id字段 -->
+		<result column="category_title" property="categoryTitle" /><!-- 
+			关联表category的类比标题 category_title字段 -->
+		<result column="category_sort" property="categorySort" /><!-- 关联表category的类比排序 
+			category_sort字段 -->
+		<result column="category_datetime" property="categoryDateTime" /><!-- 
+			关联表category的类比发布时间 category_datetime字段 -->
+		<result column="category_managerid" property="categoryManagerId" /><!-- 
+			关联表category的类发布用户ID "category_managerid"字段 -->
+		<result column="category_modelId" property="categoryModelId" /><!-- 
+			关联表category的所属模块ID category_modelid字段 -->
+		<result column="category_categoryid" property="categoryCategoryId" /><!-- 
+			关联表category的父类别ID category_categoryid字段 -->
+		<result column="category_smallimg" property="categorySmallImg" /><!-- 
+			关联表category的略缩图地址 category_smallimg字段 -->
+		<result column="category_description" property="categoryDescription" /><!-- 
+			关联表category的删除状态del字段 -->
+		<result column="del" property="categoryDel" /><!-- 关联表category的父类型编号 -->
+		<result column="category_parent_id" property="categoryParentId" /><!-- 
+			关联表category的字典对应编号 -->
+		<result column="category_dict_id" property="categoryDictId" /><!-- 
+			关联表category的创建人 -->
+		<result column="create_by" property="categoryCreateBy" /><!-- 
+			关联表category的创建时间 -->
+		<result column="create_date" property="categoryCreateDate" /><!-- 
+			关联表category的更新时间 -->
+		<result column="update_date" property="categoryUpdateDate" /><!-- 
+			关联表category的更新人 -->
+		<result column="update_by" property="categoryUpdateBy" />
+	</resultMap>
+
+	<!-- 类别添加开始 -->
+	<insert id="saveEntity" useGeneratedKeys="true" keyProperty="categoryId"
+		parameterType="com.mingsoft.base.entity.BaseEntity">
+		insert into category
+		<!-- 注入表字段 -->
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="categoryTitle != null">category_title,</if><!-- 类别标题 -->
+			<if test="categorySort &gt; -1">category_sort,</if>
+			<if test="categoryDateTime != null">category_datetime,</if>
+			<if test="categoryManagerId &gt; 0">category_managerid,</if>
+			<if test="categoryModelId &gt; 0">category_modelId,</if>
+			<if test="categoryCategoryId &gt; 0">category_categoryid,</if>
+			<if test="categorySmallImg != null">category_smallimg,</if>
+			<if test="categoryAppId &gt; 0">category_appid,</if>
+			<if test="categoryDescription != null">category_description,</if>
+			<if test="categoryParentId != null">category_parent_id,</if>
+			<if test="categoryDictId &gt; 0">category_dict_id,</if>
+			<if test="createBy &gt; 0">create_by,</if>
+			<if test="createDate != null">create_date,</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="categoryTitle != null">#{categoryTitle},</if>
+			<if test="categorySort &gt; -1">#{categorySort},</if>
+			<if test="categoryDateTime != null">#{categoryDateTime},</if>
+			<if test="categoryManagerId &gt; 0">#{categoryManagerId},</if>
+			<if test="categoryModelId &gt; 0">#{categoryModelId},</if>
+			<if test="categoryCategoryId &gt;0">#{categoryCategoryId},</if>
+			<if test="categorySmallImg != null">#{categorySmallImg},</if>
+			<if test="categoryAppId &gt; 0">#{categoryAppId},</if>
+			<if test="categoryDescription != null">#{categoryDescription},</if>
+			<if test="categoryParentId != null">#{categoryParentId},</if>
+			<if test="categoryDictId &gt; 0">#{categoryDictId},</if>
+			<if test="createBy &gt; 0">#{createBy},</if>
+			<if test="createDate != null">#{createDate},</if>
+		</trim>
+
+	</insert>
+	<!-- 类别添加结束 -->
+
+	<!-- 更新类别开始 -->
+	<update id="updateEntity" parameterType="com.mingsoft.base.entity.BaseEntity">
+		update category set category_parent_id=null,category_categoryid=null where category_id = #{categoryId};
+		update category
+		<set>
+			<if test="categoryTitle != null">category_title=#{categoryTitle},</if>
+			<if test="categorySort &gt; -1">category_sort=#{categorySort},</if>
+			<if test="categoryDateTime != null">category_datetime=#{categoryDateTime},</if>
+			<if test="categoryManagerId &gt; 0">category_managerid=#{categoryManagerId},</if>
+			<if test="categoryCategoryId &gt; 0">category_categoryid=#{categoryCategoryId},</if>
+			<if test="categorySmallImg != null">category_smallimg=#{categorySmallImg},</if>
+			<if test="categoryDescription != null">category_description=#{categoryDescription},</if>
+			<if test="categoryParentId != null">category_parent_id=#{categoryParentId},</if>
+			<if test="categoryDictId &gt; 0">category_dict_id=#{categoryDictId},</if>
+			<if test="updateDate != null">update_date=#{updateDate},</if>
+			<if test="updateBy &gt; 0">update_by=#{updateBy}</if>
+		</set>
+		where category_id = #{categoryId}
+	</update>
+	<!-- 更新类别结束 -->
+
+	<!-- 删除类别开始 -->
+	<delete id="deleteEntity" parameterType="int">
+		update category set
+		del = 1
+		where
+		category_id = #{categoryId}
+	</delete>
+	<delete id="delete" parameterType="int">
+		update category set del = 1
+		where category_id in
+		<foreach collection="ids" item="id" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+	<!-- 删除类别结束 -->
+
+	<!-- 根据ID查询开始 -->
+	<select id="getEntity" resultMap="resultMap" parameterType="int">
+		select
+		<include refid="category_list" />
+		from category c where category_id=#{categoryId} and del=0
+	</select>
+	<!-- 根据ID查询结束 -->
+
+	<!-- 根据实体查询开始 -->
+	<select id="getByEntity" resultMap="resultMap"
+		parameterType="com.mingsoft.basic.entity.CategoryEntity">
+		select * from category
+		<where>
+			<if test="categoryTitle != null">and category_title=#{categoryTitle}</if>
+			<if test="categorySort &gt; 0 and categorySort != null">and category_sort=#{categorySort}</if>
+			<if test="categoryDateTime != null">and category_datetime=#{categoryDateTime}</if>
+			<if test="categoryManagerId &gt; 0">and category_managerid=#{categoryManagerId}</if>
+			<if test="categoryCategoryId &gt; 0">and category_categoryid=#{categoryCategoryId}</if>
+			<if test="categorySmallImg != null">and category_smallimg=#{categorySmallImg}</if>
+			<if test="categoryDescription != null">and category_description=#{categoryDescription}</if>
+			<if test="categoryParentId != null">and category_parent_id=#{categoryParentId}</if>
+			<if test="categoryDictId &gt; 0">and category_dict_id=#{categoryDictId}</if>
+			<if test="updateDate != null">and update_date=#{updateDate}</if>
+			<if test="updateBy &gt; 0">and update_by=#{updateBy}</if>
+			and del=0
+		</where>
+		limit 0,1
+	</select>
+	<!-- 根据实体查询结束 -->
+
+	<!-- 根据上级分类ID和模块编号对分类进行分页查询开始 -->
+	<!-- 过期 推荐query -->
+	<select id="queryByPageList" resultMap="resultMap">
+		select
+		<include refid="category_list" />
+		from category c where category_modelId=#{category.categoryModelId}
+		<if test="category.categoryManagerId>0">
+			and category_managerid=#{category.categoryManagerId}
+		</if>
+		<if test="category.categoryCategoryId>0">
+			and category_categoryid=#{category.categoryCategoryId}
+		</if>
+		<if test="category.categoryAppId>0">
+			and category_appid=#{category.categoryAppId}
+		</if>
+		and del=0
+		<if test="orderBy != null">
+			order by ${orderBy}
+		</if>
+		<if test="order==true">asc</if>
+		<if test="order==false">desc</if>
+	</select>
+
+	<select id="query" resultMap="resultMap"
+		parameterType="com.mingsoft.basic.entity.CategoryEntity">
+		select
+		<include refid="category_list" />
+		from category where category_modelId=#{categoryModelId}
+		<if test="categoryTitle != null and categoryTitle != ''"> and CATEGORY_TITLE like CONCAT('%',#{categoryTitle},'%') </if>
+		<if test="categoryDateTime != null"> and CATEGORY_DATETIME=#{categoryDateTime} </if>
+		<if test="categoryManagerId &gt; 0">
+			and category_managerid=#{categoryManagerId}
+		</if>
+		<if test="categoryCategoryId &gt; 0">
+			and category_categoryid=#{categoryCategoryId}
+		</if>
+		<if test="categoryAppId &gt; 0">
+			and category_appid=#{categoryAppId}
+		</if>
+		<if test="categoryDictId &gt; 0">
+			and CATEGORY_DICT_ID=#{categoryDictId}
+		</if>
+		and del=0
+		order by category_id desc
+	</select>
+	<!-- 根据上级分类ID和模块编号对分类进行分页查询结束 -->
+
+	<select id="queryByDictId" resultMap="resultMap"
+		parameterType="com.mingsoft.basic.entity.CategoryEntity">
+		select
+		<include refid="category_list" />
+		from category where category_modelId=#{categoryModelId}
+		<if test="categoryDictId &gt; 0">
+			and CATEGORY_DICT_ID=#{categoryDictId}
+		</if>
+		and del=0
+		order by category_id desc
+	</select>
+
+
+	<select id="queryChildren" resultMap="resultMap"
+		parameterType="com.mingsoft.basic.entity.CategoryEntity">
+		select * from category 
+		<where>
+			<if test="categoryModelId &gt; 0">
+				and category_modelId=#{categoryModelId}
+			</if>
+			<if test="categoryAppId &gt; 0">
+				and category_appid=#{categoryAppId}
+			</if>
+			<if test="categoryDictId &gt; 0">
+				and CATEGORY_DICT_ID=#{categoryDictId}
+			</if>
+			and
+			(
+			<if test="categoryParentId != null">
+				CATEGORY_PARENT_ID like
+				'%${categoryParentId}%'
+			</if>
+			<if test="categoryParentId == null">
+				find_in_set('${categoryId}',CATEGORY_PARENT_ID)
+			</if>
+			<if test="categoryId &gt; 0">
+				or category_id=#{categoryId}
+			</if>
+			)
+			and del=0
+		</where>
+
+
+	</select>
+
+
+	<!-- 根据分类ID批量查询分类实体,并按照字段压入顺序排序开始 -->
+	<select id="queryByDescription" resultMap="resultMap"
+		parameterType="list">
+		select
+		<include refid="category_list" />
+		from category
+		<where>
+			<if test="appId!=null">
+				and category_appId=#{appId}
+			</if>
+			<if test="modelId!=null">
+				and category_modelId=#{modelId}
+			</if>
+			<if test="categoryDescription!=null">
+				and category_description =#{categoryDescription}
+			</if>
+			and del=0
+		</where>
+	</select>
+
+
+	<!-- 根据分类ID查询子分类开始 -->
+	<select id="queryChilds" resultMap="resultMap">
+		select
+		<include refid="category_list" />
+		from category c where category_modelId=#{category.categoryModelId}
+
+		<if test="category.categoryManagerId>0">
+			and category_managerid=#{category.categoryManagerId}
+		</if>
+
+		<if test="category.categoryId>0">
+			and category_categoryid=#{category.categoryId}
+		</if>
+
+		and del=0
+
+		order by category_id asc;
+	</select>
+	<!-- 根据分类ID查询子分类结束 -->
+
+	<!-- 查询分类数量，可以使用条件开始 -->
+	<select id="count" resultType="int">
+		select count(*) from category c where
+		category_modelId=#{category.categoryModelId} and
+		category_managerid=#{category.categoryManagerId}
+		<if test="category.categoryCategoryId>0">
+			and category_categoryid=#{category.categoryCategoryId}
+		</if>
+		and del=0
+	</select>
+	<!-- 查询分类数量，可以使用条件结束 -->
+
+
+	<!-- 根据分类ID批量查询分类实体,并按照字段压入顺序排序开始 -->
+	<select id="queryBatchCategoryById" resultMap="resultMap"
+		parameterType="list">
+		select
+		<include refid="category_list" />
+		from category c where category_id in
+		<foreach collection="listId" index="index" item="item" open="("
+			close=")" separator=",">
+			#{item}
+		</foreach>
+		and del=0
+	</select>
+	<!-- 根据分类ID批量查询分类实体结束 -->
+
+	<!-- 根据应用编号或模块编号查询分类开始 -->
+	<select id="queryByAppIdOrModelId" resultMap="resultMap">
+		select * from category
+		<where>
+			<if test="appId!=null">
+				and category_appId=#{appId}
+			</if>
+			<if test="modelId!=null">
+				and category_modelId=#{modelId}
+			</if>
+			and del=0
+		</where>
+
+	</select>
+	<!-- 根据应用编号或模块编号查询分类结束 -->
+
+</mapper>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- 角色持久化层XML配置继承IRoleDao -->
+<mapper namespace="com.mingsoft.basic.dao.IRoleDao">
+	
+	<!-- 将实体属性与表字段对接开始 -->
+	<resultMap id="resultMap" type="com.mingsoft.basic.entity.RoleEntity">
+		<id column="ROLE_ID" property="roleId"/><!-- 将实体的ID属性与表的ID字段对接 -->
+		<result column="ROLE_NAME" property="roleName"/><!-- 将实体的roleName属性与表的roleName字段对接 -->
+		<result column="ROLE_MANAGERID" property="roleManagerId"/><!-- 将实体的roleManagerId属性与表的roleManagerId字段对接 -->
+		<result column="APP_ID" property="appId"/><!-- 将实体的appId属性与表的appId字段对接 -->
+	</resultMap>
+	<!-- 将实体属性与表字段对接结束 -->
+	
+	<!-- 新增角色开始 -->
+	<insert id="saveEntity" parameterType="com.mingsoft.basic.entity.RoleEntity" useGeneratedKeys="true" keyProperty="roleId">
+		insert into role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="roleName != null">ROLE_NAME,</if>
+			<if test="roleManagerId != null">ROLE_MANAGERID,</if>
+			<if test="appId !=null">APP_ID</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="roleName != null">#{roleName},</if>
+			<if test="roleManagerId != null">#{roleManagerId},</if>
+			<if test="appId != null">#{appId}</if>
+		</trim>
+	</insert>
+	<!-- 新增角色结束 -->
+	
+	<!-- 删除角色开始 -->
+	<delete id="deleteEntity" parameterType="int">
+		delete  r,rm
+		from role r left join role_model rm on r.ROLE_ID=rm.RM_ROLEID left join model m on m.MODEL_ID=rm.RM_MODELID where r.ROLE_ID=#{roleId};
+	</delete>
+	<!-- 删除角色结束 -->
+	
+	<!-- 根据角色ID查询角色开始 -->
+	<select id="getEntity" resultMap="resultMap" parameterType="int">
+		select 
+			ROLE_ID,ROLE_NAME,ROLE_MANAGERID,APP_ID
+		  		from role where ROLE_ID=#{roleId};
+	</select>
+	<!-- 根据角色ID查询角色结束 -->
+	
+	<!-- 更新角色开始 -->
+	<update id="updateEntity" parameterType="com.mingsoft.basic.entity.RoleEntity">
+		update role
+		<set>
+			<if test="roleName != null">ROLE_NAME=#{roleName},</if>
+			<if test="roleManagerId != null">ROLE_MANAGERID=#{roleManagerId},</if>
+			<if test="appId != null">APP_ID=#{appId}</if>
+		</set>
+		where ROLE_ID = #{roleId}
+	</update>
+	<!-- 更新角色结束 -->
+	
+	<!-- 查询所有的角色 -->
+	<select id="queryAll" resultMap="resultMap">
+		select * from role
+	</select>
+	<!--条件查询-->	
+	<select id="query" resultMap="resultMap">
+		select * from role  
+		<where>
+			<if test="roleName != null and roleName != ''">and ROLE_NAME like CONCAT('%',#{roleName},'%') </if>			
+			<if test="roleManagerId != null"> and ROLE_MANAGERID=#{roleManagerId} </if>	
+		</where>		
+		order by ROLE_ID desc
+	</select>
+	<!-- 查询所有的角色 -->
+	<!--批量删除-->	
+	<delete id="delete" >
+		delete from role
+		<where>
+			 ROLE_ID  in <foreach collection="ids" item="item" index="index" 
+			open="(" separator="," close=")">#{item}</foreach>
+		</where>
+	</delete>
+	<!--根据实体获取-->
+	<select id="getByEntity" resultMap="resultMap" parameterType="com.mingsoft.basic.entity.RoleEntity">
+		select * from role 
+		<where>
+			<if test="roleName != null and roleName != ''"> and ROLE_NAME=#{roleName} </if>				
+			<if test="roleManagerId &gt; 0"> and ROLE_MANAGERID=#{roleManagerId} </if>				
+		</where>
+		limit 0,1
+	</select>	
+</mapper>
