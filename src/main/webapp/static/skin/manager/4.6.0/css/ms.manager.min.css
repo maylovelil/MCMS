@@ -34,7 +34,7 @@ body.over-hide {
 }
 body.theme-index {
   height: 100%;
-  background: #3497db;
+  background: #666666;
 }
 body {
   width: 100%;
@@ -216,7 +216,7 @@ body .ms-top .ms-top-menu .ms-menu-list li {
 }
 body .ms-top .ms-top-menu .ms-menu-list .active {
   font-weight: bolder;
-  background: #248cd3;
+  background: #555555;
 }
 body .ms-top .ms-top-menu .openMenu {
   color: #f9f9f9;
