@@ -66,8 +66,8 @@
   <script src="${static}/plugins/vue/2.3.3/vue.min.js"></script>
 	
   <link rel="stylesheet" type="text/css" href="${base}/static/skin/manager/${manager_ui}/css/ms.manager.min.css" media="all" />
-  <#assign skin_manager_logo="${static}/skin/manager/${manager_ui}/images/logo.png"/>  
-  <#assign skin_manager_loadding="${static}/skin/manager/${manager_ui}/images/loading.gif"/>  
+  <#assign skin_manager_logo="${base}/static/skin/manager/${manager_ui}/images/logo.png"/>
+  <#assign skin_manager_loadding="${base}/static/skin/manager/${manager_ui}/images/loading.gif"/>
   
 
        
