@@ -17,10 +17,10 @@
   <link rel="stylesheet" type="text/css" href="${static}/plugins/ztree/3.5/zTreeStyle.css" media="all" /> 
   <script type="text/javascript" src="${static}/plugins/ztree/3.5/jquery.ztree.all-3.5.min.js"></script> 
   
-  <link rel="stylesheet" type="text/css" href="${static}/plugins/bootstrap/${bootstrap}/css/bootstrap.min.css" media="all" /> 
-  <link rel="stylesheet" type="text/css" href="${static}/plugins/bootstrap/${bootstrap}/css/bootstrap-switch.css" media="all" /> 
-  <link rel="stylesheet" type="text/css" href="${static}/plugins/bootstrap/${bootstrap}/css/bootstrapValidator.css" media="all" /> 
-  <link rel="stylesheet" type="text/css" href="${static}/plugins/bootstrap/${bootstrap}/css/bootstrap-notify.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="${base}/static/plugins/bootstrap/${bootstrap}/css/bootstrap.min.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="${base}/static/plugins/bootstrap/${bootstrap}/css/bootstrap-switch.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="${base}/static/plugins/bootstrap/${bootstrap}/css/bootstrapValidator.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="${base}/static/plugins/bootstrap/${bootstrap}/css/bootstrap-notify.css" media="all" />
   
   <script type="text/javascript" src="${static}/plugins/bootstrap/${bootstrap}/js/bootstrap.min.js"></script> 
   <script type="text/javascript" src="${static}/plugins/bootstrap/${bootstrap}/js/bootstrap-switch.min.js"></script>   
