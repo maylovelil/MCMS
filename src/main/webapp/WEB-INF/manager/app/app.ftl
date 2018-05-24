@@ -11,7 +11,7 @@
   			  	<@ms.uploadImg path="app" inputName="appLogo" size="1"  maxSize="1" imgs="${app.appLogo!('')}"/>
   			</@ms.formRow>
   			<@ms.checkbox name="appMobileStyle" width="200"  list=[{"id":"m","value":"启用"}] listKey="id" listValue="value" valueList=["${app.appMobileStyle!('')}"] label="启用移动端" 
-  				help="启用后手机用户访问网站会显示手机版网页，前提是网站必需提供移动端皮肤，相关教程:<a href='http://ms.ming-soft.com/mbbs/13086/detail.do' target='_blank'>铭飞移动端开发教程</a>"/>
+  				help="启用后手机用户访问网站会显示手机版网页，前提是网站必需提供移动端皮肤，相关教程:<a href='http://ms.ming-soft.com/mbbs/13086/detail.do' target='_blank'>MY移动端开发教程</a>"/>
 			<@ms.textarea name="appUrl" label="域 名" width="400"  rows="4" value="${app.appUrl?default('')}" 
 						  placeholder="使用回车换行可以输入多个域名地址，必须要加http:// 域名不要以／\\符号结尾"
 						  help="多个域名回车换行显示，必须以http[s]://打头，<br/>例如：http://www.a.com <br/> http://a.com 域名不要以／\\符号结尾"

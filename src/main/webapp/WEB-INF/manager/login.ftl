@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <#include "${managerViewPath}/include/meta.ftl"/>
-<title><#if app?has_content>${app.appName}<#else>MS</#if>管理系统${managerViewPath}</title>
+<title><#if app?has_content>${app.appName}<#else>MY</#if>管理系统${managerViewPath}</title>
 <link rel="shortcut icon" href="${static}/global/images/ms.ico"/>     
 <link rel="bookmark" href="${static}/global/images/ms.icoo"/> 
 <link rel="stylesheet" type="text/css" href="${static}/skin/manager/${manager_ui}/css/login.css" media="all" />
