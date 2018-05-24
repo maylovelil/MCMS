@@ -160,7 +160,7 @@
     <!--右边开始-->
     <div class="ms-content">
         <div class="wellcome">
-            <h2><img src="${base}/static/skin/manager/${manager_ui}/images/timer.jpg"></h2>
+            <h2><img src="${base}/static/skin/manager/${manager_ui}/images/timg.jpg"></h2>
         </div>
         <div class="easyui-tabs">
         
