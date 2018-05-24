@@ -1,0 +1,47 @@
+﻿<!DOCTYPE HTML>
+<html>
+  {ms:include filename=head-file.htm/}
+  <body class="met-navfixed">
+    {ms:include filename=head.htm/}
+    <div class="met-img animsition">
+      <div class="container-fluid">
+        <div class="row">
+          <ul class="blocks-100 blocks-sm-2 blocks-md-4 blocks-xlg-4 no-space met-page-ajax" data-scale='0.78947368421053'>
+            {ms:arclist typeid=61 ispaging=true}
+            <li class="widget">
+              <div class="cover overlay overlay-hover">
+                <img class="cover-image overlay-scale" src="{ms:global.host/}[field.litpic/]" alt="[field.typename/]" style='height:300px;' />
+                <div class="overlay-panel overlay-fade overlay-background overlay-background-fixed text-center vertical-align">
+                  <div class="vertical-align-middle">
+                    <div class="widget-time widget-divider">
+                      <span>[field.date fmt=yyyy-MM-dd/]</span>
+                    </div>
+                    <h3 class="widget-title margin-bottom-20">[field.typename/]</h3>
+                    <button type="button" class="btn btn-outline btn-inverse met-img-showbtn" data-imglist="[field.title/]*{ms:global.host/}[field.litpic/]|">浏览</button>
+                  </div>
+                </div>
+              </div>
+            </li>
+            {/ms:arclist}
+          </ul>
+          <div>
+            <div class='met_pager' style="margin: 5px 0;">
+              <div class='met_pager'>
+                <a class='Ahover' href="{ms:page.pre/}">上一页</a>
+                <a class='Ahover' href="{ms:page.next/}">下一页</a>
+                <a class='Ahover ms-Ahover'>当前：{ms:page.cur/}</a>
+                <a class='Ahover ms-Ahover'>总页：{ms:page.total/}</a>
+                <a class='Ahover' href="{ms:page.index/}">首页</a>
+                <a class='Ahover' href="{ms:page.last/}">末页</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {ms:include filename=footer.htm/}
+  </body>
+  <script>
+    $(".navbar-nav>li").eq(4).addClass("active").find("a").addClass("link").addClass("active");
+  </script>
+</html>

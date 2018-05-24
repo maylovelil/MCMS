@@ -1,0 +1,92 @@
+﻿<!DOCTYPE HTML>
+<html>
+  {ms:include filename=head-file.htm/}
+  <body class="met-navfixed">
+    {ms:include filename=head.htm/}
+    <div class="met-banner " data-height='300||'>
+      <div class="slick-slide">
+        <img class="cover-image" src="{ms:globalskin.url/}/images/1504852963.jpg" sizes="(max-width: 767px) 500px" alt="">
+        <div class="banner-text p-5">
+          <div class='container'>
+            <div class='banner-text-con'>
+              <div>
+                <h1 style="color:;">{ms:field.typetitle/}</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="met-column-nav product-search-body bordernone">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 sidebar_tile">
+            <ul class="met-column-nav-ul">
+              <li>
+                <a href="{ms:global.url/}/106/index.html?type=0" class="link" title="全部">全部</a>
+              </li>
+              {ms:channel typeid=106}
+              <li>
+                <a href="[field.typelink/]?type=[field.typeindex/]" title="[field.typetitle/]" class="link">[field.typetitle/]</a>
+              </li>
+              {/ms:channel}
+            </ul>
+          </div>
+          <div class="col-md-3 product_search ">
+            <form>
+              <div class="form-group">
+                <div class="input-search">
+                  <button class="input-search-btn">
+                    <i class="iconfont" aria-hidden="true">&#xe70d;</i>
+                  </button>
+                  <input type="text" class="form-control" name="content" value="" placeholder="Search">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="met-product animsition type-1">
+      <div class="container">
+        <div class='row'>
+          <ul class="blocks-2 blocks-sm-2 blocks-md-4 blocks-xlg-4  met-page-ajax">
+            {ms:arclist ispaging=true}
+            <li>
+              <div class="widget widget-shadow">
+                <figure class="widget-header cover">
+                  <a href="[field.link/]" title="[field.title/]" target='_self'>
+                    <div class="mask">
+                    </div>
+                    <img class="cover-image" src="{ms:global.host/}[field.litpic/]" style='height:200px;'>
+                  </a>
+                </figure>
+                <h4 class="widget-title">
+                  <a href="[field.link/]" title="[field.title/]" target='_self'>[field.title/]</a>
+                  <p></p>
+                </h4>
+              </div>
+            </li>
+            {/ms:arclist}
+          </ul>
+          <div class="hidden-xs">
+            <div class='met_pager' style="margin: 5px 0;">
+            	<a class='Ahover' href="{ms:page.pre/}">上一页</a>
+              <a class='Ahover' href="{ms:page.next/}">下一页</a>
+              <a class='Ahover' href="{ms:page.index/}">首页</a>
+              <a class='Ahover' href="{ms:page.last/}">末页</a>
+              <a class='Ahover ms-Ahover'>当前：{ms:page.cur/}</a>
+              <a class='Ahover ms-Ahover'>总页：{ms:page.total/}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {ms:include filename=footer.htm/}
+  </body>
+  <script>
+    var type = location.search;
+    type = type.substr(6, type.length);
+    $(".met-column-nav-ul>li>a").eq(parseInt(type)).addClass("active");
+  </script>
+</html>

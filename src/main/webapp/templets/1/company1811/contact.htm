@@ -1,0 +1,59 @@
+﻿<!DOCTYPE HTML>
+<html>
+  {ms:include filename=head-file.htm/}
+  <body class="met-navfixed">
+    {ms:include filename=head.htm/}
+    <div class="met-banner " data-height='300||'>
+      <div class="slick-slide">
+        <img class="cover-image" src="{ms:globalskin.url/}/images/1504850818.jpg" sizes="(max-width: 767px) 500px" alt="">
+        <div class="banner-text p-5">
+          <div class='container'>
+            <div class='banner-text-con'>
+              <div>
+                <h2 style="color:;">{ms:field.typetitle/}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="met-column-nav">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 sidebar_tile">
+            <ul class="met-column-nav-ul">
+              {ms:channel typeid=93}
+              <li>
+                 <a href="[field.typelink/]?type=[field.typeindex/]" class="link" title="[field.typetitle/]">[field.typetitle/]</a>
+              </li>
+              {/ms:channel}
+              <li>
+                <a href="{ms:global.url/}/19/index.html?type=6" class="link" title="">联系我们</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="met-show animsition">
+      <div class="container">
+        <div class="row">
+          <div class="met-editor lazyload clearfix">
+            <div>
+            	<iframe style="float: left;" src="http://cdn.mingsoft.net/global/map.htm?wmode=transparent&;wmode=transparent" id="ifrm" name="ifrm" width="460px" height="340px" frameborder="0" scrolling="no" onload="document.all('ifrm').style.height=ifrm.document.body.scrollHeight+30;"></iframe>
+              <div style="float: left;">{ms:field.content/}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {ms:include filename=footer.htm/}
+  </body>
+  <script>
+    $(".met-column-nav-ul").eq(0).addClass("active");
+    $(".navbar-nav>li").eq(5).addClass("active").find("a").addClass("link").addClass("active");
+    var type = location.search;
+    type = type.substr(6, type.length);
+    $(".met-column-nav-ul>li>a").eq(parseInt(type - 1)).addClass("active");
+  </script>
+</html>

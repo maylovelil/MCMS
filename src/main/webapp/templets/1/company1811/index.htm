@@ -1,0 +1,105 @@
+﻿<!DOCTYPE HTML>
+<html>
+  {ms:include filename=head-file.htm/}
+  <link rel="stylesheet" type="text/css" href="http://cdn.mingsoft.net/plugins/iconfont/1.0.0/iconfont.css" />
+  <body class="met-navfixed">
+    {ms:include filename=head.htm/}
+    <div class="met-banner " data-height='||'>
+      <div class="slick-slide">
+        <img class="cover-image" src="{ms:globalskin.url/}/images/1504857424.jpg" sizes="(max-width: 767px) 500px" alt="">
+      </div>
+      <div class="slick-slide">
+        <img class="cover-image" src="{ms:globalskin.url/}/images/1504857340.jpg" sizes="(max-width: 767px) 500px" alt="">
+      </div>
+    </div>
+    <div class="met-index-product met-index-body">
+      <div class="container">
+        <h3 class="invisible" data-plugin="appear" data-animate="fade" data-repeat="false">产品展示</h3>
+        <p class="desc invisible animation-delay-100" data-plugin="appear" data-animate="fadeInDown" data-repeat="false">product</p>
+        <p class="desc invisible animation-delay-200" data-plugin="appear" data-animate="fadeInDown" data-repeat="false">描述</p>
+        <div class='invisible animation-delay-300' data-plugin="appear" data-animate="fadeInUp" data-repeat="false">
+          <ul class="nav nav-tabs">
+            {ms:channel typeid=106}
+            <li>
+              <a href="[field.typelink/]" title="[field.typetitle/]">[field.typetitle/]</a>
+            </li>
+            {/ms:channel}
+          </ul>
+        </div>
+        <div class="slider index_product animation-delay-400" id="product_list" data-show="2 2 4 4" data-plugin="appear" data-animate="slide-bottom" data-repeat="false">
+          {ms:arclist typeid=106}
+          <div data-type="list_6">
+            <div class="widget widget-shadow">
+              <figure class="widget-header cover">
+                <a href="[field.link/]" title="[field.title/]" target='_self'>
+                  <div class="mask">
+                  </div>
+                  <img class="img-responsive" src="{ms:global.host/}/[field.litpic/]" />
+                </a>
+              </figure>
+              <h4 class="widget-title">
+                <a href="[field.link/]" title="[field.title/]" target='_self'>[field.title/]</a>
+                <p></p>
+              </h4>
+            </div>
+          </div>
+          {/ms:arclist}
+        </div>
+        <a href="{ms:global.url/}/106/index.html" class="index_more" style="margin-top: -12px;"></a>
+      </div>
+    </div>
+    <div class="met-index-about met-index-body">
+      <div class="container ">
+        {ms:arclist typeid=97 size=1}
+        <div class="about_img col-sm-12 col-md-4 col-lg-4" data-animate="zoomIn" data-plugin="appear" data-repeat="false">
+          <img src="{ms:globalskin.url/}/images/1504776544.jpg" /></div>
+        <div class="about_cont col-sm-12 col-md-8 col-lg-8">
+          <h3 class="invisible" data-plugin="appear" data-animate="fade" data-repeat="false">关于我们</h3>
+          <p class="desc invisible animation-delay-100" data-plugin="appear" data-animate="fadeInDown" data-repeat="false">About Us</p>
+          <p class="desc invisible animation-delay-200" data-plugin="appear" data-animate="fadeInDown" data-repeat="false">[field.descrip/]
+          </p>
+          <div class="met-editor no-gallery lazyload clearfix invisible animation-delay-300" data-plugin="appear" data-animate="fadeInDown" data-repeat="false">
+          </div>
+          <a href="[field.link/]?id=2&type=1" class="more" data-animate="bounceIn"></a>
+        </div>
+        {/ms:arclist}
+      </div>
+    </div>
+    <div class="met-index-news met-index-body">
+      <div class="container">
+        <h3 class="invisible" data-plugin="appear" data-animate="fade" data-repeat="false">新闻资讯</h3>
+        <p class="desc invisible animation-delay-100" data-plugin="appear" data-animate="fadeInDown" data-repeat="false">News</p>
+        <p class="desc invisible animation-delay-200" data-plugin="appear" data-animate="fadeInDown" data-repeat="false">描述</p>
+        <ul class="blocks-2" data-scale='0.6'>
+          {ms:arclist typeid=59}
+          <li class="invisible animation-delay-300" data-plugin="appear" data-animate="fadeInRight" data-repeat="false">
+            <div class="media media-lg">
+              <div class="media-left">
+                <a href="[field.link/]" title="[field.title/]" target='_self'>
+                  <img class="media-object" src="{ms:global.host/}/[field.litpic/]" style='height:160px;'>
+                </a>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">
+                  <span class="news_time">[field.date fmt=yyyy-MM-dd/]</span>
+                  <a href="[field.link/]" title="[field.title/]" target='_self'>
+                    [field.title/]
+                  </a>
+                </h4>
+                <p class="des">[field.descrip/]</p>
+                <p class="info">
+                </p>
+              </div>
+            </div>
+          </li>
+          {/ms:arclist}
+        </ul>
+        <a href="{ms:global.url/}/59/index.html" class="more" title="新闻资讯" target='_self'></a>
+      </div>
+    </div>
+    {ms:include filename=footer.htm/}
+  </body>
+  <script>
+    $(".navbar-nav>li").eq(0).addClass("active").find("a").addClass("link").addClass("active");
+  </script>
+</html>

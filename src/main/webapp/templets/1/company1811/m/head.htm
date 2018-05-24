@@ -1,0 +1,75 @@
+<!--[if lte IE 8]>
+	<div class="text-center padding-top-50 padding-bottom-50 bg-blue-grey-100">
+	<p class="browserupgrade font-size-18">你正在使用一个<strong>过时</strong>的浏览器。请<a href="http://browsehappy.com/" target="_blank">升级您的浏览器</a>，以提高您的体验。</p>
+	</div>
+<![endif]-->
+<nav class="navbar navbar-default met-nav navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="row">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle hamburger hamburger-close collapsed" data-target="#example-navbar-default-collapse" data-toggle="collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="hamburger-bar"></span>
+        </button>
+        <a href="{ms:global.host/}" class="navbar-brand navbar-logo vertical-align">
+          <div class="vertical-align-middle"><img src="http://cdn.mingsoft.net/global/images/MStore300.png" /></div>
+        </a>
+      </div>
+      <div class="collapse navbar-collapse navbar-collapse-toolbar" id="example-navbar-default-collapse">
+        <ul class="nav navbar-nav navbar-right navlist">
+          <li>
+            <a href="{ms:global.host/}" title="网站首页" class="link ">网站首页</a>
+          </li>
+          <li class="dropdown margin-left-30">
+            <a class="dropdown-toggle link animation-zoomIn" data-toggle="dropdown" data-hover="dropdown" href="{ms:global.url/}/93/index.html?type=1" aria-expanded="false" role="button" title="关于我们">关于我们
+              <i class="fa fa-angle-down iconfont ms-iconfont">&#xe820;</i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right bullet" role="menu">
+              {ms:channel typeid=93}
+              <li class="animation-fade animation-delay-">
+                <a href="[field.typelink/]?type=[field.typeindex/]" class=" animation-fade" title="[field.typetitle/]">[field.typetitle/]</a>
+              </li>
+              {/ms:channel}
+            </ul>
+          </li>
+          <li class="dropdown margin-left-30">
+            <a class="dropdown-toggle link animation-zoomIn" data-toggle="dropdown" data-hover="dropdown" href="{ms:global.url/}/59/index.html" aria-expanded="false" role="button" title="新闻资讯">新闻资讯
+              <i class="fa fa-angle-down iconfont ms-iconfont">&#xe820;</i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right bullet " role="menu">
+              <li class='visible-xs'>
+                <a href="{ms:global.url/}/59/index.html" title="全部" class="">全部</a>
+              </li>
+              {ms:channel typeid=59}
+              <li class="animation-fade animation-delay-">
+                <a href="[field.typelink/]" class=" animation-fade " title="[field.typetitle/]">[field.typetitle/]</a>
+              </li>
+              {/ms:channel}
+            </ul>
+          </li>
+          <li class="dropdown margin-left-30">
+            <a class="dropdown-toggle link  animation-zoomIn" data-toggle="dropdown" data-hover="dropdown" href="{ms:global.url/}/106/index.html?type=0" aria-expanded="false" role="button" title="产品展示">产品展示
+              <i class="fa fa-angle-down iconfont ms-iconfont">&#xe820;</i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right bullet " role="menu">
+              <li class='visible-xs'>
+                <a href="{ms:global.url/}/106/index.html?type=0" title="全部" class="">全部</a>
+              </li>
+              {ms:channel typeid=106}
+              <li class="animation-fade animation-delay-">
+                <a href="[field.typelink/]?type=[field.typeindex/]" class=" animation-fade " title="[field.typetitle/]">[field.typetitle/]</a>
+              </li>
+              {/ms:channel}
+            </ul>
+          </li>
+          <li class="margin-left-30">
+            <a href="{ms:global.url/}/61/index.html" title="客户案例" class="link  animation-zoomIn">客户案例</a>
+          </li>
+          <li class="margin-left-30">
+            <a href="{ms:global.url/}/19/index.html?type=6" title="联系我们" class="link  animation-zoomIn">联系我们</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,90 @@
+﻿<!DOCTYPE HTML>
+<html>
+  {ms:include filename=head-file.htm/}
+  <body class="met-navfixed">
+    {ms:include filename=head.htm/}
+    <section class="met-shownews animsition">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 met-shownews-body">
+            <div class="row">
+              <div class="met-shownews-header">
+                <h1>{ms:field.title/}</h1>
+                <div class="info">
+                  <span>
+                    {ms:field.date fmt=yyyy-MM-dd hh:mm:ss/}
+                  </span>
+                  <span>
+                    {ms:field.author/}
+                  </span>
+                  <span>
+                  </span>
+                </div>
+              </div>
+              <div class="met-editor lazyload clearfix">
+                <div>
+                  {ms:field.content/}
+                  <div id="metinfo_additional"></div>
+                </div>
+                <div class="center-block met_tools_code"></div>
+              </div>
+              <div class="met-shownews-footer">
+                <ul class="pager pager-round">
+                  <li class="previous">
+                    <a href="{ms:field.nextlink/}" title="{ms:field.nexttitle/}">
+                      上一篇
+                      <span aria-hidden="true" class='hidden-xs'>：{ms:field.nexttitle/}</span>
+                    </a>
+                  </li>
+                  <li class="next">
+                    <a href="{ms:field.prelink/}">
+                      下一篇
+                      <span aria-hidden="true" class='hidden-xs'>：{ms:field.pretitle/}</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="row">
+              <div class="met-news-bar">
+                <form>
+                  <div class="form-group">
+                    <div class="input-search">
+                      <button class="input-search-btn">
+                        <i class="iconfont" aria-hidden="true">&#xe70d;</i>
+                      </button>
+                      <input type="text" class="form-control" name="searchword" placeholder="Search">
+                    </div>
+                  </div>
+                </form>
+                <div class="recommend news-list-md">
+                  <h3>为您推荐</h3>
+                  <ul class="list-group list-group-bordered">
+                    {ms:arclist size=3}
+                    <li class="list-group-item">
+                      <a href="[field.link/]" title="[field.title/]" target='_self'>[field.title/]</a>
+                    </li>
+                    {/ms:arclist}
+                  </ul>
+                </div>
+                <ul class="column">
+                  {ms:channel typeid=59}
+                  <li>
+                    <a href="[field.typelink/]" title="[field.typetitle/]" target='_self'>[field.typetitle/]</a>
+                  </li>
+                  {/ms:channel}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {ms:include filename=footer.htm/}
+  </body>
+  <script>
+    $(".navbar-nav>li").eq(2).addClass("active").find("a").addClass("link").addClass("active");
+  </script>
+</html>

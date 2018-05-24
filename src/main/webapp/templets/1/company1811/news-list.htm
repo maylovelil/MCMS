@@ -1,0 +1,99 @@
+﻿<!DOCTYPE HTML>
+<html>
+ {ms:include filename=head-file.htm/}
+ <body class="met-navfixed">
+  {ms:include filename=head.htm/}
+  <div class="met-banner " data-height='300||'>
+   <div class="slick-slide">
+    <img class="cover-image" src="{ms:globalskin.url/}/images/1504775224.jpg" sizes="(max-width: 767px) 500px" alt="">
+    <div class="banner-text p-5">
+     <div class='container'>
+      <div class='banner-text-con'>
+       <div>
+        <h1 style="color:;">{ms:field.typetitle/}</h1>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <section class="met-news animsition ">
+   <div class="container">
+    <div class="row">
+     <div class="col-md-9 met-news-body">
+      <div class="row">
+       <div class="met-news-list">
+        <ul class="met-page-ajax" data-scale='1'>
+         {ms:arclist ispaging=true}
+         <li>
+          <h4>
+           <a href="[field.link/]" title="[field.descrip/]" target='_self'>
+            [field.title/]
+           </a>
+          </h4>
+          <p class="des"></p>
+          <span class="ms-hied">[field.descrip/]</span>
+          <p class="info">
+           <span>[field.date fmt=yyyy-MM-dd/]</span>
+           <span>[field.author/]</span>
+          </p>
+         </li>
+         {/ms:arclist}
+        </ul>
+        <div>
+         <div class='met_pager' style="margin: 5px 0;">
+          <div class='met_pager'>
+           <a class='Ahover' href="{ms:page.pre/}">上一页</a>
+           <a class='Ahover' href="{ms:page.next/}">下一页</a>
+           <a class='Ahover' href="{ms:page.index/}">首页</a>
+           <a class='Ahover' href="{ms:page.last/}">末页</a>
+           <a class='Ahover ms-Ahover'>当前：{ms:page.cur/}</a>
+           <a class='Ahover ms-Ahover'>总页：{ms:page.total/}</a>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="col-md-3">
+      <div class="row">
+       <div class="met-news-bar">
+        <form>
+         <div class="form-group">
+          <div class="input-search">
+           <button class="input-search-btn">
+            <i class="iconfont" aria-hidden="true">&#xe70d;</i>
+           </button>
+           <input type="text" class="form-control" name="searchword" placeholder="Search">
+          </div>
+         </div>
+        </form>
+        <div class="recommend news-list-md">
+         <h3>为您推荐</h3>
+         <ul class="list-group list-group-bordered">
+          {ms:arclist size=3}
+          <li class="list-group-item">
+           <a href="[field.link/]" title="[field.title/]" target='_self'>[field.title/]</a>
+          </li>
+          {/ms:arclist}
+         </ul>
+        </div>
+        <ul class="column">
+         {ms:channel typeid=59}
+         <li>
+          <a href="[field.typelink/]" title="[field.typetitle/]" target='_self'>[field.typetitle/]</a>
+         </li>
+         {/ms:channel}
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  {ms:include filename=footer.htm/}
+ </body>
+ <script>
+  $(".navbar-nav>li").eq(2).addClass("active").find("a").addClass("link").addClass("active");
+ </script>
+</html>

@@ -1,0 +1,125 @@
+﻿<!DOCTYPE HTML>
+<html>
+  {ms:include filename=head-file.htm/}
+  <body class="met-navfixed">
+    {ms:include filename=head.htm/}
+    <div class="met-position  pattern-show">
+      <div class="container">
+        <div class="row">
+          <ol class="breadcrumb">
+            <li>
+              <a href="{ms:global.host/}" title="网站首页">
+                <i class="icon wb-home" aria-hidden="true"></i>网站首页
+              </a>
+            </li>
+            <li class="dropdown">
+              <a href="{ms:field.typelink/}" title="{ms:field.typetitle/}" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{ms:field.typetitle/}
+                <i class="caret"></i>
+              </a>
+              <ul class="dropdown-menu bullet">
+                <li>
+                  <a href="{ms:global.url/}/106/index.html" class="link" title="全部">全部</a>
+                </li>
+                {ms:channel typeid=106}
+                <li>
+                  <a href="[field.typelink/]" title="[field.typetitle/]" class="link">[field.typetitle/]</a>
+                </li>
+                {/ms:channel}
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="{ms:field.typelink/}" title="{ms:field.typetitle/}">
+                {ms:field.typetitle/}
+              </a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="page met-showproduct pagetype1 animsition">
+      <div class="met-showproduct-head">
+        <div class="container grey-box">
+          <div class="row">
+            <div class="col-md-7">
+              <div class='met-showproduct-list text-center fnGallery ' id="met-imgs-carousel">
+                <div class='slick-slide lg-item-box'>
+                  <span>
+                    <img src="{ms:global.host/}/{ms:field.litpic/}" class="img-responsive" />
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="visible-xs-block visible-sm-block height-20"></div>
+            <div class="col-md-5 product-intro">
+              <h1>{ms:field.title/}</h1>
+              <p class="description">{ms:field.descrip/}</p>
+              <div class="para">
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-6 margin-bottom-15 blue-grey-500">作者 : {ms:field.author/}
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6 margin-bottom-15 blue-grey-500">来源 : {ms:field.source/}
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6 margin-bottom-15 blue-grey-500">日期 : {ms:field.date fmt=yyyy-MM-dd/}
+                  </div>
+                </div>
+              </div>
+              <div class="tools"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="met-showproduct-body">
+        <div class="container">
+          <div class="row no-space">
+            <div class="col-md-9 product-content-body">
+              <div class="row">
+                <div class="panel product-detail">
+                  <div class="panel-body">
+                    <ul class="nav nav-tabs nav-tabs-line met-showproduct-navtabs affix-nav">
+                      <li class="active">
+                        <a data-toggle="tab" href="#product-details" data-get="product-details">详细信息</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane met-editor lazyload clearfix  active" id="product-details">
+                        <div>
+                          <ul class="attributes-list list-paddingleft-2" style="list-style-type: none;padding: 5px;">
+                            {ms:field.content/}
+                          </ul>
+                          <div id="metinfo_additional"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="row">
+                <div class="panel product-hot">
+                  <div class="panel-body">
+                    <h2 class="margin-bottom-15 font-size-16 font-weight-300">热门推荐</h2>
+                    <ul class="blocks-2 blocks-sm-3 mob-masonry" data-scale='1'>
+                      {ms:arclist typeid=106 size=4}
+                      <li>
+                        <a href="[field.link/]" target="_blank" class="img" title="[field.title/]">
+                          <img src="{ms:global.host/}[field.litpic/]" class="cover-image" style='height:200px;' alt="[field.title/]">
+                        </a>
+                        <a href="[field.link/]" target="_blank" class="txt" title="[field.title/]">[field.title/]</a>
+                      </li>
+                      {/ms:arclist}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {ms:include filename=footer.htm/}
+  </body>
+  <script>
+    $(".navbar-nav>li").eq(3).addClass("active").find("a").addClass("link").addClass("active");
+  </script>
+</html>
