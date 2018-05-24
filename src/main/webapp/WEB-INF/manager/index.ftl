@@ -160,7 +160,10 @@
     <!--右边开始-->
     <div class="ms-content">
         <div class="wellcome">
-            <h2>欢迎进入文章发布系统</h2>
+            <h2>欢迎进入MS系统</h2>
+            <p>欢迎加群： 221335098 或到
+                <a href="http://ms.mingsoft.net/mbbs/main.do" target="_blank" style="text-decoration: none;">官方论坛进行技术交流</a>
+            </p>
         </div>
         <div class="easyui-tabs">
         
