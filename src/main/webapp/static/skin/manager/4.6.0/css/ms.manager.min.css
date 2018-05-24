@@ -34,7 +34,7 @@ body.over-hide {
 }
 body.theme-index {
   height: 100%;
-  background: #666666;
+  background: #3497db;
 }
 body {
   width: 100%;
@@ -153,7 +153,7 @@ body .ms-top .ms-top-logo {
   width: 180px;
   height: 50px;
   float: left;
-  border-right: 1px solid #666666;
+  border-right: 1px solid #248cd3;
 }
 body .ms-top .ms-top-logo img {
   width: 80px;
@@ -216,7 +216,7 @@ body .ms-top .ms-top-menu .ms-menu-list li {
 }
 body .ms-top .ms-top-menu .ms-menu-list .active {
   font-weight: bolder;
-  background: #555555;
+  background: #248cd3;
 }
 body .ms-top .ms-top-menu .openMenu {
   color: #f9f9f9;
