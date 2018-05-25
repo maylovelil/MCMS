@@ -181,7 +181,7 @@ onclick="" click="" url="" toggle="tooltip" target="bottom" icon="" title="" pla
 </#macro>
 
 <#macro queryButton value="查询" icon="search" class="default" id="queryButton${.now?date?string('yyyyMMddhhmmss')}" onclick="" title="查询" form="" >
-	<@ms.button class="btn btn-info" value="${value} " icon="${icon}" id="${id}"   onclick="${onclick}" title="${title}"/>
+	<@ms.button class="btn btn-primary" value="${value} " icon="${icon}" id="${id}"   onclick="${onclick}" title="${title}"/>
 	<#if onclick=="" && form!="">
 	<script>
 		$(function() {
@@ -198,15 +198,15 @@ onclick="" click="" url="" toggle="tooltip" target="bottom" icon="" title="" pla
 </#macro>
 <#--保存-->
 <#macro saveButton value="保存" icon="floppy-saved" class="default" id="saveButton${.now?date?string('yyyyMMddhhmmss')}" onclick="" title="保存" postForm="" postBefor="" postAfter="">
-	<@ms.button icon="${icon}" class="btn btn-success" value="${value} " icon="${icon}" id="${id}"   onclick="${onclick}" title="${title}" />
+	<@ms.button icon="${icon}" class="btn btn-primary" value="${value} " icon="${icon}" id="${id}"   onclick="${onclick}" title="${title}" />
 	<@ms.event postForm="${postForm}"  postBefor="${postBefor}" postAfter="${postBefor}" id="${id}"/>
 </#macro>
 <#macro updateButton value="更新" icon="open" class="default" id="updateButton" onclick="" title="更新"  postForm="" postBefor="" postAfter="" postForm="" postBefor="" postAfter="">
-	<@ms.button icon="${icon}" class="btn btn-success" value="${value} " icon="${icon}" id="${id}"   onclick="${onclick}" title="${title}"/>
+	<@ms.button icon="${icon}" class="btn btn-primary" value="${value} " icon="${icon}" id="${id}"   onclick="${onclick}" title="${title}"/>
 	<@ms.event postForm="${postForm}"  postBefor="${postBefor}" postAfter="${postBefor}" id="${id}"/>
 </#macro>
 <#macro resetButton value="重置" icon="retweet" class="warning" id="resetButton${.now?long}" onclick="" title="重置" form="" >
-	<@ms.button icon="${icon}" class="btn btn-warning" value="${value} " icon="${icon}" id="${id}"   onclick="${onclick}" title="${title}"/>
+	<@ms.button icon="${icon}" class="btn btn_reset" value="${value} " icon="${icon}" id="${id}"   onclick="${onclick}" title="${title}"/>
 	<script>
 	    <#--优先click事件-->
 		<#if onclick=="">
