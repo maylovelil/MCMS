@@ -796,4 +796,9 @@ public class GeneraterAction extends BaseAction {
 		this.outJson(response, true, indexPosition);
 	}
 
+	@RequestMapping("/makeMap")
+	public String makeMap(){
+		return view("/cms/generate/map");
+	}
+
 }
