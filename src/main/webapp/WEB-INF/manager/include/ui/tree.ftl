@@ -42,7 +42,7 @@
 					  zTreeObj${treeId}.getNodesByParam(key,value,parentNode);
 -->		 
 <#--废弃，推荐使用inputTree 参考input_tree.ftl--> 
-<#macro treeInput treeId=""  json="" jsonId="" jsonPid="" jsonName="" jsonUrl="" addNodesName="" buttonText="" inputName="" inputValue="" inputId="" selectParent="" clickZtreeId="" expandAll="true" showIcon="false" >
+<#macro treeInput treeId=""  json="" jsonId="" jsonPid="" jsonName="" jsonUrl="" disabled="" addNodesName="" buttonText="" inputName="" inputValue="" inputId="" selectParent="" clickZtreeId="" expandAll="true" showIcon="false" >
 	<!-- css样式开始 -->
 	<style type="text/css">
 		.ztree${treeId}{width:100%;max-height: 240px;overflow:auto;}
@@ -53,7 +53,7 @@
 
 	<!-- 初始化样式开始 -->
 	<div class="dropdown" id="${treeId}">
-		<button type="text" id="treeLabel${treeId}" class="form-control dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="text-align:left">
+		<button type="text" id="treeLabel${treeId}" <#if disabled??>disabled</#if> class="form-control dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="text-align:left">
 			${buttonText?default('请选择')}
 		</button>
 		<input type="hidden" <#if inputName?has_content>name="${inputName}"</#if> <#if inputId?has_content>id="${inputId}"</#if> value="${inputValue?default(0)}">

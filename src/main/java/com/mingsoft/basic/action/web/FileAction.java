@@ -12,9 +12,20 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.POST;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.qiniu.common.QiniuException;
+import com.qiniu.common.Zone;
+import com.qiniu.http.Response;
+import com.qiniu.storage.Configuration;
+import com.qiniu.storage.UploadManager;
+import com.qiniu.storage.model.DefaultPutRet;
+import com.qiniu.util.Auth;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -60,9 +71,20 @@ public class FileAction extends BaseAction {
 	private String uploadFileDenied;
 	
 	@Value("${upload.max.in.memory.size}")
-	private int uploadMaxInMemorySize;	
-	
-	
+	private int uploadMaxInMemorySize;
+
+	@Value("${qiniu.ak}")
+	private String qiNiuAk;
+
+	@Value("${qiniu.sk}")
+	private String qiNiuSk;
+
+	@Value("${qiniu.bucket}")
+	private String qiNiuBucket;
+
+	@Value("${qiniu.host}")
+	private String qiNiuHost;
+
 	/**
 	 * 处理post请求上传文件
 	 * 
@@ -184,11 +206,14 @@ public class FileAction extends BaseAction {
 								}
 								LOG.info("上传完成");
 								if(uploadPath.equals("/") || StringUtil.isBlank(uploadPath)){
-									out.print(floderName+Const.SEPARATOR + _fileName);
+									//out.print(floderName+Const.SEPARATOR + _fileName);
+									out.print(uploadForQiNiu(uploadFolder+Const.SEPARATOR + _fileName));
 								}else{
-									out.print(floderName+Const.SEPARATOR+uploadPath+Const.SEPARATOR + _fileName);
+									//out.print(floderName+Const.SEPARATOR+uploadPath+Const.SEPARATOR + _fileName);
+									out.print(uploadForQiNiu(uploadFolder+Const.SEPARATOR + _fileName));
 								}
 								new File(folder).delete();
+								new File(uploadFolder).delete();
 							} else if (chunks == 0) {
 								String _fileName = fileName;
 								if (StringUtil.isBlank(isRename) || Boolean.parseBoolean(isRename)) {
@@ -197,9 +222,10 @@ public class FileAction extends BaseAction {
 								destFile.renameTo(new File(uploadFolder, _fileName));
 								new File(folder).delete();
 								if(uploadPath.equals("/") || StringUtil.isBlank(uploadPath)){
-									out.print(floderName+Const.SEPARATOR + _fileName);
+									out.print(uploadForQiNiu(uploadFolder+Const.SEPARATOR + _fileName));
 								}else{
-									out.print(floderName+Const.SEPARATOR+uploadPath+Const.SEPARATOR + _fileName);
+									//out.print(floderName+Const.SEPARATOR+uploadPath+Const.SEPARATOR + _fileName);
+									out.print(uploadForQiNiu(uploadFolder+Const.SEPARATOR + _fileName));
 								}
 								LOG.info("上传完成");
 							} else {
@@ -267,5 +293,26 @@ public class FileAction extends BaseAction {
 				LOG.error(e.getMessage());
 			}
 		}
+	}
+
+	public String uploadForQiNiu(String localFilePath ){
+		//构造一个带指定Zone对象的配置类
+		Configuration cfg = new Configuration(Zone.zone2());
+		//其他参数参考类注释
+		UploadManager uploadManager = new UploadManager(cfg);
+		Auth auth = Auth.create(qiNiuAk, qiNiuSk);
+		String upToken = auth.uploadToken(qiNiuBucket);
+		//默认不指定key的情况下，以文件内容的hash值作为文件名
+		String key = null;
+		Response qiNiuResponse = null;
+		DefaultPutRet putRet = null;
+		try {
+			qiNiuResponse = uploadManager.put(localFilePath,key, upToken);
+			putRet = new Gson().fromJson(qiNiuResponse.bodyString(), DefaultPutRet.class);
+		} catch (QiniuException ex) {
+			Response r = ex.response;
+			System.err.println(r.toString());
+		}
+		return  "http://"+qiNiuHost+Const.SEPARATOR+putRet.key;
 	}
 }

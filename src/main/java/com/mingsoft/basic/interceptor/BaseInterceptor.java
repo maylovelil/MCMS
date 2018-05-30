@@ -65,6 +65,8 @@ public abstract class BaseInterceptor extends HandlerInterceptorAdapter {
 	public final static String MANAGER_VIEW_PATH = "managerViewPath";
 	
 	public final static String PARAMS = "params";
+
+	public final static String QINIUHOST="qiNiuHost";
 	
 	
 

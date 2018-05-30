@@ -21,9 +21,9 @@
 			<#if !isEditCategory><!-- 如果不是单篇 -->
 	            <@ms.formRow colSm="2" label="所属栏目" width="300">
 	            <#if categoryTitle=="">
-	            	<@ms.treeInput treeId="inputTree" json="${listColumn?default('')}" jsonId="categoryId" jsonPid="categoryCategoryId" jsonName="categoryTitle" inputName="basicCategoryId" inputValue="${categoryId}" buttonText="选择栏目" clickZtreeId="clickZtreeId(event,treeId,treeNode);" expandAll="true"  showIcon="true"/>
+	            	<@ms.treeInput treeId="inputTree" json="${listColumn?default('')}" jsonId="categoryId" jsonPid="categoryCategoryId" jsonName="categoryTitle" inputName="basicCategoryId" inputValue="${categoryId}" buttonText="选择栏目" clickZtreeId="clickZtreeId(event,treeId,treeNode);" expandAll="true"  showIcon="true" disabled="disabled"/>
 	            <#else>
-	            	<@ms.treeInput treeId="inputTree" json="${listColumn?default('')}" jsonId="categoryId" jsonPid="categoryCategoryId" jsonName="categoryTitle" inputName="basicCategoryId" inputValue="${categoryId}" buttonText="${(categoryTitle)!}" clickZtreeId="clickZtreeId(event,treeId,treeNode);" expandAll="true"  showIcon="true"/>
+	            	<@ms.treeInput treeId="inputTree" json="${listColumn?default('')}" jsonId="categoryId" jsonPid="categoryCategoryId" jsonName="categoryTitle" inputName="basicCategoryId" inputValue="${categoryId}" buttonText="${(categoryTitle)!}" clickZtreeId="clickZtreeId(event,treeId,treeNode);" expandAll="true"  showIcon="true" disabled="disabled"/>
 				</#if>
 				</@ms.formRow>
             </#if>

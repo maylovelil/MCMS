@@ -27,7 +27,7 @@
 					<#if img!="">
 						<li id="SWFUpload_9_${img_index}">
 							<div class="displayimg">
-								<img src="${basePath}/${img}">
+								<img src="${img}">
 							</div>
 							<span class="front-cover" onclick="removePreview${inputName}(this,'${img}'+'|')"><a class="btn btn-xs red tooltips " data-original-title="点击删除图片"><i class="glyphicon glyphicon-trash"></i></a>
 							</span>
@@ -88,7 +88,7 @@
 				})
 				.bind('uploadSuccess', function (event, file, serverData) {
 				    var item = $('#ms__uploadPic_${inputName} ul li#' + file.id);
-				    item.find('div.displayimg').html('<img src="${basePath}/' + serverData + '" />');
+				    item.find('div.displayimg').html('<img src="' + serverData + '" />');
 				    item.find('span.front-cover').html('<a class="btn btn-xs red tooltips " data-original-title="点击删除图片"><i class="glyphicon glyphicon-trash"></i></a>');
 				    if($('#${inputName}').val()!=""){
 				    	 $('#${inputName}').val($('#${inputName}').val() + "|"+ serverData )
@@ -176,7 +176,7 @@
 		    	    	  if (_imgs[i]!="") {
 								var imgLi = '<li id="SWFUpload_9_'+i+'">';
 									imgLi+='<div class="displayimg">';
-													imgLi+='<img src="${basePath}/'+_imgs[i]+'">';
+													imgLi+='<img src="'+_imgs[i]+'">';
 									imgLi+='</div>';
 									imgLi+='<span class="front-cover" onclick="removePreview${inputName}(this,\''+_imgs[i]+'\'+'|')"><a class="btn btn-xs red tooltips " data-original-title="点击删除图片"><i class="glyphicon glyphicon-trash"></i></a>';
 									imgLi+='</span>';

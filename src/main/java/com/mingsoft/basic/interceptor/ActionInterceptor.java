@@ -49,6 +49,8 @@ public class ActionInterceptor extends BaseInterceptor {
 
 	@Value("${managerViewPath}")
 	private String managerViewPath;
+	@Value("${qiniu.host}")
+	private String qiNiuHose;
 
 	/**
 	 * 所有action的拦截,主要拦截base与basepath
@@ -83,6 +85,7 @@ public class ActionInterceptor extends BaseInterceptor {
 		request.setAttribute(BASE_PATH, base + Const.BASE);
 		request.setAttribute(BASE_URL, base + request.getContextPath() + request.getServletPath()
 				+ (request.getQueryString() == null ? "" : "?" + request.getQueryString()));
+		request.setAttribute(QINIUHOST,"http://"+qiNiuHose);
 		
 		request.setAttribute(PARAMS, assemblyRequestUrlParams(request));
 		SpringUtil.setResponse(response);
