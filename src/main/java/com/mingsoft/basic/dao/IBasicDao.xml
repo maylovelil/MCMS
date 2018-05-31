@@ -3,7 +3,7 @@
 <mapper namespace="com.mingsoft.basic.dao.IBasicDao">
 
 	<sql id="column_list">
-		BASIC_ID,BASIC_TITLE,BASIC_DESCRIPTION,BASIC_THUMBNAILS,BASIC_HIT,BASIC_DATETIME,BASIC_UPDATETIME,BASIC_PEOPLEID,BASIC_CATEGORYID,BASIC_APPID
+		BASIC_ID,BASIC_TITLE,BASIC_TITLE_EN,BASIC_DESCRIPTION,BASIC_DESCRIPTION_EN,BASIC_THUMBNAILS,BASIC_HIT,BASIC_DATETIME,BASIC_UPDATETIME,BASIC_PEOPLEID,BASIC_CATEGORYID,BASIC_APPID
 	</sql>
 
 	<resultMap id="resultMap" type="com.mingsoft.basic.entity.BasicEntity">
@@ -25,7 +25,9 @@
 		insert into basic
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="basicTitle != null">basic_title,</if>
+			<if test="basicTitleEn != null">basic_title_en,</if>
 			<if test="basicDescription != null">basic_description,</if>
+			<if test="basicDescriptionEn != null">basic_description_en,</if>
 			<if test="basicThumbnails != null">basic_thumbnails,</if>
 			<if test="basicHit != null">basic_hit,</if>
 			<if test="basicCategoryId != null and basicCategoryId &gt; 0">BASIC_CATEGORYID,</if>
@@ -40,7 +42,9 @@
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="basicTitle != null">#{basicTitle},</if>
+			<if test="basicTitleEn != null">#{basicTitleEn},</if>
 			<if test="basicDescription != null">#{basicDescription},</if>
+			<if test="basicDescriptionEn != null">#{basicDescriptionEn},</if>
 			<if test="basicThumbnails != null">#{basicThumbnails},</if>
 			<if test="basicHit != null">#{basicHit},</if>
 			<if test="basicCategoryId != null and basicCategoryId &gt; 0">#{basicCategoryId},</if>
@@ -60,7 +64,9 @@
 		update basic
 		<set>
 			<if test="basicTitle != null">basic_title=#{basicTitle},</if>
+			<if test="basicTitleEn != null">basic_title_en=#{basicTitleEn},</if>
 			<if test="basicDescription != null">basic_description=#{basicDescription},</if>
+			<if test="basicDescriptionEn != null">basic_description_en=#{basicDescriptionEn},</if>
 			<if test="basicThumbnails != null">BASIC_THUMBNAILS=#{basicThumbnails},</if>
 			<if test="basicHit != null and basicHit &gt; 0">BASIC_HIT=#{basicHit},</if>
 			<if test="basicUpdateTime != null">BASIC_UPDATETIME=#{basicUpdateTime},</if>

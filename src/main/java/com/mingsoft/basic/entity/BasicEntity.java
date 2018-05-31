@@ -53,9 +53,19 @@ public class BasicEntity extends BaseEntity {
 	private String basicTitle;
 
 	/**
+	 * 英文标题 长度:200
+	 */
+	private String basicTitleEn;
+
+	/**
 	 * 描述 长度:1500
 	 */
 	private String basicDescription;
+
+	/**
+	 * 英文描述 长度:1500
+	 */
+	private String basicDescriptionEn;
 
 	/**
 	 * 缩略图 长度:200
@@ -388,7 +398,20 @@ public class BasicEntity extends BaseEntity {
 	public void setBasicTypeIds(int[] basicTypeIds) {
 		this.basicTypeIds = basicTypeIds;
 	}
-	
-	
 
+	public String getBasicDescriptionEn() {
+		return basicDescriptionEn;
+	}
+
+	public void setBasicDescriptionEn(String basicDescriptionEn) {
+		this.basicDescriptionEn = basicDescriptionEn;
+	}
+
+	public String getBasicTitleEn() {
+		return basicTitleEn;
+	}
+
+	public void setBasicTitleEn(String basicTitleEn) {
+		this.basicTitleEn = basicTitleEn;
+	}
 }

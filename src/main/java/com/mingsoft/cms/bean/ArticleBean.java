@@ -72,6 +72,11 @@ public class ArticleBean {
 	 * 文章内容
 	 */
 	private String articleContent;
+
+	/**
+	 * 文章内容
+	 */
+	private String articleContentEn;
 	
 	/**
 	 * 文章作者
@@ -106,11 +111,21 @@ public class ArticleBean {
 	 * 文章标题
 	 */
 	private String articleTitle;
+
+	/**
+	 * 文章标题
+	 */
+	private String articleTitleEn;
 	
 	/**
 	 * 文章描述
 	 */
 	private String articleDescription;
+
+	/**
+	 * 文章描述
+	 */
+	private String articleDescriptionEn;
 	
 	/**
 	 * 文章所属的分类Id
@@ -366,5 +381,28 @@ public class ArticleBean {
 		}
 		return app.getAppHostUrl()+Const.SEPARATOR+IParserRegexConstant.HTML_SAVE_PATH+Const.SEPARATOR+this.getArticleUrl();
 	}
-	
+
+	public String getArticleContentEn() {
+		return articleContentEn;
+	}
+
+	public void setArticleContentEn(String articleContentEn) {
+		this.articleContentEn = articleContentEn;
+	}
+
+	public String getArticleTitleEn() {
+		return articleTitleEn;
+	}
+
+	public void setArticleTitleEn(String articleTitleEn) {
+		this.articleTitleEn = articleTitleEn;
+	}
+
+	public String getArticleDescriptionEn() {
+		return articleDescriptionEn;
+	}
+
+	public void setArticleDescriptionEn(String articleDescriptionEn) {
+		this.articleDescriptionEn = articleDescriptionEn;
+	}
 }

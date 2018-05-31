@@ -19,6 +19,7 @@ import javax.ws.rs.POST;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.mingsoft.basic.common.QiNiuUploadFile;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;

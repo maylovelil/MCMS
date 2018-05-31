@@ -115,6 +115,11 @@ public class CategoryEntity extends BaseEntity {
 	 * 类别的标题
 	 */
 	private String categoryTitle;
+
+	/**
+	 * 英文类别标题
+	 */
+	private String categoryTitleEn;
 	/**
 	 * 更新人
 	 */
@@ -344,4 +349,11 @@ public class CategoryEntity extends BaseEntity {
 		this.childrenCategoryList = childrenCategoryList;
 	}
 
+	public String getCategoryTitleEn() {
+		return categoryTitleEn;
+	}
+
+	public void setCategoryTitleEn(String categoryTitleEn) {
+		this.categoryTitleEn = categoryTitleEn;
+	}
 }

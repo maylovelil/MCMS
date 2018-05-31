@@ -36,6 +36,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mingsoft.basic.common.QiNiuUploadFile;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -265,6 +266,10 @@ public class ArticleAction extends BaseAction {
 	@RequestMapping("/save")
 	@RequiresPermissions("article:save")
 	public void save(@ModelAttribute ArticleEntity article, HttpServletRequest request, HttpServletResponse response) {
+		//将付编辑器中的图片全部上传到云服务器，并且替换路径
+		String rootPath = request.getServletContext().getRealPath("/");
+		article.setArticleContent(QiNiuUploadFile.replaceAllImages(article.getArticleContent(),rootPath));
+		article.setArticleContentEn(QiNiuUploadFile.replaceAllImages(article.getArticleContentEn(),rootPath));
 		// 获取站点id
 		int appId = this.getAppId(request);
 		// 验证文章，文章自由排序，栏目id
@@ -408,6 +413,10 @@ public class ArticleAction extends BaseAction {
 	@RequiresPermissions("article:update")
 	public void update(@PathVariable int basicId, @ModelAttribute ArticleEntity article, HttpServletRequest request,
 			HttpServletResponse response) {
+		//将付编辑器中的图片全部上传到云服务器，并且替换路径
+		String rootPath = request.getServletContext().getRealPath("/");
+		article.setArticleContent(QiNiuUploadFile.replaceAllImages(article.getArticleContent(),rootPath));
+		article.setArticleContentEn(QiNiuUploadFile.replaceAllImages(article.getArticleContentEn(),rootPath));
 		// 获取站点id
 		int appId = this.getAppId(request);
 		article.setBasicUpdateTime(new Timestamp(System.currentTimeMillis()));
@@ -533,6 +542,7 @@ public class ArticleAction extends BaseAction {
 			// 文章属性
 			model.addAttribute("articleType", articleType());
 			model.addAttribute("categoryTitle", categoryTitle);
+			model.addAttribute("categoryTitleEn", articleEntity.getColumn().getCategoryTitleEn());
 			model.addAttribute("categoryId", categoryId);// 编辑封面
 			model.addAttribute("isEditCategory", true);// 编辑封面
 			model.addAttribute("columnType", columnType);
@@ -553,10 +563,12 @@ public class ArticleAction extends BaseAction {
 			int columnType = column.getColumnType();
 			if (column.getColumnType() == ColumnEntity.COLUMN_TYPE_COVER) {
 				model.addAttribute("categoryTitle", categoryTitle);
+				model.addAttribute("categoryTitleEn", articleEntity.getColumn().getCategoryTitleEn());
 				model.addAttribute("categoryId", column.getCategoryId());// 编辑封面
 				model.addAttribute("isEditCategory", true);// 编辑封面
 			} else {
 				model.addAttribute("categoryTitle", articleEntity.getColumn().getCategoryTitle());
+				model.addAttribute("categoryTitleEn", articleEntity.getColumn().getCategoryTitleEn());
 				model.addAttribute("isEditCategory", false);// 编辑文章
 			}
 			model.addAttribute("columnType", columnType);
@@ -638,8 +650,7 @@ public class ArticleAction extends BaseAction {
 	/**
 	 * 查询单页栏目是否绑定了文章
 	 * 
-	 * @param article
-	 *            文章对象
+	 * @param id  文章对象
 	 */
 	@RequestMapping("/{id}/queryColumnArticle")
 	public void queryColumnArticle(@PathVariable int id, HttpServletResponse response) {

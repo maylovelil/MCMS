@@ -4,8 +4,8 @@
 <mapper namespace="com.mingsoft.cms.dao.IArticleDao">
 	<!-- 表栏目名 开始 -->
 	<sql id="column_list">
-		a.ARTICLE_BASICID,a.ARTICLE_CONTENT,a.ARTICLE_AUTHOR,a.ARTICLE_TYPE,a.ARTICLE_SOURCE,a.ARTICLE_URL,a.ARTICLE_KEYWORD,a.ARTICLE_FREEORDER,a.ARTICLE_WEBID,
-		b.BASIC_ID,b.BASIC_TITLE,b.BASIC_DESCRIPTION,b.BASIC_THUMBNAILS,b.BASIC_HIT,b.BASIC_DATETIME,b.BASIC_UPDATETIME,b.BASIC_PEOPLEID,b.BASIC_CATEGORYID,b.BASIC_SORT
+		a.ARTICLE_BASICID,a.ARTICLE_CONTENT,a.ARTICLE_CONTENT_EN,a.ARTICLE_AUTHOR,a.ARTICLE_TYPE,a.ARTICLE_SOURCE,a.ARTICLE_URL,a.ARTICLE_KEYWORD,a.ARTICLE_FREEORDER,a.ARTICLE_WEBID,
+		b.BASIC_ID,b.BASIC_TITLE,b.BASIC_TITLE_EN,b.BASIC_DESCRIPTION,b.BASIC_DESCRIPTION_EN,b.BASIC_THUMBNAILS,b.BASIC_HIT,b.BASIC_DATETIME,b.BASIC_UPDATETIME,b.BASIC_PEOPLEID,b.BASIC_CATEGORYID,b.BASIC_SORT
 	</sql>
 	<!-- 表栏目名 结束 -->
 
@@ -14,6 +14,7 @@
 	<resultMap type="com.mingsoft.cms.entity.ArticleEntity" id="resultMap">
 		<id column="ARTICLE_BASICID" property="articleID" />				<!-- 与cms_article表绑定id -->
 		<result column="ARTICLE_CONTENT" property="articleContent" />	<!-- 文章内容 -->
+		<result column="ARTICLE_CONTENT_EN" property="articleContentEn" />	<!-- 文章内容 -->
 		<result column="ARTICLE_AUTHOR" property="articleAuthor" />		<!-- 文章作者 -->
 		<result column="ARTICLE_TYPE" property="articleType" />			<!-- 文章属性 -->
 		<result column="ARTICLE_SOURCE" property="articleSource" />		<!-- 文章来源 -->
@@ -24,8 +25,9 @@
 		<result column="ARTICLE_WEBID" property="articleWebId" />				<!-- 站点id -->
 		<result column="BASIC_ID" property="basicId" />					<!-- 与表basic绑定 自增长ID -->
 		<result column="BASIC_TITLE" property="basicTitle" />			<!-- 文章标题 -->
-		<result column="BASIC_DESCRIPTION" property="basicDescription" /><!-- 
-			文章描述 -->
+		<result column="BASIC_TITLE_EN" property="basicTitleEn" />			<!-- 文章标题 -->
+		<result column="BASIC_DESCRIPTION" property="basicDescription" /><!-- 文章描述 -->
+		<result column="BASIC_DESCRIPTION_EN" property="basicDescriptionEn" /><!-- 文章描述 -->
 		<result column="BASIC_THUMBNAILS" property="basicThumbnails" />	<!-- 文章缩略图 -->
 		<result column="BASIC_HIT" property="basicHit" />				<!-- 文章点击次数 -->
 		<result column="BASIC_DATETIME" property="basicDateTime" />		<!-- 文章发布时间 -->
@@ -38,6 +40,7 @@
 			javaType="com.mingsoft.basic.entity.ColumnEntity">
 			<result property="columnPath" column="column_path" />
 			<result property="categoryTitle" column="category_title" />
+			<result property="categoryTitleEn" column="category_title_en" />
 			<result property="categoryId" column="category_id" />
 			<result property="columnContentModelId" column="COLUMN_CM_ID" />
 			<result property="columnType" column="COLUMN_TYPE" />
@@ -49,6 +52,7 @@
 	<resultMap type="com.mingsoft.cms.entity.ArticleEntity" id="viewResultMap">
 		<id column="ARTICLE_BASICID" property="articleID" />				<!-- 与cms_article表绑定id -->
 		<result column="ARTICLE_CONTENT" property="articleContent" />	<!-- 文章内容 -->
+		<result column="ARTICLE_CONTENT_EN" property="articleContentEn" />	<!-- 文章内容 -->
 		<result column="ARTICLE_AUTHOR" property="articleAuthor" />		<!-- 文章作者 -->
 		<result column="ARTICLE_TYPE" property="articleType" />			<!-- 文章属性 -->
 		<result column="ARTICLE_SOURCE" property="articleSource" />		<!-- 文章来源 -->
@@ -60,8 +64,9 @@
 
 		<result column="BASIC_ID" property="basicId" />					<!-- 与表basic绑定 自增长ID -->
 		<result column="BASIC_TITLE" property="basicTitle" />			<!-- 文章标题 -->
-		<result column="BASIC_DESCRIPTION" property="basicDescription" /><!-- 
-			文章描述 -->
+		<result column="BASIC_TITLE_EN" property="basicTitleEn" />			<!-- 文章标题 -->
+		<result column="BASIC_DESCRIPTION" property="basicDescription" /><!-- 文章描述 -->
+		<result column="BASIC_DESCRIPTION_EN" property="basicDescriptionEn" /><!-- 文章描述 -->
 		<result column="BASIC_THUMBNAILS" property="basicThumbnails" />	<!-- 文章缩略图 -->
 		<result column="BASIC_HIT" property="basicHit" />				<!-- 文章点击次数 -->
 		<result column="BASIC_DATETIME" property="basicDateTime" />		<!-- 文章发布时间 -->
@@ -73,6 +78,7 @@
 			javaType="com.mingsoft.basic.entity.ColumnEntity">
 			<result property="columnPath" column="column_path" />
 			<result property="categoryTitle" column="category_title" />
+			<result property="categoryTitleEn" column="category_title_en" />
 			<result property="categoryId" column="category_id" />
 			<result property="columnContentModelId" column="COLUMN_CM_ID" />
 			<result property="columnType" column="COLUMN_TYPE" />
@@ -83,22 +89,23 @@
 	<!-- 文章bean返回数据列表 开始 -->
 	<sql id="bean_column_list">
 		BASIC_ID,ARTICLE_AUTHOR,ARTICLE_TYPE,ARTICLE_SOURCE,ARTICLE_URL,ARTICLE_KEYWORD,ARTICLE_FREEORDER,
-		BASIC_TITLE,BASIC_DESCRIPTION,BASIC_THUMBNAILS,BASIC_HIT,BASIC_DATETIME,BASIC_UPDATETIME,BASIC_PEOPLEID,BASIC_CATEGORYID,BASIC_SORT
+		BASIC_TITLE,BASIC_TITLE_EN,BASIC_DESCRIPTION,BASIC_DESCRIPTION_EN,BASIC_THUMBNAILS,BASIC_HIT,BASIC_DATETIME,BASIC_UPDATETIME,BASIC_PEOPLEID,BASIC_CATEGORYID,BASIC_SORT
 	</sql>
 	<!-- 表栏目名结束 -->
 	
 	<!-- 文章基础数据返回数据列表 开始 -->
 	<sql id="basic_data_list">
-		BASIC_ID,BASIC_CATEGORYID,BASIC_TITLE,BASIC_DESCRIPTION,BASIC_THUMBNAILS,BASIC_HIT,BASIC_DATETIME,BASIC_UPDATETIME,BASIC_PEOPLEID,BASIC_SORT,
-		ARTICLE_BASICID,ARTICLE_AUTHOR,ARTICLE_CONTENT,ARTICLE_TYPE,ARTICLE_SOURCE,ARTICLE_URL,ARTICLE_KEYWORD,ARTICLE_FREEORDER,ARTICLE_WEBID,
+		BASIC_ID,BASIC_CATEGORYID,BASIC_TITLE,BASIC_TITLE_EN,BASIC_DESCRIPTION,BASIC_DESCRIPTION_EN,BASIC_THUMBNAILS,BASIC_HIT,BASIC_DATETIME,BASIC_UPDATETIME,BASIC_PEOPLEID,BASIC_SORT,
+		ARTICLE_BASICID,ARTICLE_AUTHOR,ARTICLE_CONTENT,ARTICLE_CONTENT_EN,ARTICLE_TYPE,ARTICLE_SOURCE,ARTICLE_URL,ARTICLE_KEYWORD,ARTICLE_FREEORDER,ARTICLE_WEBID,
 		COLUMN_KEYWORD,COLUMN_DESCRIP,COLUMN_TYPE,COLUMN_URL,COLUMN_LISTURL,COLUMN_PATH,COLUMN_CM_ID,COLUMN_CATEGORY_ID,
-		CATEGORY_TITLE,CATEGORY_APPID,CATEGORY_ID
+		CATEGORY_TITLE,CATEGORY_TITLE_EN,CATEGORY_APPID,CATEGORY_ID
 	</sql>
 	<!-- 文章基础数据返回数据列表结束 -->
 
 	<!-- 通过查询文章bean开始 -->
 	<resultMap type="com.mingsoft.cms.bean.ArticleBean" id="articleBeanMap">
 		<result column="ARTICLE_CONTENT" property="articleContent" />	<!-- 文章内容 -->
+		<result column="ARTICLE_CONTENT_EN" property="articleContentEn" />	<!-- 文章内容 -->
 		<result column="ARTICLE_AUTHOR" property="articleAuthor" />		<!-- 文章作者 -->
 		<result column="ARTICLE_TYPE" property="articleType" />			<!-- 文章属性 -->
 		<result column="ARTICLE_SOURCE" property="articleSource" />		<!-- 文章来源 -->
@@ -108,8 +115,9 @@
 			文章自定义显示顺序 -->
 
 		<result column="BASIC_TITLE" property="articleTitle" />			<!-- 文章标题 -->
-		<result column="BASIC_DESCRIPTION" property="articleDescription" /><!-- 
-			文章描述 -->
+		<result column="BASIC_TITLE_EN" property="articleTitleEn" />			<!-- 文章标题 -->
+		<result column="BASIC_DESCRIPTION" property="articleDescription" /><!-- 文章描述 -->
+		<result column="BASIC_DESCRIPTION_EN" property="articleDescriptionEn" /><!-- 文章描述 -->
 		<result column="BASIC_THUMBNAILS" property="articleThumbnails" />	<!-- 文章缩略图 -->
 		<result column="BASIC_HIT" property="articleHit" />				<!-- 文章点击次数 -->
 		<result column="BASIC_DATETIME" property="articleDateTime" />		<!-- 文章发布时间 -->
@@ -127,6 +135,7 @@
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="basicId != null">ARTICLE_BASICID,</if>
 			<if test="articleContent != null">ARTICLE_CONTENT,</if>
+			<if test="articleContentEn != null">ARTICLE_CONTENT_EN,</if>
 			<if test="articleAuthor != null">ARTICLE_AUTHOR,</if>
 			<if test="articleType != null">ARTICLE_TYPE,</if>
 			<if test="articleSource != null">ARTICLE_SOURCE,</if>
@@ -139,6 +148,7 @@
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="basicId != null">#{basicId},</if>
 			<if test="articleContent != null">#{articleContent},</if>
+			<if test="articleContentEn != null">#{articleContentEn},</if>
 			<if test="articleAuthor != null">#{articleAuthor},</if>
 			<if test="articleType != null">#{articleType},</if>
 			<if test="articleSource != null">#{articleSource},</if>
@@ -162,6 +172,7 @@
 		update cms_article
 		<set>
 			<if test="articleContent != null">ARTICLE_CONTENT=#{articleContent},</if>
+			<if test="articleContentEn != null">ARTICLE_CONTENT_EN=#{articleContentEn},</if>
 			<if test="articleAuthor != null">ARTICLE_AUTHOR=#{articleAuthor},</if>
 			<if test="articleType != null">ARTICLE_TYPE=#{articleType},</if>
 			<if test="articleSource != null">ARTICLE_SOURCE=#{articleSource},</if>
@@ -179,7 +190,7 @@
 	<select id="getEntity" resultMap="resultMap" parameterType="int">
 		select
 		<include refid="column_list" />
-		,c.CATEGORY_TITLE,cl.column_path,cl.column_type,c.CATEGORY_id,cl.COLUMN_CM_ID
+		,c.CATEGORY_TITLE,c.CATEGORY_TITLE_EN,cl.column_path,cl.column_type,c.CATEGORY_id,cl.COLUMN_CM_ID
 		FROM
 		basic b
 		LEFT JOIN
@@ -231,7 +242,7 @@
 	<select id="query" resultMap="resultMap" >
 		select
 		<include refid="column_list" />
-		,c.CATEGORY_TITLE,c.CATEGORY_ID
+		,c.CATEGORY_TITLE,c.CATEGORY_TITLE_EN,c.CATEGORY_ID
 		,cl.COLUMN_PATH,cl.COLUMN_CM_ID,cl.COLUMN_TYPE,cl.COLUMN_CATEGORY_ID 
 		FROM cms_article a LEFT JOIN basic b  ON a.ARTICLE_BASICID = b.BASIC_ID 
 		LEFT JOIN basic_column cl ON b.BASIC_CATEGORYID = cl.COLUMN_CATEGORY_ID 
@@ -315,7 +326,7 @@
 	<select id="queryListByListArticleId" resultMap="resultMap">
 		select
 		<include refid="column_list" />
-		,c.CATEGORY_TITLE,cl.column_path,c.CATEGORY_id,cl.COLUMN_CM_ID,cl.column_type
+		,c.CATEGORY_TITLE,c.CATEGORY_TITLE_EN,cl.column_path,c.CATEGORY_id,cl.COLUMN_CM_ID,cl.column_type
 		FROM
 		basic b
 		LEFT JOIN
@@ -364,7 +375,7 @@
 	<select id="queryListForSearch" resultMap="resultMap">
 		select
 		<include refid="column_list" />
-		,c.CATEGORY_TITLE,cl.column_path,c.CATEGORY_id,cl.COLUMN_CM_ID,cl.column_type
+		,c.CATEGORY_TITLE,c.CATEGORY_TITLE_EN,cl.column_path,c.CATEGORY_id,cl.COLUMN_CM_ID,cl.column_type
 		from cms_article a
 		left join basic b
 		on b.basic_id=a.ARTICLE_BASICID
@@ -532,7 +543,7 @@
 	<select id="queryByBasicIds" resultMap="resultMap">
 		select
 		<include refid="column_list" />
-		,c.CATEGORY_TITLE,cl.column_path,c.CATEGORY_id,cl.COLUMN_CM_ID,cl.column_type
+		,c.CATEGORY_TITLE,c.CATEGORY_TITLE_EN,cl.column_path,c.CATEGORY_id,cl.COLUMN_CM_ID,cl.column_type
 		FROM basic b LEFT JOIN category c ON b.BASIC_CATEGORYID =
 		c.CATEGORY_ID LEFT JOIN basic_column cl ON c.CATEGORY_ID =
 		cl.COLUMN_CATEGORY_ID LEFT JOIN cms_article a ON a.ARTICLE_BASICID =
@@ -559,6 +570,7 @@
 	<resultMap type="java.util.HashMap" id="resultTitleMap">
 		<result column="basic_id" property="basicId" />
 		<result column="basic_title" property="basicTitle" />
+		<result column="basic_title_en" property="basicTitleEn" />
 		<result column="basic_hit" property="basicHit" />
 		<result column="basic_categoryid" property="basicCategoryId" />
 		<result column="model_id" property="modelId" />
@@ -566,7 +578,7 @@
 	</resultMap>
 	<select id="queryByArticleTitle" resultMap="resultTitleMap">
 		select
-		basic_title,basic_id,basic_categoryid,basic_hit,model_id from basic
+		basic_title,basic_title_en,basic_id,basic_categoryid,basic_hit,model_id from basic
 		inner join category on basic_categoryid=category_id inner join model
 		on category_modelid=model_id where category_appid=#{webId} and
 		model_code = #{modelCode} and basic_title=#{articleTitle}
@@ -713,7 +725,7 @@
 	<select id="queryPageListByWebsiteId" resultMap="resultMap">
 		select
 		<include refid="column_list" />
-		,c.CATEGORY_TITLE,cl.column_path,c.CATEGORY_id,cl.COLUMN_CM_ID,cl.column_type
+		,c.CATEGORY_TITLE,c.CATEGORY_TITLE_EN,cl.column_path,c.CATEGORY_id,cl.COLUMN_CM_ID,cl.column_type
 		FROM
 		basic b
 		LEFT JOIN

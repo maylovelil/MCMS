@@ -53,6 +53,10 @@ public class ArticleEntity extends BasicEntity{
 	 * 文章内容
 	 */
 	private String articleContent;
+	/**
+	 * 英文文章内容
+	 */
+	private String articleContentEn;
 	
 	/**
 	 * 文章作者
@@ -289,5 +293,13 @@ public class ArticleEntity extends BasicEntity{
 			return app.getAppHostUrl()+IParserRegexConstant.HTML_SAVE_PATH+Const.SEPARATOR+IParserRegexConstant.MOBILE+Const.SEPARATOR+this.getArticleUrl();
 		}
 		return app.getAppHostUrl()+Const.SEPARATOR+IParserRegexConstant.HTML_SAVE_PATH+Const.SEPARATOR+this.getArticleUrl();
+	}
+
+	public String getArticleContentEn() {
+		return articleContentEn;
+	}
+
+	public void setArticleContentEn(String articleContentEn) {
+		this.articleContentEn = articleContentEn;
 	}
 }
