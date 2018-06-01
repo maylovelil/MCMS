@@ -40,6 +40,8 @@ public class AppEntity extends BaseEntity {
 	 */
 	private String appName;
 
+	private String appNameEn;
+
 	/**
 	 * 应用描述
 	 */
@@ -277,5 +279,11 @@ public class AppEntity extends BaseEntity {
 		this.appLoginPage = appLoginPage;
 	}
 
-	
+	public String getAppNameEn() {
+		return appNameEn;
+	}
+
+	public void setAppNameEn(String appNameEn) {
+		this.appNameEn = appNameEn;
+	}
 }

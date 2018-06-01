@@ -5,8 +5,10 @@
 	<@ms.panel>
 		<@ms.form isvalidation=true name="appForm"  action="${managerPath}/app/update.do">
 			<@ms.hidden name="appId" value="${app.appId?default(0)}" />
-			<@ms.text name="appName" width="500" label="网站标题" value="${app.appName?default('')}"  title="网站标题" placeholder="请输入网站标题" validation={"maxlength":"50","required":"true", "data-bv-notempty-message":"必填项目","data-bv-stringlength-message":"网站标题在50个字符以内!"}/>
-  			<!--网站Logo,暂时不兼容-->
+			<@ms.text name="appName" width="500" label="网站标题" value="${app.appName?default('')}"  title="网站标题(英文)" placeholder="请输入网站标题" validation={"maxlength":"50","required":"true", "data-bv-notempty-message":"必填项目","data-bv-stringlength-message":"网站标题在50个字符以内!"}/>
+			<@ms.text name="appNameEn" width="500" label="网站标题(英文)" value="${app.appNameEn?default('')}"  title="网站标题(英文)" placeholder="请输入网站标题" validation={"maxlength":"50","required":"true", "data-bv-notempty-message":"必填项目","data-bv-stringlength-message":"网站标题在50个字符以内!"}/>
+
+        <!--网站Logo,暂时不兼容-->
   			<@ms.formRow label="网站Logo" help="提示:文章缩略图,支持jpg,png格式">
   			  	<@ms.uploadImg path="app" inputName="appLogo" size="1"  maxSize="1" imgs="${app.appLogo!('')}"/>
   			</@ms.formRow>

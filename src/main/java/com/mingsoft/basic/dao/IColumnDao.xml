@@ -3,11 +3,11 @@
 <mapper namespace="com.mingsoft.basic.dao.IColumnDao">
 <sql id="column_list">
 		co.column_category_id,co.column_keyword,co.column_descrip,co.column_type,co.column_url,co.column_listurl,co.column_cm_id,co.column_path,
-		ca.category_id,ca.category_parent_id,ca.category_title,ca.category_sort,ca.category_datetime,ca.category_managerid,ca.category_appid,ca.category_modelid,ca.category_categoryid,ca.category_smallimg
+		ca.category_id,ca.category_parent_id,ca.category_title,ca.category_title_en,ca.category_sort,ca.category_datetime,ca.category_managerid,ca.category_appid,ca.category_modelid,ca.category_categoryid,ca.category_smallimg
 	</sql>
 	
 	<sql id="category_column_list">
-		category_id,category_title,category_sort,category_datetime,category_managerid,category_modelid,category_categoryid,category_smallimg
+		category_id,category_title,category_title_en,category_sort,category_datetime,category_managerid,category_modelid,category_categoryid,category_smallimg
 	</sql>
 	
 	<sql id="where_modelcode">
@@ -25,6 +25,7 @@
 		<result column="column_path" property="columnPath"/><!-- 栏目路径 -->
 		<result column="category_id" property="categoryId"/><!-- 类别ID -->
 		<result column="category_title" property="categoryTitle"/><!-- 类别标题 -->
+		<result column="category_title_en" property="categoryTitleEn"/><!-- 类别标题 -->
 		<result column="category_sort" property="categorySort"/><!-- 类别排序 -->
 		<result column="category_datetime" property="categoryDateTime"/><!-- 类别发布时间-->
 		<result column="category_managerid" property="categoryManagerId"/><!-- 类别发布者ID -->
@@ -38,6 +39,7 @@
 	<resultMap type="com.mingsoft.basic.entity.CategoryEntity" id="categoryResultMap">
 		<id column="category_id" property="categoryId"/><!-- 类别ID -->
 		<result column="category_title" property="categoryTitle"/><!-- 类别标题 -->
+		<result column="category_title_en" property="categoryTitleEn"/><!-- 类别标题 -->
 		<result column="category_sort" property="categorySort"/><!-- 类别排序 -->
 		<result column="category_datetime" property="categoryDateTime"/><!-- 类别发布时间-->
 		<result column="category_managerid" property="categoryManagerId"/><!-- 类别发布者ID -->

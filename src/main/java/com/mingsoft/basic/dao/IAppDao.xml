@@ -13,6 +13,7 @@
 		<result column="APP_URL" property="appUrl" /><!-- 与website表绑定url -->
 		<result column="APP_MANAGERID" property="appManagerId" /><!-- 与website表绑定管理员id -->
 		<result column="APP_NAME" property="appName" />
+		<result column="APP_NAME_EN" property="appNameEn" />
 		<result column="APP_DESCRIPTION" property="appDescription" />
 		<result column="APP_LOGO" property="appLogo" />
 		<result column="APP_DATETIME" property="appDatetime" />
@@ -26,6 +27,7 @@
 		update app
 		<set>
 		<if test="appName != null">APP_NAME =#{appName},</if>
+	    <if test="appNameEn != null">APP_NAME_EN =#{appNameEn},</if>
 		<if test="appDescription != null">APP_DESCRIPTION =#{appDescription},</if>
 		<if test="appLogo != null">APP_LOGO =#{appLogo},</if>
 		<if test="appDatetime != null">APP_DATETIME =#{appDatetime},</if>

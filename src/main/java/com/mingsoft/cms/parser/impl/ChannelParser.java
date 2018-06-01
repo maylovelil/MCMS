@@ -30,6 +30,7 @@ import java.util.regex.Pattern;
 
 import com.mingsoft.basic.entity.ColumnEntity;
 
+import com.mingsoft.cms.util.MycLangUtils;
 import com.mingsoft.parser.IParser;
 import com.mingsoft.parser.IParserRegexConstant;
 import com.mingsoft.util.RegexUtil;
@@ -313,7 +314,7 @@ public class ChannelParser extends IParser {
 				// 替换栏目序号标签
 				htmlList += tabContent(tabHtml, StringUtil.int2String((i + 1)), CHANNEL_INDEX);
 				// 替换栏目标题标签
-				htmlList = tabContent(htmlList, articleType.getCategoryTitle(), CHANNEL_TITLE);
+				htmlList = tabContent(htmlList, MycLangUtils.isZh()?articleType.getCategoryTitle():articleType.getCategoryTitleEn(), CHANNEL_TITLE);
 				// 替换栏目链接标签
 
 				String linkUrl = webUrl + StringUtil.null2String(articleType.getColumnPath()) + File.separator + IParserRegexConstant.HTML_INDEX;

@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.mingsoft.cms.util.MycLangUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -386,7 +387,7 @@ public class CmsParser extends IGeneralParser {
 		htmlContent = new ArticleAuthorParser(htmlContent, article.getArticleAuthor()).parse();
 
 		// 替换文章内容标签：{ms:field.content/}
-		htmlContent = new ArticleContentParser(htmlContent, article.getArticleContent()).parse();
+		htmlContent = new ArticleContentParser(htmlContent, MycLangUtils.isZh()?article.getArticleContent():article.getArticleContentEn()).parse();
 
 		// 替换文章时间标签：{ms:field.date fmt="yyyy-mm-dd"/}
 		htmlContent = new ArticleDateParser(htmlContent, article.getBasicDateTime()).parse();
@@ -395,7 +396,7 @@ public class CmsParser extends IGeneralParser {
 		htmlContent = new ArticleSourceParser(htmlContent, article.getArticleSource()).parse();
 
 		// 替换文章标题标签： {ms:field.title/}
-		htmlContent = new ArticleTitleParser(htmlContent, article.getBasicTitle()).parse();
+		htmlContent = new ArticleTitleParser(htmlContent, MycLangUtils.isZh()?article.getBasicTitle():article.getBasicTitleEn()).parse();
 
 		// 替换文章点击数标签： {ms:field.hit/}
 		htmlContent = new HitParser(htmlContent,"<script type='text/javascript' src='"+app.getAppHostUrl()+"/basic/"+article.getBasicId()+"/hit.do' ></script>").parse();
@@ -404,7 +405,7 @@ public class CmsParser extends IGeneralParser {
 		htmlContent = new ArticleIdParser(htmlContent, article.getBasicId() + "").parse();
 
 		// 替换文章描述： {ms:field.Descrip/}
-		htmlContent = new ArticleDescripParser(htmlContent, article.getBasicDescription()).parse();
+		htmlContent = new ArticleDescripParser(htmlContent, MycLangUtils.isZh()?article.getBasicDescription():article.getBasicDescriptionEn()).parse();
 		
 		// 替换文章关键字： {ms:field.keyword/}
 		htmlContent = new ArticleKeywordParser(htmlContent, article.getArticleKeyword()).parse();
@@ -416,14 +417,14 @@ public class CmsParser extends IGeneralParser {
 		// 替换文章栏目链接标签{ms:filed.typelink/}
 		ColumnEntity tmp = null;
 		htmlContent = new ArticleTypeIdParser(htmlContent, column.getCategoryId() + "").parse();
-		ArticleTypeTitleParser attp = new ArticleTypeTitleParser(htmlContent, column.getCategoryTitle());
+		ArticleTypeTitleParser attp = new ArticleTypeTitleParser(htmlContent, MycLangUtils.isZh()?column.getCategoryTitle():column.getCategoryTitleEn());
 		if (attp.isTop()) {
 			if (column.getCategoryCategoryId() > 0) {
 				tmp = (ColumnEntity) columnBiz.getEntity(column.getCategoryCategoryId());
-				attp.setNewCotent(tmp.getCategoryTitle());
+				attp.setNewCotent(MycLangUtils.isZh()?tmp.getCategoryTitle():tmp.getCategoryTitleEn());
 			}
 		} else {
-			attp.setNewCotent(column.getCategoryTitle());
+			attp.setNewCotent(MycLangUtils.isZh()?tmp.getCategoryTitle():tmp.getCategoryTitleEn());
 		}
 		htmlContent = attp.parse();
 
@@ -614,9 +615,9 @@ public class CmsParser extends IGeneralParser {
 				List<ArticleEntity> arctile = articleBiz.queryListByColumnId(channelTypeId);
 				if (arctile != null) {
 					if (arctile.size() > 0) {
-						channelCont = arctile.get(arctile.size() - 1).getArticleContent();
+						channelCont = MycLangUtils.isZh()?arctile.get(arctile.size() - 1).getArticleContent():arctile.get(arctile.size() - 1).getArticleContentEn();
 					} else {
-						channelCont = arctile.get(arctile.size()).getArticleContent();
+						channelCont = MycLangUtils.isZh()?arctile.get(arctile.size()).getArticleContent():arctile.get(arctile.size()).getArticleContentEn();
 					}
 				}
 			}
@@ -704,6 +705,7 @@ public class CmsParser extends IGeneralParser {
 					htmlContent = new com.mingsoft.cms.parser.impl.ListParser(app,htmlContent, null,  this.getWebsiteUrl(), property, true, fieldBiz, contentBiz).parse();
 				}
 			}
+
 		}
 		return htmlContent;
 	}

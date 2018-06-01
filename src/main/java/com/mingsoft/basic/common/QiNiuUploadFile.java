@@ -9,6 +9,7 @@ import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
+import com.qiniu.util.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -72,6 +73,9 @@ public class QiNiuUploadFile {
     }
 
     public  static String replaceAllImages(String context,String rootPath){
+        if(StringUtils.isNullOrEmpty(context)){
+            return "";
+        }
         Document doc = Jsoup.parse(context);//拿到编辑器里面的所有内容
         Elements elements = doc.select("img[src]");//获取到的值为所有的<img src="...">
         String fileRoute ="";

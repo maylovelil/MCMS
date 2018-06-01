@@ -36,6 +36,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mingsoft.cms.util.MycLangUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -183,11 +184,12 @@ public class GeneraterAction extends BaseAction {
 			String htmlContent = FileUtil.readFile(tmpFilePath); // 读取模版文件内容
 			String mobileHtmlContent = FileUtil.readFile(tmpMobileFilePath); // 读取手机端模版文件内容
 			if (!StringUtil.isBlank(htmlContent)) {
+				MycLangUtils.setEn();
 				//进行html的解析
 				htmlContent = cmsParser.parse(htmlContent,app);
-				Map map = new HashMap();
+/*				Map map = new HashMap();
 				map.put(CmsParser.MOBILE,IParserRegexConstant.MOBILE);
-				mobileHtmlContent = cmsParser.parse(mobileHtmlContent,app,map);
+				mobileHtmlContent = cmsParser.parse(mobileHtmlContent,app,map);*/
 				// 解析HTML上的标签
 				FileUtil.writeFile(htmlContent, generatePath, FileUtil.URF8);
 				FileUtil.writeFile(mobileHtmlContent, generateMobilePath, FileUtil.URF8);

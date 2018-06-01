@@ -35,6 +35,7 @@ import com.mingsoft.basic.entity.AppEntity;
 import com.mingsoft.basic.entity.ColumnEntity;
 import com.mingsoft.cms.constant.e.ColumnTypeEnum;
 import com.mingsoft.cms.entity.ArticleEntity;
+import com.mingsoft.cms.util.MycLangUtils;
 import com.mingsoft.mdiy.biz.IContentModelBiz;
 import com.mingsoft.mdiy.biz.IContentModelFieldBiz;
 import com.mingsoft.mdiy.entity.ContentModelEntity;
@@ -160,7 +161,7 @@ public class ListParser extends com.mingsoft.mdiy.parser.ListParser {
 					// 序号,根据显示条数显示的序号1 2 …..10。
 					htmlList += tabContent(tabHtml, StringUtil.int2String((i + 1)),INDEX_FIELD_LIST);
 					// 文章内容,
-					htmlList =  tabContent(htmlList, contentLength(article.getArticleContent(), htmlList),CONTENT_FIELD_LIST);
+					htmlList =  tabContent(htmlList, contentLength(MycLangUtils.isZh()?article.getArticleContent():article.getArticleContentEn(), htmlList),CONTENT_FIELD_LIST);
 					countNoParser = NoParser.countParser(htmlList);
 					NoParser noParser = new NoParser(htmlList);
 					
@@ -171,9 +172,9 @@ public class ListParser extends com.mingsoft.mdiy.parser.ListParser {
 					// 编号,对应文章在数据库里的自动编号。
 					htmlList = tabContent(htmlList, StringUtil.int2String(article.getBasicId()),ID_FIELD_LIST);
 					// 标题,标题长度根据titlelen的属性值指定，默认40个汉字,
-					htmlList = tabContent(htmlList, titleLength(article.getBasicTitle(), htmlContent),TITLE_FIELD_LIST);
+					htmlList = tabContent(htmlList, titleLength(MycLangUtils.isZh()?article.getBasicTitle():article.getBasicTitleEn(), htmlContent),TITLE_FIELD_LIST);
 					// 全部标题,显示完整的标题。
-					htmlList = tabContent(htmlList, StringUtil.null2String(article.getBasicTitle()),FULLTITLE_FIELD_LIST);
+					htmlList = tabContent(htmlList, StringUtil.null2String(MycLangUtils.isZh()?article.getBasicTitle():article.getBasicTitleEn()),FULLTITLE_FIELD_LIST);
 					// 文章作者。
 					htmlList = tabContent(htmlList, StringUtil.null2String(article.getArticleAuthor()),AUTHOR_FIELD_LIST);
 					// 文章来源。
@@ -207,7 +208,7 @@ public class ListParser extends com.mingsoft.mdiy.parser.ListParser {
 						htmlList = tabContent(htmlList, articleType,FIELD_FLAG);
 					}
 					// 分类名称，文章所属分类的名称,
-					htmlList = tabContent(htmlList, StringUtil.null2String(article.getColumn().getCategoryTitle()),TYPENAME_FIELD_LIST);
+					htmlList = tabContent(htmlList, StringUtil.null2String(MycLangUtils.isZh()?article.getColumn().getCategoryTitle():article.getColumn().getCategoryTitleEn()),TYPENAME_FIELD_LIST);
 					// 文章链接 ：[field.link/]
 					String link = path + StringUtil.null2String(article.getColumn().getColumnPath()) + File.separator + article.getBasicId() + IParserRegexConstant.HTML_SUFFIX;
 					//判断文章的类型是单页还是列表
@@ -221,7 +222,7 @@ public class ListParser extends com.mingsoft.mdiy.parser.ListParser {
 					// 文章略图[field.litpic/]
 					htmlList = tabContent(htmlList, StringUtil.null2String(article.getBasicThumbnails()),LITPIC_FIELD_LIST);
 					// 文章描述标签[field.descrip/]
-					htmlList = tabContent(htmlList, StringUtil.null2String(article.getBasicDescription()),DESCIRIP_FIELD_LIST);
+					htmlList = tabContent(htmlList, StringUtil.null2String(MycLangUtils.isZh()?article.getBasicDescription():article.getBasicDescriptionEn()),DESCIRIP_FIELD_LIST);
 					// 当前页面文章的数量[field.num]
 					String numArticle = Integer.toString(articleList.size());
 					htmlList = tabContent(htmlList, numArticle,NUM_ARTICLE_LIST);

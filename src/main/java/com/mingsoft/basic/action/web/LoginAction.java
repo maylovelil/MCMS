@@ -27,6 +27,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mingsoft.cms.util.MycLangUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -206,6 +207,7 @@ public class LoginAction extends BaseAction {
 						managerSession.getManagerPassword());
 				subject.login(upt);
 				this.outJson(response, ModelCode.ADMIN_LOGIN, true, null);
+				MycLangUtils.setZh();
 			} else {
 				// 密码错误
 				this.outJson(response, ModelCode.ADMIN_LOGIN, false, this.getResString("err.password"));

@@ -18,6 +18,9 @@ public class SessionUtils {
      */
     public static String GLOB_DELETE_ID_VAL = "globDeleteIdVal";
 
+    public static String GLOB_LANGUAGE_IN18="glob_language_in18";
+
+
     /**
      * 获取request
      *

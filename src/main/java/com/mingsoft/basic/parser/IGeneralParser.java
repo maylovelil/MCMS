@@ -25,6 +25,7 @@ import java.io.File;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.mingsoft.cms.util.MycLangUtils;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mingsoft.base.constant.Const;
@@ -121,14 +122,14 @@ public abstract class IGeneralParser extends IParser {
 		htmlContent = new GlobalLogoParser(htmlContent, app.getAppLogo()).parse();
 
 		// 替换网站名称标签：{ms:global.name /}
-		htmlContent = new GlobalNameParser(htmlContent, app.getAppName()).parse();
+		htmlContent = new GlobalNameParser(htmlContent, MycLangUtils.isZh()?app.getAppName():app.getAppNameEn()).parse();
 
 		// 替换模版链接地址标签：{ms: globalskin.url/}
 		String tmpSkinUrl = app.getAppHostUrl() + File.separator + IParserRegexConstant.REGEX_SAVE_TEMPLATE
 				+ File.separator + app.getAppId() + File.separator + app.getAppStyle() + File.separator;
 		// 替换网站链接地址标签:{ms:global.url/}
 		String linkUrl = app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator
-				+ app.getAppId();
+				+ app.getAppId()+(MycLangUtils.isZh()?"":File.separator+"en");
 		// 如果论坛模板不为空，模板连接地址=原有地址+"/"+论坛模板
 		if (!StringUtil.isBlank(modelPath)) {
 			tmpSkinUrl = tmpSkinUrl + File.separator + modelPath;
@@ -200,10 +201,10 @@ public abstract class IGeneralParser extends IParser {
 	protected String getWebsiteUrl() {
 		if (!StringUtil.isBlank(mobilePath)) {
 			return app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator
-					+ app.getAppId() + File.separator + mobilePath;
+					+ app.getAppId() + (MycLangUtils.isZh()?"":File.separator+MycLangUtils.GLOB_EN) + File.separator + mobilePath;
 		}
 		return app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator
-				+ app.getAppId();
+				+ app.getAppId()+(MycLangUtils.isZh()?"":File.separator+MycLangUtils.GLOB_EN);
 	}
 
 	/**
