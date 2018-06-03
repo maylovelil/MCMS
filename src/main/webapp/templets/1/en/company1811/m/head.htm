@@ -11,14 +11,14 @@
           <span class="sr-only">Toggle navigation</span>
           <span class="hamburger-bar"></span>
         </button>
-        <a href="{ms:global.host/}/html/1/index.html" class="navbar-brand navbar-logo vertical-align">
-          <div class="vertical-align-middle"><img src="{ms:globalskin.url/}/images/MStore300.png" /></div>
+        <a href="{ms:global.host/}" class="navbar-brand navbar-logo vertical-align">
+          <div class="vertical-align-middle"><img src="http://cdn.mingsoft.net/global/images/MStore300.png" /></div>
         </a>
       </div>
       <div class="collapse navbar-collapse navbar-collapse-toolbar" id="example-navbar-default-collapse">
         <ul class="nav navbar-nav navbar-right navlist">
           <li>
-            <a href="{ms:global.host/}/html/1/index.html" title="网站首页" class="link ">网站首页</a>
+            <a href="{ms:global.host/}" title="网站首页" class="link ">网站首页</a>
           </li>
           <li class="dropdown margin-left-30">
             <a class="dropdown-toggle link animation-zoomIn" data-toggle="dropdown" data-hover="dropdown" href="{ms:global.url/}/93/index.html?type=1" aria-expanded="false" role="button" title="关于我们">关于我们
@@ -33,7 +33,7 @@
             </ul>
           </li>
           <li class="dropdown margin-left-30">
-            <a class="dropdown-toggle link animation-zoomIn" data-toggle="dropdown" data-hover="dropdown" href="{ms:global.url/}/59/index.html" aria-expanded="false" role="button" title="研究动态">研究动态
+            <a class="dropdown-toggle link animation-zoomIn" data-toggle="dropdown" data-hover="dropdown" href="{ms:global.url/}/59/index.html" aria-expanded="false" role="button" title="新闻资讯">新闻资讯
               <i class="fa fa-angle-down iconfont ms-iconfont">&#xe820;</i>
             </a>
             <ul class="dropdown-menu dropdown-menu-right bullet " role="menu">
@@ -47,14 +47,26 @@
               {/ms:channel}
             </ul>
           </li>
+          <li class="dropdown margin-left-30">
+            <a class="dropdown-toggle link  animation-zoomIn" data-toggle="dropdown" data-hover="dropdown" href="{ms:global.url/}/106/index.html?type=0" aria-expanded="false" role="button" title="产品展示">产品展示
+              <i class="fa fa-angle-down iconfont ms-iconfont">&#xe820;</i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right bullet " role="menu">
+              <li class='visible-xs'>
+                <a href="{ms:global.url/}/106/index.html?type=0" title="全部" class="">全部</a>
+              </li>
+              {ms:channel typeid=106}
+              <li class="animation-fade animation-delay-">
+                <a href="[field.typelink/]?type=[field.typeindex/]" class=" animation-fade " title="[field.typetitle/]">[field.typetitle/]</a>
+              </li>
+              {/ms:channel}
+            </ul>
+          </li>
           <li class="margin-left-30">
-            <a href="{ms:global.url/}/61/index.html" title="加入我们" class="link  animation-zoomIn">加入我们</a>
+            <a href="{ms:global.url/}/61/index.html" title="客户案例" class="link  animation-zoomIn">客户案例</a>
           </li>
           <li class="margin-left-30">
             <a href="{ms:global.url/}/19/index.html?type=6" title="联系我们" class="link  animation-zoomIn">联系我们</a>
-          </li>
-          <li class="margin-left-30">
-            <a href="#" title="English" id="englishMyc" onclick="englishMyc()" class="link  animation-zoomIn">English</a>
           </li>
         </ul>
       </div>

@@ -424,7 +424,7 @@ public class CmsParser extends IGeneralParser {
 				attp.setNewCotent(MycLangUtils.isZh()?tmp.getCategoryTitle():tmp.getCategoryTitleEn());
 			}
 		} else {
-			attp.setNewCotent(MycLangUtils.isZh()?tmp.getCategoryTitle():tmp.getCategoryTitleEn());
+			attp.setNewCotent("");
 		}
 		htmlContent = attp.parse();
 
@@ -494,7 +494,7 @@ public class CmsParser extends IGeneralParser {
 		// 当只存在栏目ID时，解析相关的文章中的栏目标签
 		if (column != null) {
 			ColumnEntity tmp = null;
-			String columnTitle = column.getCategoryTitle();
+			String columnTitle = MycLangUtils.isZh()?column.getCategoryTitle():column.getCategoryTitleEn();
 			int columnId = column.getCategoryId();
 			//解析当前栏目信息
 			htmlContent = new ColumnParser(htmlContent,column,this.getWebsiteUrl()).parse();
@@ -631,7 +631,6 @@ public class CmsParser extends IGeneralParser {
 
 	/**
 	 * 解析分页列表标签
-	 * 
 	 * @param htmlContent
 	 *            模版内容
 	 * @param column

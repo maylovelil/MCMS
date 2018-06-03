@@ -24,6 +24,7 @@ package com.mingsoft.cms.parser.impl;
 import java.io.File;
 
 import com.mingsoft.basic.entity.ColumnEntity;
+import com.mingsoft.cms.util.MycLangUtils;
 import com.mingsoft.parser.IParser;
 import com.mingsoft.parser.IParserRegexConstant;
 import com.mingsoft.util.StringUtil;
@@ -98,7 +99,7 @@ public class ColumnParser  extends IParser{
 	public String parse() {
 		super.newCotent = column.getCategoryId()+"";
 		htmlCotent = super.replaceAll(COLUMN_LD);
-		super.newCotent = column.getCategoryTitle();
+		super.newCotent = MycLangUtils.isZh()?column.getCategoryTitle():column.getCategoryTitleEn();
 		htmlCotent = super.replaceAll(COLUMN_TITLE);
 		super.newCotent =column.getColumnDescrip();
 		htmlCotent = super.replaceAll(COLUMN_DESCRIP);

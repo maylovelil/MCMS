@@ -109,7 +109,7 @@ public abstract class IGeneralParser extends IParser {
 	protected String parseGeneral() {
 		htmlContent = new IncludeParser(htmlContent,
 				Const.PROJECT_PATH + File.separator + IParserRegexConstant.REGEX_SAVE_TEMPLATE + File.separator
-						+ app.getAppId() + File.separator + app.getAppStyle() + File.separator + modelPath
+						+ app.getAppId() + (MycLangUtils.isZh()?"":File.separator+MycLangUtils.GLOB_EN ) + File.separator + app.getAppStyle() + File.separator + modelPath
 						+ File.separator,
 				mobilePath).parse();
 		// 替换网站版权信息标签：{ms: global.copyright/}
