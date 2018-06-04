@@ -24,6 +24,7 @@ package com.mingsoft.cms.parser.impl;
 
 
 import com.mingsoft.cms.entity.ArticleEntity;
+import com.mingsoft.cms.util.MycLangUtils;
 import com.mingsoft.parser.IParser;
 
 
@@ -92,9 +93,9 @@ public class ArticleHistoryParser extends IParser {
 		// TODO Auto-generated method stub
 		if (this.previous != null) {
 			// 替换上一篇文章链接
-			super.htmlCotent = replaceRegex(this.previous.getArticleLinkURL(),ARTICLE_PRELINK_FIELD);
+			super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.previous.getArticleLinkURL():this.previous.getArticleLinkURL().replace("/1/","/1/en/"),ARTICLE_PRELINK_FIELD);
 			// 替换上一篇文章标题
-			super.htmlCotent = replaceRegex(this.previous.getBasicTitle(),ARTICLE_PRETITLE_FIELD);
+			super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.previous.getBasicTitle():this.previous.getBasicTitleEn(),ARTICLE_PRETITLE_FIELD);
 		} else {
 			// 替换上一篇文章链接
 			super.htmlCotent = replaceRegex("#",ARTICLE_PRELINK_FIELD);
@@ -103,9 +104,9 @@ public class ArticleHistoryParser extends IParser {
 		}
 		if (this.next != null) {
 			// 替换上一篇文章链接
-			super.htmlCotent = replaceRegex(this.next.getArticleLinkURL(),ARTICLE_NEXTLINK_FIELD);
+			super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.previous.getArticleLinkURL():this.previous.getArticleLinkURL().replace("/1/","/1/en/"),ARTICLE_NEXTLINK_FIELD);
 			// 替换上一篇文章标题
-			super.htmlCotent = replaceRegex(this.next.getBasicTitle(),ARTICLE_NEXTTITLE_FIELD);
+			super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.previous.getBasicTitle():this.previous.getBasicTitleEn(),ARTICLE_NEXTTITLE_FIELD);
 		} else {
 			// 替换上一篇文章链接
 			super.htmlCotent = replaceRegex("#", ARTICLE_NEXTLINK_FIELD);
@@ -117,7 +118,7 @@ public class ArticleHistoryParser extends IParser {
 
 	/**
 	 * 替换不同的标签
-	 * 
+	 *
 	 * @param htmlContent
 	 *            HTML代码
 	 * @param newContent
