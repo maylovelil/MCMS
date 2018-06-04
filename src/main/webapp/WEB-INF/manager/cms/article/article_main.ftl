@@ -67,7 +67,20 @@
 	    		</@shiro.lacksPermission> 
 	    		
 	    	}
-	    }, {
+	    },{
+            field: 'basicTitleEn',
+            title: '文章标题(英文)',
+            formatter: function (value, row, index){
+			<@shiro.hasPermission name="article:update">
+                var url='${managerPath}/cms/article/'+row.articleID+"/edit.do";
+                return "<a href="+url+" target='_self' >"+value+"</a>";
+			</@shiro.hasPermission>
+			<@shiro.lacksPermission name="article:update">
+                return value;
+			</@shiro.lacksPermission>
+
+            }
+        }, {
 	        field: 'column.categoryTitle',
 	        title: '栏目名',
 	        align: 'center'
