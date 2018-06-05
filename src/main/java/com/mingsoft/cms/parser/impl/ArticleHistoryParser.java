@@ -93,7 +93,11 @@ public class ArticleHistoryParser extends IParser {
 		// TODO Auto-generated method stub
 		if (this.previous != null) {
 			// 替换上一篇文章链接
-			super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.previous.getArticleLinkURL():this.previous.getArticleLinkURL().replace("/1/","/1/en/"),ARTICLE_PRELINK_FIELD);
+			if(this.previous.getArticleLinkURL().contains("/1/en/")){
+				super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.previous.getArticleLinkURL():this.previous.getArticleLinkURL(),ARTICLE_PRELINK_FIELD);
+			}else{
+				super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.previous.getArticleLinkURL():this.previous.getArticleLinkURL().replace("/1/","/1/en/"),ARTICLE_PRELINK_FIELD);
+			}
 			// 替换上一篇文章标题
 			super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.previous.getBasicTitle():this.previous.getBasicTitleEn(),ARTICLE_PRETITLE_FIELD);
 		} else {
