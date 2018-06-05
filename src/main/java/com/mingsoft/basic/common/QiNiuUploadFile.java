@@ -32,6 +32,7 @@ public class QiNiuUploadFile {
     private static String qiNiuBucket = "my-mingxun";
     private static String qiNiuHost = "p9f59h2gx.bkt.clouddn.com";
     private static String serverPath= "myc";
+    private static String baiduImage = "http://img.baidu.com/";
 
     public static   String key(String img) {
         //...生成上传凭证，然后准备上传
@@ -84,7 +85,7 @@ public class QiNiuUploadFile {
         String fileRoute ="";
         for (Element element : elements) {
             String src = element.attr("src");//获取到src的值,开始进行上传七牛云的操作
-            if(src.contains(qiNiuHost)){
+            if(src.contains(qiNiuHost) || src.contains(baiduImage)){
                 continue;
             }
             logger.info("图片的路径：{}"+rootPath.replace(File.separator+serverPath+File.separator,"")+src);
