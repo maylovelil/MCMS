@@ -88,7 +88,7 @@ public class QiNiuUploadFile {
             if(src.contains(qiNiuHost) || src.contains(baiduImage)){
                 continue;
             }
-            logger.info("图片的路径：{}"+rootPath.replace(File.separator+serverPath+File.separator,"")+src);
+            logger.info("图片的路径：{}",rootPath.replace(File.separator+serverPath+File.separator,"")+src);
 
             //找到百度编辑器文件储存的路径
 
