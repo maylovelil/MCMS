@@ -356,7 +356,7 @@ public class GeneraterAction extends BaseAction {
 							FileUtil.writeFile(coverContent, writePath, FileUtil.URF8);// 写文件
 							break;
 						}
-						ArticleEntity article = list.get(0);// 取一篇文章作为封面栏目的内容
+						ArticleEntity article = list.get(list.size()-1);// 取最后一篇文章作为封面栏目的内容
 						// 判断是否为顶级栏目
 						if (column.getCategoryCategoryId() == 0) {
 							String path = mobilePath + File.separator;
@@ -387,7 +387,7 @@ public class GeneraterAction extends BaseAction {
 					FileUtil.writeFile(coverContent, writePath, FileUtil.URF8);// 写文件
 					break;
 				}
-				ArticleEntity article = list.get(0);// 取一篇文章作为封面栏目的内容
+				ArticleEntity article = list.get(list.size()-1);// 取最后一篇文章作为封面栏目的内容
 				// 判断是否为顶级栏目
 				if (column.getCategoryCategoryId() == 0) {
 					FileUtil.createFolder(generatePath + column.getCategoryId());
@@ -525,7 +525,7 @@ public class GeneraterAction extends BaseAction {
 								FileUtil.writeFile(coverContent, writePath, FileUtil.URF8);// 写文件
 								break;
 							}
-							ArticleEntity article = list.get(0);// 取一篇文章作为封面栏目的内容
+							ArticleEntity article = list.get(list.size()-1);// 取最后一篇文章作为封面栏目的内容
 							// 判断是否为顶级栏目
 							if (column.getCategoryCategoryId() == 0) {
 								String path = mobilePath + File.separator;
@@ -556,7 +556,7 @@ public class GeneraterAction extends BaseAction {
 						FileUtil.writeFile(coverContent, writePath, FileUtil.URF8);// 写文件
 						break;
 					}
-					ArticleEntity article = list.get(0);// 取一篇文章作为封面栏目的内容
+					ArticleEntity article = list.get(list.size()-1);// 取最后一篇文章作为封面栏目的内容
 					// 判断是否为顶级栏目
 					if (column.getCategoryCategoryId() == 0) {
 						FileUtil.createFolder(generatePath + column.getCategoryId());

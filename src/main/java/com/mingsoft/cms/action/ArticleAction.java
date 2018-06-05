@@ -563,7 +563,7 @@ public class ArticleAction extends BaseAction {
 			int columnType = column.getColumnType();
 			if (column.getColumnType() == ColumnEntity.COLUMN_TYPE_COVER) {
 				model.addAttribute("categoryTitle", categoryTitle);
-				model.addAttribute("categoryTitleEn", articleEntity.getColumn().getCategoryTitleEn());
+				model.addAttribute("categoryTitleEn", column.getCategoryTitleEn());
 				model.addAttribute("categoryId", column.getCategoryId());// 编辑封面
 				model.addAttribute("isEditCategory", true);// 编辑封面
 			} else {
