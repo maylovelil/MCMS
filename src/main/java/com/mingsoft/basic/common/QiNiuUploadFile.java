@@ -14,6 +14,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import java.io.File;
 
@@ -24,6 +26,7 @@ import java.io.File;
  */
 @Component
 public class QiNiuUploadFile {
+    private static Logger logger = LoggerFactory.getLogger(QiNiuUploadFile.class);
     private static String qiNiuAk = "Ciwl0XpqMR2K29Z6i2uSxXo9TOaRxXDZWyU4BaN0";
     private static String qiNiuSk = "CV9wybrFwaONlgfdw9fsdL6tzETcl1Pt20M1D5eY";
     private static String qiNiuBucket = "my-mingxun";
@@ -84,18 +87,14 @@ public class QiNiuUploadFile {
             if(src.contains(qiNiuHost)){
                 continue;
             }
-            System.out.println("rootPath路径："+rootPath);
-            System.out.println("src路径："+src);
-            System.out.println("图片的路径1："+rootPath.replace("\\"+serverPath+"\\","")+src);
-            System.out.println("图片的路径2："+rootPath.replace(File.separator+serverPath+File.separator,"")+src);
+            logger.info("图片的路径：{}"+rootPath.replace(File.separator+serverPath+File.separator,"")+src);
 
             //找到百度编辑器文件储存的路径
 
-            System.out.println(fileRoute);
-            String imgUrl = key(rootPath.replace("\\"+serverPath+"\\","")+src);
+            String imgUrl = key(rootPath.replace(File.separator+serverPath+File.separator,"")+src);
             //接下来进行字符串的替换工作
             element.attr("src",imgUrl);
-            fileRoute =rootPath.replace("\\"+serverPath+"\\","")+src;
+            fileRoute =rootPath.replace(File.separator+serverPath+serverPath+File.separator+serverPath,"")+src;
             //System.out.println("替换后的src地址:"+element.attr("src"));
 
         }
