@@ -84,7 +84,11 @@ public class QiNiuUploadFile {
             if(src.contains(qiNiuHost)){
                 continue;
             }
-            System.out.println("图片的路径："+rootPath.replace("\\"+serverPath+"\\","")+src);
+            System.out.println("rootPath路径："+rootPath);
+            System.out.println("src路径："+src);
+            System.out.println("图片的路径1："+rootPath.replace("\\"+serverPath+"\\","")+src);
+            System.out.println("图片的路径2："+rootPath.replace(File.separator+serverPath+File.separator,"")+src);
+
             //找到百度编辑器文件储存的路径
 
             System.out.println(fileRoute);
