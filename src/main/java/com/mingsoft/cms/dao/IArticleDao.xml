@@ -674,7 +674,7 @@
 		(((basic JOIN cms_article ON (BASIC_ID = ARTICLE_BASICID))
 			JOIN basic_column ON (BASIC_CATEGORYID = COLUMN_CATEGORY_ID))
 			JOIN category ON (COLUMN_CATEGORY_ID = CATEGORY_ID))
-		where basic_categoryId=#{categoryId} order by basic_id desc limit 1;
+		where basic_categoryId=#{categoryId} order by basic_id limit 1;
 	</select>
 
 	<!--根据分类id查询articleBean开始 -->
