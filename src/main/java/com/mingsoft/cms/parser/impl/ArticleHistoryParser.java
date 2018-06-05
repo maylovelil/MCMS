@@ -108,7 +108,11 @@ public class ArticleHistoryParser extends IParser {
 		}
 		if (this.next != null) {
 			// 替换上一篇文章链接
-			super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.next.getArticleLinkURL():this.next.getArticleLinkURL().replace("/1/","/1/en/"),ARTICLE_NEXTLINK_FIELD);
+			if(this.next.getArticleLinkURL().contains("/1/en/")){
+				super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.next.getArticleLinkURL():this.next.getArticleLinkURL(),ARTICLE_NEXTLINK_FIELD);
+			}else{
+				super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.next.getArticleLinkURL():this.next.getArticleLinkURL().replace("/1/","/1/en/"),ARTICLE_NEXTLINK_FIELD);
+			}
 			// 替换上一篇文章标题
 			super.htmlCotent = replaceRegex(MycLangUtils.isZh()?this.next.getBasicTitle():this.next.getBasicTitleEn(),ARTICLE_NEXTTITLE_FIELD);
 		} else {
