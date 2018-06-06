@@ -5,13 +5,13 @@
 <title><#if app?has_content>${app.appName}<#else>MY</#if>管理系统${managerViewPath}</title>
 <link rel="shortcut icon" href="${static}/global/images/ms.ico"/>     
 <link rel="bookmark" href="${static}/global/images/ms.icoo"/> 
-<link rel="stylesheet" type="text/css" href="${static}/skin/manager/${manager_ui}/css/login.css" media="all" />
-<link rel="stylesheet" type="text/css" href="${static}/skin/manager/${manager_ui}/css/reset.css">
-<link rel="stylesheet" type="text/css" href="${static}/skin/manager/${manager_ui}/css/supersized.css">
-<link rel="stylesheet" type="text/css" href="${static}/skin/manager/${manager_ui}/css/style.css">
-<script type="text/javascript" src="${static}/skin/manager/${manager_ui}/js/supersized.3.2.7.min.js"></script>
-<script type="text/javascript" src="${static}/skin/manager/${manager_ui}/js/supersized-init.js"></script>
-<script type="text/javascript" src="${static}/skin/manager/${manager_ui}/js/scripts.js"></script>
+<link rel="stylesheet" type="text/css" href="${qiniu}/skin/manager/${manager_ui}/css/login.css" media="all" />
+<link rel="stylesheet" type="text/css" href="${qiniu}/skin/manager/${manager_ui}/css/reset.css">
+<link rel="stylesheet" type="text/css" href="${qiniu}/skin/manager/${manager_ui}/css/supersized.css">
+<link rel="stylesheet" type="text/css" href="${qiniu}/skin/manager/${manager_ui}/css/style.css">
+<script type="text/javascript" src="${qiniu}/skin/manager/${manager_ui}/js/supersized.3.2.7.min.js"></script>
+<script type="text/javascript" src="${qiniu}/skin/manager/${manager_ui}/js/supersized-init.js"></script>
+<script type="text/javascript" src="${qiniu}/skin/manager/${manager_ui}/js/scripts.js"></script>
 <script>
 			if(top.location != location){  
 			    top.location.href= location.href;  
