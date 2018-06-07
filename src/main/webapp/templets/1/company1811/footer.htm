@@ -53,3 +53,13 @@
       window.location.href = url;
   }
 </script>
+<script>
+    $(document).on('click','.box-name',function(){
+        var t = $(this),
+            boxWrap = t.parents('.box-item'),
+            ddWrap = boxWrap.find('.box-cnt');
+        boxWrap.toggleClass('active');
+        t.toggleClass('active');
+        ddWrap.slideToggle();
+    });
+</script>
