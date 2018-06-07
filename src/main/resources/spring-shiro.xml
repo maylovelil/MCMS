@@ -16,6 +16,7 @@
 			<value>
 				/static/** = anon
 				/html/** = anon
+				*/generate/makeMap.do = anon
 				${managerPath}/login.do = anon
 				${managerPath}/checkLogin.do = anon
 				${managerPath}/logout = logout
