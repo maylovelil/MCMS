@@ -95,6 +95,8 @@ public class CacheSessionDAO extends EnterpriseCacheSessionDAO implements Sessio
 //			if (Global.FALSE.equals(updateSession) || Global.NO.equals(updateSession)){
 //				return;
 //			}
+		}else{
+			return;
 		}
     	super.doUpdate(session);
     }
