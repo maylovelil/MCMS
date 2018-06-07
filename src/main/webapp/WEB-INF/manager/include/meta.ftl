@@ -1,6 +1,6 @@
   <base target="mainFrame" />
   <#assign static="http://cdn.mingsoft.net">
-  <#assign qiniu="http://p9f59h2gx.bkt.clouddn.com">
+  <#assign qiniu="http://p9u7r9csc.bkt.clouddn.com">
 
   <#setting url_escaping_charset='utf-8'> 
   <#assign bootstrap="3.3.5">
