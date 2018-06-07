@@ -20,16 +20,15 @@ jQuery(function($){
         // Components
         slide_links        : 'blank',    // Individual links for each slide (Options: false, 'num', 'name', 'blank')
         slides             : [    // Slideshow Images
-                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.5.5/images/1.jpg'},
-                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.5.5/images/2.jpg'},
-                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.5.5/images/3.jpg'},
-                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.5.5/images/4.jpg'},
-                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.5.5/images/5.jpg'},
-                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.5.5/images/6.jpg'},
-                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.5.5/images/7.jpg'},
-                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.5.5/images/8.jpg'},
-                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.5.5/images/9.jpg'},
-                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.5.5/images/10.jpg'}
+                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.6.0/images/a.jpg'},
+                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.6.0/images/b.jpg'},
+                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.6.0/images/c.jpg'},
+                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.6.0/images/d.jpg'},
+                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.6.0/images/e.jpg'},
+                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.6.0/images/f.jpg'},
+                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.6.0/images/1.jpg'},
+                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.6.0/images/2.jpg'},
+                                 {image : 'http://p9f59h2gx.bkt.clouddn.com/skin/manager/4.6.0/images/3.jpg'}
                              ]
 
     });
