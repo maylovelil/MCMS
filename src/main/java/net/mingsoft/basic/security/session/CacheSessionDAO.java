@@ -1,7 +1,9 @@
 package net.mingsoft.basic.security.session;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,12 +74,17 @@ public class CacheSessionDAO extends EnterpriseCacheSessionDAO implements Sessio
         }
     	
     	HttpServletRequest request = SpringUtil.getRequest();
+
+
+
+
 		if (request != null){
 			String uri = request.getServletPath();
+			System.out.println(uri);
 //			// 如果是静态文件，则不更新SESSION
-//			if (SpringUtil.isStaticFile(uri)){
-//				return;
-//			}
+			if (checkStatic(uri)){
+				return;
+			}
 //			// 如果是视图文件，则不更新SESSION
 //			if (StringUtils.startsWith(uri, Global.getConfig("web.view.prefix"))
 //					&& StringUtils.endsWith(uri, Global.getConfig("web.view.suffix"))){
@@ -91,6 +98,27 @@ public class CacheSessionDAO extends EnterpriseCacheSessionDAO implements Sessio
 		}
     	super.doUpdate(session);
     }
+
+    private boolean checkStatic(String uri){
+		List<String> stringList = new ArrayList<>();
+		stringList.add(".css");
+		stringList.add(".js");
+		stringList.add(".jpg");
+		stringList.add(".png");
+		stringList.add(".ico");
+		stringList.add(".otf");
+		stringList.add(".eot");
+		stringList.add(".woff");
+		stringList.add(".woff2");
+		stringList.add(".json");
+		stringList.add(".html");
+		for (String s : stringList){
+			if(uri.contains(s)){
+				return  true;
+			}
+		}
+    	return false;
+	}
     
     @Override
 	    public Session readSession(Serializable sessionId) throws UnknownSessionException {
