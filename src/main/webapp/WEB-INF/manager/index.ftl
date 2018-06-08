@@ -124,24 +124,30 @@
 
 	<script>
         function sendHtml(){
-            $.ajax({
-                url:"${managerPath}/cms/generate/sendHtml.do",
-                type:"get",
-                success:function(msg){
-                    if(msg.result){
-                        $.notify({
-                            icon: 'glyphicon glyphicon-star',
-                            message: "网站更新成功，点击访问网站首页！",
-                            url: msg.resultMsg
-                        });
-                    }else{
-                        $.notify({
-                            icon: 'glyphicon glyphicon-star',
-                             message: "网站更新失败，请重试！"
-                        });
-                    }
-                }
+            var notify = $.notify('正在发布生成网站信息，请勿操作！', {
+                allow_dismiss: false,
+                showProgressbar: true
             });
+            setTimeout(function() {
+                $.ajax({
+                    url:"${managerPath}/cms/generate/sendHtml.do",
+                    type:"get",
+                    success:function(msg){
+                        if(msg.result){
+                            $.notify({
+                                icon: 'glyphicon glyphicon-star',
+                                message: "网站更新成功，点击访问网站首页！",
+                                url: msg.resultMsg
+                            });
+                        }else{
+                            $.notify({
+                                icon: 'glyphicon glyphicon-star',
+                                message: "网站更新失败，请重试！"
+                            });
+                        }
+                    }
+                });
+            }, 4500);
         }
 
 	</script>
