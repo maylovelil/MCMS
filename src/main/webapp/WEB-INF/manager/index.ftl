@@ -75,7 +75,7 @@
     <div class="ms-top">
         <!--头部LOGO-->
         <div class="ms-top-logo">
-            <img src="${qiniu}skin/manager/4.6.0/images/logo.png"/>
+            <img src="${qiniu}/skin/manager/4.6.0/images/logo.png"/>
             <!--span class="slideMenu">
                 <span class="icon iconfont icon-open">&#xe823;</span>
                 <span class="icon iconfont icon-close" style="display: none;">&#xe80d;</span>
