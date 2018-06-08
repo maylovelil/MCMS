@@ -128,8 +128,6 @@
                 url:"${managerPath}/cms/generate/sendHtml.do",
                 type:"get",
                 success:function(msg){
-                    console.log(msg);
-                    console.log(msg.result);
                     if(msg.result){
 					    <@ms.notify msg="更新成功" type="success"/>
                     }else{
