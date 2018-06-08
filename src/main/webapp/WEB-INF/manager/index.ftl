@@ -129,12 +129,16 @@
                 type:"get",
                 success:function(msg){
                     if(msg.result){
-					    <@ms.notify msg="更新成功" type="success"/>
+                        $.notify({
+                            icon: 'glyphicon glyphicon-star',
+                            message: "网站更新成功，点击访问网站首页！",
+                            url: msg.resultMsg
+                        });
                     }else{
-                        $('.ms-notifications').offset({top:43}).notify({
-                            type:'warning',
-                            message: { text:msg.resultMsg }
-                        }).show();
+                        $.notify({
+                            icon: 'glyphicon glyphicon-star',
+                             message: "网站更新失败，请重试！"
+                        });
                     }
                 }
             });
@@ -210,5 +214,6 @@
 		 	<@ms.button value="确认退出" id="loginOutBtn" url="${managerPath}/loginOut.do"/>
 		 </@ms.modalButton>
 	</@ms.modal>
+
 </body>
 </html>
