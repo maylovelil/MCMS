@@ -140,8 +140,7 @@
                                 message: "网站更新成功，点击访问网站首页！",
                                 url: msg.resultMsg
                             });
-                        }, 2000);
-
+                        }, 1000);
                     }else{
                         $.notify({
                             icon: 'glyphicon glyphicon-star',
