@@ -131,7 +131,6 @@ public class GeneraterAction extends BaseAction {
 		try {
 			generateIndex(request,response);
 			genernateColumn(request,response,0);
-			request.setAttribute("dateTime","2000-01-01");
 			generateArticle(request,response,0);
 			this.outJson(response, true);
 		} catch (Exception e) {
@@ -634,6 +633,9 @@ public class GeneraterAction extends BaseAction {
 	public void generateArticle(HttpServletRequest request, HttpServletResponse response, @PathVariable int columnId) {
 		MycLangUtils.setZh();
 		String dateTime = request.getParameter("dateTime");
+		if(dateTime == null){
+			dateTime = "2000-01-01";
+		}
 		AppEntity app = this.getApp(request);
 		String mobileStyle = null;
 		if (app != null) {
