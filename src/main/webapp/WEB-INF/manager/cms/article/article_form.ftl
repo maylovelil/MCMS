@@ -30,8 +30,8 @@
             </#if>
             <@ms.hidden id="basicDateTime" name="basicDateTime" value=""/>
             <@ms.date id="articleDateTime" name="articleDateTime" time=true label="发布时间" single=true readonly="readonly" width="300" value="${(article.basicDateTime?default(.now))?string('yyyy-MM-dd HH:mm')}" validation={"required":"true", "data-bv-notempty-message":"必填项目"} placeholder="点击该框选择时间段"  />
-			<@ms.textarea colSm="2" name="basicDescription" label="文章描述(中文)" wrap="Soft" rows="4"  size=""  value="${article.basicDescription?default('')}" placeholder="请输入对该文章的简短描述，以便用户查看文章简略" validation={"maxlength":"400","data-bv-stringlength-message":"文章描述在400个字符以内!"}/>
-			<@ms.textarea colSm="2" name="basicDescriptionEn" label="文章描述(英文)" wrap="Soft" rows="4"  size=""  value="${article.basicDescriptionEn?default('')}" placeholder="请输入对该文章的简短描述，以便用户查看文章简略" validation={"maxlength":"400","data-bv-stringlength-message":"文章描述在400个字符以内!"}/>
+			<@ms.textarea colSm="2" name="basicDescription" label="文章描述(中文)" wrap="Soft" rows="4"  size=""  value="${article.basicDescription?default('')}" placeholder="请输入对该文章的简短描述，以便用户查看文章简略" validation={"maxlength":"600","data-bv-stringlength-message":"文章描述在600个字符以内!"}/>
+			<@ms.textarea colSm="2" name="basicDescriptionEn" label="文章描述(英文)" wrap="Soft" rows="4"  size=""  value="${article.basicDescriptionEn?default('')}" placeholder="请输入对该文章的简短描述，以便用户查看文章简略" validation={"maxlength":"600","data-bv-stringlength-message":"文章描述在600个字符以内!"}/>
 
 			<@ms.textarea colSm="2" name="articleKeyword" label="关键字" wrap="Soft" rows="4"  size="" placeholder="请输入文章关键字"   value="${article.articleKeyword?default('')}" validation={"maxlength":"155", "data-bv-stringlength-message":"文章作者在155个字符以内!"}/>
 			<!--新填字段内容开始-->
