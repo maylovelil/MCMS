@@ -67,8 +67,8 @@
   <script src="${static}/plugins/hammerjs/2.0.8/hammer.min.js"></script>
   <script src="${static}/plugins/vue/2.3.3/vue.min.js"></script>
 
-  <link rel="shortcut icon" href="${qiniu}skin/manager/4.6.0/images/favicon.ico"/>
-  <link rel="bookmark" href="${qiniu}skin/manager/4.6.0/images/favicon.ico"/>
+  <link rel="shortcut icon" href="${qiniu}/skin/manager/4.6.0/images/favicon.ico"/>
+  <link rel="bookmark" href="${qiniu}/skin/manager/4.6.0/images/favicon.ico"/>
 
   <link rel="stylesheet" type="text/css" href="${base}/static/skin/manager/${manager_ui}/css/ms.manager.min.css" media="all" />
   <#assign skin_manager_logo="${base}/static/skin/manager/${manager_ui}/images/logo.png"/>
