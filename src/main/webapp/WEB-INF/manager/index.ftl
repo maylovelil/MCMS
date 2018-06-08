@@ -125,7 +125,7 @@
 	<script>
         function sendHtml(){
             $.ajax({
-                url:"${managerPath}/cms/generate/sendHtml",
+                url:"${managerPath}/cms/generate/sendHtml.do",
                 type:"get",
                 success:function(data){
                     if(data.result){
