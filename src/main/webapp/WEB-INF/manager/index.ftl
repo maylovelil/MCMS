@@ -75,7 +75,7 @@
     <div class="ms-top">
         <!--头部LOGO-->
         <div class="ms-top-logo">
-            <img src="${skin_manager_logo}"/>
+            <img src="${qiniu}skin/manager/4.6.0/images/logo.png"/>
             <!--span class="slideMenu">
                 <span class="icon iconfont icon-open">&#xe823;</span>
                 <span class="icon iconfont icon-close" style="display: none;">&#xe80d;</span>
@@ -115,13 +115,32 @@
                     </li>
                 </ul>
             </div>
-
-            <div class="ms-top-mstore" data-toggle="tooltip" data-placement="bottom" title="点击进入Mstore">
-                <span class="glyphicon glyphicon-th-large animated"></span>
-                <span class="mstore-update"></span>
-            </div>
+			<div onclick="sendHtml()" class="ms-top-mstore" data-toggle="tooltip" data-placement="bottom" title="点击推送文章到网站">
+				<span class="glyphicon glyphicon-cloud-upload animated"></span>
+				<span class="mstore-update"></span>
+			</div>
         </div>
     </div>
+
+	<script>
+        function sendHtml(){
+            $.ajax({
+                url:"${managerPath}/cms/generate/sendHtml",
+                type:"get",
+                success:function(data){
+                    if(data.result){
+					<@ms.notify msg="更新成功" type="success"/>
+                    }else{
+                        $('.ms-notifications').offset({top:43}).notify({
+                            type:'warning',
+                            message: { text:msg.resultMsg }
+                        }).show();
+                    }
+                }
+            });
+        }
+
+	</script>
 
 	<#noparse>
     <script id="ms-menu-tmpl" type="text/x-jquery-tmpl">
@@ -160,8 +179,7 @@
     <!--右边开始-->
     <div class="ms-content">
         <div class="wellcome">
-			明讯咨询资讯管理系统,欢迎您！
-            <#--<h2><img src="${base}/static/skin/manager/${manager_ui}/images/timg.jpg"></h2>-->
+            <h2>明讯咨询管理系统,欢迎您！</h2>
         </div>
         <div class="easyui-tabs">
         

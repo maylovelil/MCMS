@@ -43,6 +43,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -124,7 +125,20 @@ public class GeneraterAction extends BaseAction {
 	public String all() {
 		return view("/cms/generate/generate_all");
 	}
-	
+
+	@GetMapping("sendHtml")
+	public void sendHtml(HttpServletResponse response,HttpServletRequest request){
+		try {
+			generateIndex(request,response);
+			genernateColumn(request,response,0);
+			request.setAttribute("dateTime","2000-01-01");
+			generateArticle(request,response,0);
+			this.outJson(response, true);
+		} catch (Exception e) {
+			this.outJson(response,false);
+		}
+
+	}
 
 	/**
 	 * 更新主页
