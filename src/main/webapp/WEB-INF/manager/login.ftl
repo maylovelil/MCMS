@@ -3,8 +3,6 @@
 <head>
 <#include "${managerViewPath}/include/meta.ftl"/>
 <title><#if app?has_content>${app.appName}<#else>MY</#if>管理系统${managerViewPath}</title>
-<link rel="shortcut icon" href="${qiniu}skin/manager/4.6.0/images/favicon.ico"/>
-<link rel="bookmark" href="${qiniu}skin/manager/4.6.0/images/favicon.ico"/>
 <link rel="stylesheet" type="text/css" href="${qiniu}/skin/manager/${manager_ui}/css/login.css" media="all" />
 <link rel="stylesheet" type="text/css" href="${qiniu}/skin/manager/${manager_ui}/css/reset.css">
 <link rel="stylesheet" type="text/css" href="${qiniu}/skin/manager/${manager_ui}/css/supersized.css">
