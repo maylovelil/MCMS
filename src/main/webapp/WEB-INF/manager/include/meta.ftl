@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="${static}/plugins/animate/1.0.0/animate.css" media="all" /> 
   <link rel="stylesheet" type="text/css" href="${static}/plugins/iconfont/1.0.0/iconfont.css"/>
     
- <#--<script type="text/javascript" src="${static}/plugins/jquery/1.9.1/jquery-1.9.1.js"></script>-->
+ <script type="text/javascript" src="${static}/plugins/jquery/1.9.1/jquery-1.9.1.js"></script>
   <script type="text/javascript" src="${static}/plugins/jquery.serializeJSON/2.8.1/jquery.serializejson.min.js"></script> 
   
   <link rel="stylesheet" type="text/css" href="${static}/plugins/ztree/3.5/zTreeStyle.css" media="all" /> 
