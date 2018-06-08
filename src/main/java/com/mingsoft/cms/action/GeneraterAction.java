@@ -116,7 +116,7 @@ public class GeneraterAction extends BaseAction {
 	@Value("${managerPath}")
 	private String managerPath;
 
-	private Boolean bar = Boolean.FALSE;
+	private Boolean bar = Boolean.TRUE;
 
 	/**
 	 * 一键更新所有
@@ -130,11 +130,29 @@ public class GeneraterAction extends BaseAction {
 
 	@GetMapping("sendHtml")
 	public void sendHtml(HttpServletResponse response,HttpServletRequest request){
-			bar = true;
+			bar = Boolean.FALSE;
 			generateIndex(request,response);
 			genernateColumn(request,response,0);
 			generateArticle(request,response,0);
 
+		//获取应用实体信息
+		AppEntity app = this.getApp(request);
+		//组织主页预览地址
+		String indexPosition = app.getAppHostUrl() + "/" + IParserRegexConstant.HTML_SAVE_PATH + "/" + app.getAppId() + "/" + "index.html";
+		//请求更新后的主页，如果返回200就是是更新成功，可以访问，返回404，就是 更新不成功或者是没有更新主页，返回false
+		URL url;
+		HttpURLConnection huc;
+		try {
+			url = new URL(indexPosition);
+			huc = (HttpURLConnection) url.openConnection();
+			System.out.println(huc.getResponseCode());
+			huc.connect();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		this.outJson(response, true, indexPosition);
 	}
 
 	/**
@@ -239,7 +257,9 @@ public class GeneraterAction extends BaseAction {
 				FileUtil.writeFile(htmlEnContent, generateEnPath, FileUtil.URF8);
 				FileUtil.writeFile(mobileHtmlEnContent, generateMobileEnPath, FileUtil.URF8);
 				MycLangUtils.setZh();
-				this.outJson(response, true);
+				if(bar){
+					this.outJson(response, true);
+				}
 			}
 		}
 	}
@@ -420,7 +440,9 @@ public class GeneraterAction extends BaseAction {
 			}
 		}
 		genernateColumnEn(request,columnId);
-		this.outJson(response, true);
+		if(bar){
+			this.outJson(response, true);
+		}
 	}
 
 	private void genernateColumnEn(HttpServletRequest request,int columnId){
@@ -739,7 +761,9 @@ public class GeneraterAction extends BaseAction {
 			}
 		}
 		generateArticleEn(request,columnId);
-		this.outJson(response, true);
+		if(bar){
+			this.outJson(response, true);
+		}
 	}
 
 	private void generateArticleEn(HttpServletRequest request, @PathVariable int columnId){
