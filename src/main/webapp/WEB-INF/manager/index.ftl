@@ -124,7 +124,7 @@
 
 	<script>
         function sendHtml(){
-            var notify = $.notify('正在发布生成网站信息，请勿操作！', {
+            var notifyInfo = $.notify('正在发布生成网站信息，请勿操作！', {
                 allow_dismiss: false,
                 showProgressbar: true
             });
@@ -134,6 +134,7 @@
                     type:"get",
                     success:function(msg){
                         if(msg.result){
+                            notifyInfo.close();
                             $.notify({
                                 icon: 'glyphicon glyphicon-star',
                                 message: "网站更新成功，点击访问网站首页！",
