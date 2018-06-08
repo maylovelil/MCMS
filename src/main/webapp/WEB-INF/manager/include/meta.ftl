@@ -31,7 +31,9 @@
   <script type="text/javascript" src="${static}/plugins/bootstrap/${bootstrap}/js/bootstrapValidator.js"></script> 
   <script type="text/javascript" src="${static}/plugins/bootstrap/${bootstrap}/js/bootstrap-notify.js"></script>
 
+<#--
   <script src="${qiniu}/skin/manager/4.6.0/js/jquery-3.3.1.min.js"></script>
+-->
   <script src="${qiniu}/skin/manager/4.6.0/js/bootstrap-notify.min.js"></script>
 
   
