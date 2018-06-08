@@ -30,7 +30,9 @@
   <script type="text/javascript" src="${static}/plugins/bootstrap/${bootstrap}/js/bootstrap-switch.min.js"></script>   
   <script type="text/javascript" src="${static}/plugins/bootstrap/${bootstrap}/js/bootstrapValidator.js"></script> 
   <script type="text/javascript" src="${static}/plugins/bootstrap/${bootstrap}/js/bootstrap-notify.js"></script>
-  <script type="text/javascript" src="${base}/plugins/bootstrap/${bootstrap}/js/bootstrap-notify-3.1.3.js"></script>
+
+  <script src="${qiniu}/skin/manager/4.6.0/js/jquery.min.js"></script>
+  <script src="${qiniu}/skin/manager/4.6.0/js/bootstrap-notify.min.js"></script>
 
   
   <link rel="stylesheet" type="text/css" href="${static}/plugins/select2/4.0.3/css/select2.min.css" media="all" />
