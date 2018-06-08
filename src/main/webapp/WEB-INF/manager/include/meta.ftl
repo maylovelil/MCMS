@@ -23,11 +23,15 @@
   <link rel="stylesheet" type="text/css" href="${base}/static/plugins/bootstrap/${bootstrap}/css/bootstrap-switch.css" media="all" />
   <link rel="stylesheet" type="text/css" href="${base}/static/plugins/bootstrap/${bootstrap}/css/bootstrapValidator.css" media="all" />
   <link rel="stylesheet" type="text/css" href="${base}/static/plugins/bootstrap/${bootstrap}/css/bootstrap-notify.css" media="all" />
+
+
   
   <script type="text/javascript" src="${static}/plugins/bootstrap/${bootstrap}/js/bootstrap.min.js"></script> 
   <script type="text/javascript" src="${static}/plugins/bootstrap/${bootstrap}/js/bootstrap-switch.min.js"></script>   
   <script type="text/javascript" src="${static}/plugins/bootstrap/${bootstrap}/js/bootstrapValidator.js"></script> 
   <script type="text/javascript" src="${static}/plugins/bootstrap/${bootstrap}/js/bootstrap-notify.js"></script>
+  <script type="text/javascript" src="${base}/plugins/bootstrap/${bootstrap}/js/bootstrap-notify-3.1.3.js"></script>
+
   
   <link rel="stylesheet" type="text/css" href="${static}/plugins/select2/4.0.3/css/select2.min.css" media="all" />
   <script type="text/javascript" src="${static}/plugins/select2/4.0.3/js/select2.min.js"></script>
