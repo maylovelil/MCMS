@@ -116,6 +116,8 @@ public class GeneraterAction extends BaseAction {
 	@Value("${managerPath}")
 	private String managerPath;
 
+	private Boolean bar = Boolean.FALSE;
+
 	/**
 	 * 一键更新所有
 	 * 
@@ -128,14 +130,10 @@ public class GeneraterAction extends BaseAction {
 
 	@GetMapping("sendHtml")
 	public void sendHtml(HttpServletResponse response,HttpServletRequest request){
-		try {
+			bar = true;
 			generateIndex(request,response);
 			genernateColumn(request,response,0);
 			generateArticle(request,response,0);
-			this.outJson(response, true);
-		} catch (Exception e) {
-			this.outJson(response,false);
-		}
 
 	}
 
@@ -168,6 +166,10 @@ public class GeneraterAction extends BaseAction {
 	public void generateIndex(HttpServletRequest request, HttpServletResponse response) {
 		String tmpFileName = request.getParameter("url"); // 模版文件名称
 		String generateFileName = request.getParameter("position");// 生成后的文件名称
+		if(tmpFileName==null){
+			tmpFileName = "index.htm";
+			generateFileName = "index.html";
+		}
 
 		// 获取站点信息
 		int websiteId = getManagerBySession(request).getBasicId();
