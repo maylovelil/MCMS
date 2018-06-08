@@ -128,27 +128,28 @@
                 allow_dismiss: false,
                 showProgressbar: true
             });
-            setTimeout(function() {
-                $.ajax({
-                    url:"${managerPath}/cms/generate/sendHtml.do",
-                    type:"get",
-                    success:function(msg){
-                        if(msg.result){
-                            notifyInfo.close();
+            $.ajax({
+                url:"${managerPath}/cms/generate/sendHtml.do",
+                type:"get",
+                success:function(msg){
+                    if(msg.result){
+                        notifyInfo.close();
+                        setTimeout(function() {
                             $.notify({
                                 icon: 'glyphicon glyphicon-star',
                                 message: "网站更新成功，点击访问网站首页！",
                                 url: msg.resultMsg
                             });
-                        }else{
-                            $.notify({
-                                icon: 'glyphicon glyphicon-star',
-                                message: "网站更新失败，请重试！"
-                            });
-                        }
+                        }, 2000);
+
+                    }else{
+                        $.notify({
+                            icon: 'glyphicon glyphicon-star',
+                            message: "网站更新失败，请重试！"
+                        });
                     }
-                });
-            }, 4500);
+                }
+            });
         }
 
 	</script>
