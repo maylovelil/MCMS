@@ -127,9 +127,9 @@
             $.ajax({
                 url:"${managerPath}/cms/generate/sendHtml.do",
                 type:"get",
-                success:function(data){
-                    if(data.result){
-					<@ms.notify msg="更新成功" type="success"/>
+                success:function(msg){
+                    if(msg.result){
+					    <@ms.notify msg="更新成功" type="success"/>
                     }else{
                         $('.ms-notifications').offset({top:43}).notify({
                             type:'warning',
