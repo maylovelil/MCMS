@@ -142,10 +142,13 @@
                             });
                         }, 1000);
                     }else{
-                        $.notify({
-                            icon: 'glyphicon glyphicon-star',
-                            message: "网站更新失败，请重试！"
-                        });
+                        notifyInfo.close();
+                        setTimeout(function() {
+                            $.notify({
+                                icon: 'glyphicon glyphicon-star',
+                                message: "网站更新失败，请重试！"
+                            });
+                        }, 1000);
                     }
                 }
             });
