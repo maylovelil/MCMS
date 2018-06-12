@@ -103,7 +103,7 @@
             <div class="dropdown">
                 <div id="dLabel" class="ms-top-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="glyphicon glyphicon-user"></span>
-                    ${Session.manager_session.managerName}
+                    ${Session.manager_session.managerNickname}
                     <span class="caret"></span>
                 </div>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
