@@ -148,7 +148,9 @@ public class CmsParser extends IGeneralParser {
 		htmlContent = parseArclist();
 		htmlContent = parsePage();
 		htmlContent = parseArticle();
-		
+		if(app.getAppNginxStatus() == 1){
+			htmlContent = htmlContent.replaceAll("/html/"+app.getAppId()+"/","/");
+		}
 		return htmlContent;
 	}
 	
@@ -372,7 +374,7 @@ public class CmsParser extends IGeneralParser {
 		htmlContent = new ArticleTitleParser(htmlContent, MycLangUtils.isZh()?article.getBasicTitle():article.getBasicTitleEn()).parse();
 
 		// 替换文章点击数标签： {ms:field.hit/}
-		htmlContent = new HitParser(htmlContent,"<script type='text/javascript' src='"+app.getAppHostUrl()+"/basic/"+article.getBasicId()+"/hit.do' ></script>").parse();
+		htmlContent = new HitParser(htmlContent,"<script type='text/javascript' src='"+app.getMappingHostUrl()+"/basic/"+article.getBasicId()+"/hit.do' ></script>").parse();
 
 		// 替换文章id标签： {ms:field.id/}
 		htmlContent = new ArticleIdParser(htmlContent, article.getBasicId() + "").parse();
@@ -597,13 +599,6 @@ public class CmsParser extends IGeneralParser {
 
 	/**
 	 * 解析分页列表标签
-	 * @param htmlContent
-	 *            模版内容
-	 * @param column
-	 *            栏目编号
-	 * @param curPageNo
-	 *            当前页码
-	 * @return　替换好的内容
 	 */
 	private String parseList() {
 

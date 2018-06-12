@@ -85,6 +85,16 @@ public class AppEntity extends BaseEntity {
 	private String appUrl;
 
 	/**
+	 * 网站映射域名
+	 */
+	private String mappingUrl;
+
+	/**
+	 * nginx映射文件存放地址
+	 */
+	private String nginxLocationUrl;
+
+	/**
 	 * 管理站点的管理员id
 	 */
 	private int appManagerId;
@@ -109,7 +119,53 @@ public class AppEntity extends BaseEntity {
 	 * 应用自定义登录界面
 	 */
 	private String appLoginPage;
-	
+
+	private int appNginxStatus;
+
+	private String appMap;
+
+	private String managerPath;
+
+	public String getNginxLocationUrl() {
+		return nginxLocationUrl;
+	}
+
+	public void setNginxLocationUrl(String nginxLocationUrl) {
+		this.nginxLocationUrl = nginxLocationUrl;
+	}
+
+	public String getManagerPath() {
+		return managerPath;
+	}
+
+	public void setManagerPath(String managerPath) {
+		this.managerPath = managerPath;
+	}
+
+	public String getAppMap() {
+		return appMap;
+	}
+
+	public void setAppMap(String appMap) {
+		this.appMap = appMap;
+	}
+
+	public int getAppNginxStatus() {
+		return appNginxStatus;
+	}
+
+	public void setAppNginxStatus(int appNginxStatus) {
+		this.appNginxStatus = appNginxStatus;
+	}
+
+	public String getMappingUrl() {
+		return mappingUrl;
+	}
+
+	public void setMappingUrl(String mappingUrl) {
+		this.mappingUrl = mappingUrl;
+	}
+
 	public Date getAppPayDate() {
 		return appPayDate;
 	}
@@ -197,6 +253,13 @@ public class AppEntity extends BaseEntity {
 			return appUrl.split("\n")[0].trim();
 		}
 		return appUrl;
+	}
+
+	public String getMappingHostUrl() {
+		if (mappingUrl.indexOf("\n") > 0) { //存在多个域名绑定
+			return mappingUrl.split("\n")[0].trim();
+		}
+		return mappingUrl;
 	}
 
 	public String getAppLogo() {

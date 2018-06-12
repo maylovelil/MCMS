@@ -11,6 +11,7 @@
 		<result column="APP_COPYRIGHT" property="appCopyright" /><!-- 与website表绑定copyright -->
 		<result column="APP_STYLE" property="appStyle" /><!-- 与website表绑定style -->
 		<result column="APP_URL" property="appUrl" /><!-- 与website表绑定url -->
+		<result column="MAPPING_URL" property="mappingUrl"/><!-- 按该地址生成静态页面-->
 		<result column="APP_MANAGERID" property="appManagerId" /><!-- 与website表绑定管理员id -->
 		<result column="APP_NAME" property="appName" />
 		<result column="APP_NAME_EN" property="appNameEn" />
@@ -18,6 +19,10 @@
 		<result column="APP_LOGO" property="appLogo" />
 		<result column="APP_DATETIME" property="appDatetime" />
 		<result column="APP_MOBILE_STYLE" property="appMobileStyle" />
+		<result column="APP_NGINX_STATUS" property="appNginxStatus" />
+		<result column="APP_MAP" property="appMap"/>
+		<result column="NGINX_LOCATION_URL" property="nginxLocationUrl"/>
+
 	</resultMap>
 	<!-- 字段绑定结束 -->
 
@@ -35,10 +40,14 @@
 		<if test="appCopyright != null">APP_copyright =#{appCopyright},</if>
 		<if test="appStyle != null">APP_style =#{appStyle},</if>
 		<if test="appUrl!= null">APP_URL=#{appUrl},</if>
+		<if test="mappingUrl!= null">MAPPING_URL=#{mappingUrl},</if>
 		<if test="appManagerId &gt;0 ">APP_managerId=#{appManagerId},</if>
 		<if test="appMobileStyle != null">APP_MOBILE_STYLE=#{appMobileStyle},</if>
 		<if test="appPayDate != null">APP_PAY_DATE=#{appPayDate},</if>
 		<if test="appPay != null">APP_PAY=#{appPay},</if>
+		<if test="appNginxStatus != null">APP_NGINX_STATUS=#{appNginxStatus},</if>
+		<if test="appMap != null">APP_MAP=#{appMap},</if>
+		<if test="nginxLocationUrl != null">NGINX_LOCATION_URL=#{nginxLocationUrl},</if>
 		</set>
 		where APP_Id = #{appId}
 	</update>
@@ -54,7 +63,7 @@
 	<select id="getByUrl" resultMap="resultMap" parameterType="String">
 		select *
 		from app
-		where APP_URL like CONCAT('%',#{appUrl},'%') limit 0,1
+		where APP_URL like CONCAT('%',#{appUrl},'%') or MAPPING_URL like CONCAT('%',#{appUrl},'%')  limit 0,1
 	</select>
 
 	<!-- 根据ID查询结束 -->

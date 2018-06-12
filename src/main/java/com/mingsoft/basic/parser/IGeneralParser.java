@@ -25,6 +25,7 @@ import java.io.File;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.mingsoft.cms.parser.impl.AppMapParser;
 import com.mingsoft.cms.util.MycLangUtils;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -125,10 +126,10 @@ public abstract class IGeneralParser extends IParser {
 		htmlContent = new GlobalNameParser(htmlContent, MycLangUtils.isZh()?app.getAppName():app.getAppNameEn()).parse();
 
 		// 替换模版链接地址标签：{ms: globalskin.url/}
-		String tmpSkinUrl = app.getAppHostUrl() + File.separator + IParserRegexConstant.REGEX_SAVE_TEMPLATE
+		String tmpSkinUrl = app.getMappingHostUrl() + File.separator + IParserRegexConstant.REGEX_SAVE_TEMPLATE
 				+ File.separator + app.getAppId() + File.separator + app.getAppStyle() + File.separator;
 		// 替换网站链接地址标签:{ms:global.url/}
-		String linkUrl = app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator
+		String linkUrl = app.getMappingHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator
 				+ app.getAppId()+(MycLangUtils.isZh()?"":File.separator+"en");
 		// 如果论坛模板不为空，模板连接地址=原有地址+"/"+论坛模板
 		if (!StringUtil.isBlank(modelPath)) {
@@ -146,12 +147,15 @@ public abstract class IGeneralParser extends IParser {
 		htmlContent = new GlobalUrlParser(htmlContent, linkUrl).parse();
 
 		// 替换网站链接地址标签:{ms:global.host/}
-		htmlContent = new GlobalHostParser(htmlContent, app.getAppHostUrl()).parse();
+		htmlContent = new GlobalHostParser(htmlContent, app.getMappingHostUrl()).parse();
 
 		// 替换网站描述标签:{ms: global.descrip/}
 		htmlContent = new GlobalDescripParser(htmlContent, app.getAppDescription()).parse();
 
 		htmlContent = this.parseRequestMap();
+		// 替换\{ms:global.appMap/\}
+		String appMapUrl = app.getAppHostUrl()+app.getManagerPath()+"/cms/generate/makeMap.do";
+		htmlContent = new AppMapParser(htmlContent,appMapUrl).parse();
 		return htmlContent;
 	}
 
@@ -200,10 +204,10 @@ public abstract class IGeneralParser extends IParser {
 	 */
 	protected String getWebsiteUrl() {
 		if (!StringUtil.isBlank(mobilePath)) {
-			return app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator
+			return app.getMappingHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator
 					+ app.getAppId() + (MycLangUtils.isZh()?"":File.separator+MycLangUtils.GLOB_EN) + File.separator + mobilePath;
 		}
-		return app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator
+		return app.getMappingHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator
 				+ app.getAppId()+(MycLangUtils.isZh()?"":File.separator+MycLangUtils.GLOB_EN);
 	}
 

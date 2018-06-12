@@ -43,13 +43,22 @@
 
   function chainMyc(){
       var url=window.location.href;
-      url = url.replace('/1/en/','/1/');
+      var host=window.location.host;
+      if(url.indexOf("/html/1/") != -1){
+          url = url.replace('/1/en/','/1/');
+      }else{
+          url = url.replace(host+'/en',host);
+      }
       window.location.href = url;
   }
-
   function englishMyc(){
       var url=window.location.href;
-      url = url.replace('/1/','/1/en/');
+      var host=window.location.host;
+      if(url.indexOf("/html/1/") != -1){
+          url = url.replace('/1/','/1/en/');
+      }else{
+          url = url.replace(host,host+'/en');
+      }
       window.location.href = url;
   }
 </script>

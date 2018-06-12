@@ -36,8 +36,10 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mingsoft.cms.util.FileUtils;
 import com.mingsoft.cms.util.MycLangUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.tools.ant.taskdefs.condition.Http;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
@@ -116,6 +118,7 @@ public class GeneraterAction extends BaseAction {
 	@Value("${managerPath}")
 	private String managerPath;
 
+
 	private Boolean bar = Boolean.TRUE;
 
 	/**
@@ -138,8 +141,13 @@ public class GeneraterAction extends BaseAction {
 		//获取应用实体信息
 		AppEntity app = this.getApp(request);
 		//组织主页预览地址
-		String indexPosition = app.getAppHostUrl() + "/" + IParserRegexConstant.HTML_SAVE_PATH + "/" + app.getAppId() + "/" + "index.html";
+		String indexPosition = app.getMappingHostUrl() + "/" + IParserRegexConstant.HTML_SAVE_PATH + "/" + app.getAppId() + "/" + "index.html";
 		//请求更新后的主页，如果返回200就是是更新成功，可以访问，返回404，就是 更新不成功或者是没有更新主页，返回false
+		if(app.getAppNginxStatus() == 1){
+			indexPosition = indexPosition.replaceAll("/html/"+app.getAppId()+"/","/");
+		}
+		//文件生成地址
+		String generatePath = getRealPath(request, IParserRegexConstant.HTML_SAVE_PATH);
 		URL url;
 		HttpURLConnection huc;
 		try {
@@ -151,7 +159,12 @@ public class GeneraterAction extends BaseAction {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}finally {
+			if(app.getAppNginxStatus() == 1) {
+				FileUtils.copyFileToPath(generatePath, app.getNginxLocationUrl());
+			}
 		}
+
 		this.outJson(response, true, indexPosition);
 	}
 
@@ -192,6 +205,7 @@ public class GeneraterAction extends BaseAction {
 		// 获取站点信息
 		int websiteId = getManagerBySession(request).getBasicId();
 		AppEntity app = (AppEntity) appBiz.getEntity(websiteId);
+		app.setManagerPath(managerPath);
 		String tmpName = app.getAppStyle();// 获取模版名称
 		String tmpPath = getRealPath(request, IParserRegexConstant.REGEX_SAVE_TEMPLATE); // 获取系统模版存放物理路径
 		String webSiteTmpPath = tmpPath + File.separator + app.getAppId() + File.separator + tmpName;// 根据站点id组装站点信息路径　格式：templets／站点ID/模版风格
@@ -278,6 +292,7 @@ public class GeneraterAction extends BaseAction {
 		MycLangUtils.setZh();
 		// 获取站点id
 		AppEntity app = BasicUtil.getApp();
+		app.setManagerPath(managerPath);
 		String mobileStyle = app.getAppMobileStyle(); // 手机端模版
 		String url = app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator + app.getAppId();
 		// 站点生成后保存的html地址
@@ -449,6 +464,7 @@ public class GeneraterAction extends BaseAction {
 		MycLangUtils.setEn();
 		// 获取站点id
 		AppEntity app = BasicUtil.getApp();
+		app.setManagerPath(managerPath);
 		String mobileStyle = app.getAppMobileStyle(); // 手机端模版
 		String url = app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator + app.getAppId() + File.separator + MycLangUtils.GLOB_EN;
 		// 站点生成后保存的html地址
@@ -661,6 +677,7 @@ public class GeneraterAction extends BaseAction {
 			dateTime = "2000-01-01";
 		}
 		AppEntity app = this.getApp(request);
+		app.setManagerPath(managerPath);
 		String mobileStyle = null;
 		if (app != null) {
 			mobileStyle = app.getAppMobileStyle(); // 手机端模版
@@ -770,6 +787,7 @@ public class GeneraterAction extends BaseAction {
 		MycLangUtils.setEn();
 		String dateTime = request.getParameter("dateTime");
 		AppEntity app = this.getApp(request);
+		app.setManagerPath(managerPath);
 		String mobileStyle = null;
 		if (app != null) {
 			mobileStyle = app.getAppMobileStyle(); // 手机端模版
@@ -1039,8 +1057,11 @@ public class GeneraterAction extends BaseAction {
 		//获取应用实体信息
 		AppEntity app = this.getApp(request);
 		//组织主页预览地址
-		String indexPosition = app.getAppHostUrl() + "/" + IParserRegexConstant.HTML_SAVE_PATH + "/" + app.getAppId() + "/" + position;
+		String indexPosition = app.getMappingHostUrl() + "/" + IParserRegexConstant.HTML_SAVE_PATH + "/" + app.getAppId() + "/" + position;
 		//请求更新后的主页，如果返回200就是是更新成功，可以访问，返回404，就是 更新不成功或者是没有更新主页，返回false
+		if(app.getAppNginxStatus() == 1){
+			indexPosition = indexPosition.replaceAll("/html/"+app.getAppId()+"/","/");
+		}
 		URL url;
 		HttpURLConnection huc;
 		try {
@@ -1060,7 +1081,9 @@ public class GeneraterAction extends BaseAction {
 	}
 
 	@RequestMapping("/makeMap")
-	public String makeMap(){
+	public String makeMap(HttpServletRequest request,ModelMap model){
+		AppEntity app = this.getApp(request);
+		model.addAttribute("appMap",app.getAppMap());
 		return view("/cms/generate/map");
 	}
 

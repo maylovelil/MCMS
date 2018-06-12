@@ -161,7 +161,21 @@ public class AppAction extends BaseAction {
 			}
 			sb.append("\r\n");
 		}
+
+		String mappingUrl = app.getMappingUrl();
+		String _mappingUrl[] = mappingUrl.split("\r\n");
+		StringBuffer mappingSb = new StringBuffer();
+		for (String temp : _mappingUrl) {
+			String lastChar = temp.trim().substring(temp.length() - 1);
+			if (lastChar.equals("/") || lastChar.equals("\\")) {
+				mappingSb.append(temp.substring(0, temp.trim().length() - 1));
+			} else {
+				mappingSb.append(temp);
+			}
+			mappingSb.append("\r\n");
+		}
 		app.setAppUrl(sb.toString());
+		app.setMappingUrl(mappingUrl.toString());
 		appBiz.updateEntity(app);
 		this.outJson(response, ModelCode.APP, true, String.valueOf(pageNo), String.valueOf(managerRoleID));
 	}

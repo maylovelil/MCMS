@@ -18,10 +18,25 @@
 						  placeholder="使用回车换行可以输入多个域名地址，必须要加http:// 域名不要以／\\符号结尾"
 						  help="多个域名回车换行显示，必须以http[s]://打头，<br/>例如：http://www.a.com <br/> http://a.com 域名不要以／\\符号结尾"
 						  validation={"maxlength":"150","required":"true","data-bv-notempty-message":"必填项目", "data-bv-stringlength-message":"长度在150个字符以内!"} />
+
+			<@ms.checkbox name="appNginxStatus" width="200"  list=[{"id":"1","value":"启用"}] listKey="id" listValue="value" valueList=["${app.appNginxStatus!('')}"] label="启用Nginx"
+				help="是否启用Nginx配置 启用在生成Html静态页的时候会去掉“/html/{appId}”/这个目录地址，根据个人情况而定"/>
+			<@ms.textarea name="mappingUrl" label="Nginx映射域名" width="400"  rows="4" value="${app.mappingUrl?default('')}"
+				placeholder="使用回车换行可以输入多个域名地址，必须要加http:// 域名不要以／\\符号结尾"
+				help="多个域名回车换行显示，必须以http[s]://打头，<br/>例如：http://www.a.com <br/> http://a.com 域名不要以／\\符号结尾"
+				validation={"maxlength":"150", "data-bv-stringlength-message":"长度在150个字符以内!"} />
+			<@ms.textarea name="nginxLocationUrl" label="Nginx映射文件路径" width="400"  rows="4" value="${app.nginxLocationUrl?default('')}"
+			placeholder="输入服务器存放文件的地址,举例：lunx(/usr/local/nginx/html/) windows(e:/nginx/html)"
+			help="输入服务器存放文件的地址：lunx(/usr/local/nginx/html/) windows(e:/nginx/html)"
+			validation={"maxlength":"150", "data-bv-stringlength-message":"长度在150个字符以内!"} />
+
+
 			<@ms.select name="appStyle" width="300" id="appStyle" label="模板风格"  />
 			<@ms.textarea name="appKeyword"  label="关键字" value="${app.appKeyword?default('')}" rows="4"  placeholder="请输入关键字"/>
 			<@ms.textarea name="appDescription"  label="描述"  value="${app.appDescription?default('')}" rows="4"  placeholder="请输入站点描述"/>
 			<@ms.textarea name="appCopyright"  label="版权信息" value="${app.appCopyright?default('')}" rows="4"  placeholder="请输入版权信息"/>
+			<@ms.editor colSm="2" name="appMap" label="站点地图" content="${app.appMap?default('')}"  appId="${app.appId?default(1)}"/>
+
 		</@ms.form>	
 	</@ms.panel>
 </@ms.html5>	  
