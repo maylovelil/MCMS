@@ -127,12 +127,6 @@ public class ArticleHistoryParser extends IParser {
 	/**
 	 * 替换不同的标签
 	 *
-	 * @param htmlContent
-	 *            HTML代码
-	 * @param newContent
-	 *            替换内容
-	 * @param regex
-	 *            正则表达式
 	 * @return 替换完成后的HTML代码
 	 */
 	private String replaceRegex(String newContent, String regex) {

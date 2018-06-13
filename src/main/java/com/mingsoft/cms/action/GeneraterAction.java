@@ -704,6 +704,9 @@ public class GeneraterAction extends BaseAction {
 			columns = columnBiz.queryColumnListByWebsiteId(app.getAppId()); // 读取所有栏目
 		}
 		String url = app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator + app.getAppId() + File.separator; // 文章地址前缀
+			if(app.getAppNginxStatus() == 1){
+				url = app.getMappingUrl();
+			}
 		// 如果没有选择栏目，生成规则
 		// 1先读取所有的栏目,从最低级的分类取
 		for (ColumnEntity tempColumn : columns) {// 循环分类
