@@ -2,6 +2,7 @@ package com.mingsoft.basic.common;
 
 import com.google.gson.Gson;
 import com.mingsoft.base.constant.Const;
+import com.mingsoft.cms.util.ConfigUtils;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
@@ -31,8 +32,10 @@ public class QiNiuUploadFile {
     private static String qiNiuSk = "CV9wybrFwaONlgfdw9fsdL6tzETcl1Pt20M1D5eY";
     private static String qiNiuBucket = "my-mingxun";
     private static String qiNiuHost = "p9f59h2gx.bkt.clouddn.com";
-    private static String serverPath= "myc";
+    private static String serverPath= ConfigUtils.getStringValue("serverPath");
     private static String baiduImage = "http://img.baidu.com/";
+    private static String http_url = "http://";
+    private static String https_url = "https://";
 
     public static   String key(String img) {
         //...生成上传凭证，然后准备上传
@@ -85,13 +88,12 @@ public class QiNiuUploadFile {
         String fileRoute ="";
         for (Element element : elements) {
             String src = element.attr("src");//获取到src的值,开始进行上传七牛云的操作
-            if(src.contains(qiNiuHost) || src.contains(baiduImage)){
+            if(src.contains(qiNiuHost) || src.contains(baiduImage) || src.contains(http_url) || src.contains(https_url)){
                 continue;
             }
             logger.info("图片的路径：{}",rootPath.replace(File.separator+serverPath+File.separator,"")+src);
 
             //找到百度编辑器文件储存的路径
-
             String imgUrl = key(rootPath.replace(File.separator+serverPath+File.separator,"")+src);
             //接下来进行字符串的替换工作
             element.attr("src",imgUrl);
