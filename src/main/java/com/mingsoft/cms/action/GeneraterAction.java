@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -162,6 +163,11 @@ public class GeneraterAction extends BaseAction {
 		}finally {
 			if(app.getAppNginxStatus() == 1) {
 				FileUtils.copyFileToPath(generatePath, app.getNginxLocationUrl());
+				try {
+					Runtime.getRuntime().exec("chmod 777 -R " + app.getNginxLocationUrl());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 
