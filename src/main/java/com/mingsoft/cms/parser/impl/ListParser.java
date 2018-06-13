@@ -82,7 +82,7 @@ public class ListParser extends com.mingsoft.mdiy.parser.ListParser {
 	 */
 	protected final static String FIELD_KEY_WORD="\\[field.keyword/\\]";
 
-	protected final static String FADEINRIGHT ="\\[[fadeInRight/]/\\]";
+	protected final static String FADEINRIGHT ="\\[fadeInRight/\\]";
 	/**
 	 * 文章flag标签,显示文章的属性
 	 */
@@ -244,7 +244,7 @@ public class ListParser extends com.mingsoft.mdiy.parser.ListParser {
 			NoParser noParser = new NoParser(htmlList);
 			htmlList =noParser.parse(htmlList,parserHtml);
 		}
-		
+
 		return htmlList;
 	}
 	
