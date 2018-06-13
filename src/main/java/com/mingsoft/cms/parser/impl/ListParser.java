@@ -81,7 +81,8 @@ public class ListParser extends com.mingsoft.mdiy.parser.ListParser {
 	 * 文章关键字,文章所属分类的编号 文章列表子标签 [field.keyword/]
 	 */
 	protected final static String FIELD_KEY_WORD="\\[field.keyword/\\]";
-	
+
+	protected final static String FADEINRIGHT ="\\[[fadeInRight/]/\\]";
 	/**
 	 * 文章flag标签,显示文章的属性
 	 */
@@ -231,6 +232,11 @@ public class ListParser extends com.mingsoft.mdiy.parser.ListParser {
 					htmlList = tabContent(htmlList, channelLink,TTYPELINK_FIELD_LIST);
 					//对自定义字段进行替换
 					htmlList = replaceField(htmlList,article.getColumn(),article.getBasicId());
+					String inR = "fadeInRight";
+					if(i/2 == 1){
+						inR = "fadeInLeft";
+					}
+					htmlList = htmlList.replaceAll(FADEINRIGHT,inR);
 				}
 			}
 		}
