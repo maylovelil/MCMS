@@ -9,7 +9,7 @@
 	<@ms.panel>
 		<@ms.form isvalidation=true name="articleForm" action="${managerPath}/cms/article/${autoCURD}.do">
 			<#assign columnTypes=[{"id":"1","name":"中文文章"},{"id":"2","name":"英文文章"}]>
-			<@ms.radio name="articleType" label="文章类型"  list=columnTypes listKey="id" listValue="name" value="${article.articleType?default(1)}" />
+			<@ms.radio name="articleLanguage" label="文章类型"  list=columnTypes listKey="id" listValue="name" value="${article.articleType?default(1)}" />
 
 			<@ms.text name="basicTitle" colSm="2"  width="400" label="文章标题(中文)"	title="文章标题(中文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitle?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
 			<@ms.text name="basicTitleEn" colSm="2" width="400" label="文章标题(英文)"	title="文章标题(英文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitleEn?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
@@ -66,8 +66,8 @@ $('#articleDateTime').on('apply.daterangepicker', function(ev, picker) {
 });
 var articleBasicId=0;
 $(function(){
-	<#if article.articleType == 0>
-		$("input:radio[name='articleType']:first").attr("checked",true);
+	<#if article.articleLanguage == 0>
+		$("input:radio[name='articleLanguage']:first").attr("checked",true);
 	</#if>
 
 	//页面标题
@@ -227,7 +227,7 @@ $(function(){
 	     $("#saveUpdate").attr("disabled",false);
 	});
     //切换中英文文章类型
-    $("input:radio[name='articleType']").click(function(){
+    $("input:radio[name='articleLanguage']").click(function(){
         if($(this).val()== 2){
             $("input[name='basicTitle']").css("disabled",false);
         }else if($(this).val()== 1){
