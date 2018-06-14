@@ -241,7 +241,6 @@ $(function(){
 	});
     //切换中英文文章类型
     $("input[name='articleLanguage']").click(function(){
-        alert($(this).val());
         if($(this).val()== 2){
             $("#basicTitleChinese").parents(".form-group").hide();
             $("#basicTitleChinese").css("disabled",true);
