@@ -236,6 +236,13 @@ $(function(){
             $("#basicDescriptionChinese").css("disabled",true);
             $("#editor_articleContent").parents(".form-group").hide();
             $("#editor_articleContent").css("disabled",true);
+
+            $("#basicTitleEnglish").parents(".form-group").show();
+            $("#basicTitleEnglish").css("disabled",false);
+            $("#basicDescriptionEnglish").parents(".form-group").show();
+            $("#basicDescriptionEnglish").css("disabled",false);
+            $("#editor_articleContentEn").parents(".form-group").show();
+            $("#editor_articleContentEn").css("disabled",false);
         }else if($(this).val()== 1){
             $("#basicTitleEnglish").parents(".form-group").hide();
             $("#basicTitleEnglish").css("disabled",true);
@@ -243,6 +250,14 @@ $(function(){
             $("#basicDescriptionEnglish").css("disabled",true);
             $("#editor_articleContentEn").parents(".form-group").hide();
             $("#editor_articleContentEn").css("disabled",true);
+
+
+            $("#basicTitleChinese").parents(".form-group").show();
+            $("#basicTitleChinese").css("disabled",false);
+            $("#basicDescriptionChinese").parents(".form-group").show();
+            $("#basicDescriptionChinese").css("disabled",false);
+            $("#editor_articleContent").parents(".form-group").show();
+            $("#editor_articleContent").css("disabled",false);
         }
     });
 
