@@ -245,10 +245,10 @@ function clickZtreeId(event,treeId,treeNode){
         var a = $("input[name='articleType']:checked").val();
         console.log(a);
         if(a == 1){
-            $("input[name='basicTitleEn']).css("display","none");
+            $("input[name='basicTitleEn']").css("display","none");
 		}
 		if(a == 2){
-            $("input[name='basicTitle']).css("display","none");
+            $("input[name='basicTitle']").css("display","none");
 		}
 
     }
