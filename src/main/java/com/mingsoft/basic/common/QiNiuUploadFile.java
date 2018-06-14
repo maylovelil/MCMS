@@ -88,7 +88,7 @@ public class QiNiuUploadFile {
         String fileRoute ="";
         for (Element element : elements) {
             String src = element.attr("src");//获取到src的值,开始进行上传七牛云的操作
-            if(src.contains(qiNiuHost) || src.contains(baiduImage)){
+            if(src.contains(qiNiuHost) || src.contains(baiduImage) || src.contains(rootPath)){
                 continue;
             }
             logger.info("图片的路径：{}",rootPath.replace(File.separator+serverPath+File.separator,"")+src);
