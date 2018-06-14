@@ -11,7 +11,7 @@
 			<#assign columnTypes=[{"id":"1","name":"中文文章"},{"id":"2","name":"英文文章"}]>
 			<@ms.radio name="articleType" label="文章类型"  list=columnTypes listKey="id" listValue="name" value="${article.articleType?default(1)}" />
 
-			<@ms.text name="basicTitle" colSm="2" width="400" label="文章标题(中文)"	title="文章标题(中文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitle?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
+			<@ms.text name="basicTitle" colSm="2"  width="400" label="文章标题(中文)"	title="文章标题(中文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitle?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
 			<@ms.text name="basicTitleEn" colSm="2" width="400" label="文章标题(英文)"	title="文章标题(英文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitleEn?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
 			<@ms.text name="basicSort"  colSm="2" width="200" label="自定义顺序" title="自定义顺序" size="5"  placeholder="请输入文章顺序" value="${article.basicSort?c?default(0)}" validation={"data-bv-between":"true","required":"true", "data-bv-between-message":"自定义顺序必须大于0","data-bv-between-min":"0", "data-bv-between-max":"99999999","data-bv-notempty-message":"自定义顺序不能为空"}/>
 			<#if articleType?has_content>
@@ -66,6 +66,10 @@ $('#articleDateTime').on('apply.daterangepicker', function(ev, picker) {
 });
 var articleBasicId=0;
 $(function(){
+	<#if article.articleType == 0>
+		$("input:radio[name='articleType']:first").attr("checked",true);
+	</#if>
+
 	//页面标题
 	var articleTitle="<#if categoryTitle?has_content>${categoryTitle}&nbsp;</#if><#if article.basicId !=0><small>编辑文章</small><#else><small>添加文章</small></#if>";
 	$(".ms-content-body-title>span").html(articleTitle);	
@@ -222,18 +226,12 @@ $(function(){
 		 $("#saveUpdate").button('reset');
 	     $("#saveUpdate").attr("disabled",false);
 	});
-    $('input:radio[name="articleType"]').change(function(){
-        if($(this).is(":checked")){
-            var a = $("input[name='articleType']:checked").val();
-            console.log(a);
-            if(a == 1){
-                $("input[name='basicTitleEn']").css("display","none");
-            }
-            if(a == 2){
-                $("input[name='basicTitle']").css("display","none");
-            }
-        }else{
-            alert(0);
+    //切换中英文文章类型
+    $("input:radio[name='articleType']").click(function(){
+        if($(this).val()== 2){
+            $("input[name='basicTitle']").css("disabled",false);
+        }else if($(this).val()== 1){
+            $("input[name='basicTitleEn']").css("disabled",false);
         }
     });
 
