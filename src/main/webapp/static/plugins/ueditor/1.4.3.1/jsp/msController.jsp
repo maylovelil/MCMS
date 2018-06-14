@@ -11,6 +11,6 @@
     request.setCharacterEncoding( "utf-8" );
 	response.setHeader("Content-Type" , "text/html");
 	String jsonConfig = request.getParameter("jsonConfig");
-	String rootPath = application.getRealPath( "/" )+"myc/";
-	out.write( new MsUeditorActionEnter( request, rootPath,jsonConfig).exec() );
+	String rootPath = application.getRealPath( "/" );
+	out.write( new MsUeditorActionEnter( request, rootPath,jsonConfig).exec().replaceAll("'url':'","'url':'/myc") );
 %>

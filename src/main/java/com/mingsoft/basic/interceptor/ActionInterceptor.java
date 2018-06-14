@@ -86,6 +86,8 @@ public class ActionInterceptor extends BaseInterceptor {
 		request.setAttribute(BASE_URL, base + request.getContextPath() + request.getServletPath()
 				+ (request.getQueryString() == null ? "" : "?" + request.getQueryString()));
 		request.setAttribute(QINIUHOST,"http://"+qiNiuHose);
+
+		request.setAttribute(EDITIMAGEPATH,base+request.getContextPath());
 		
 		request.setAttribute(PARAMS, assemblyRequestUrlParams(request));
 		SpringUtil.setResponse(response);

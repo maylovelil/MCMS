@@ -1,25 +1,10 @@
 package com.mingsoft.basic.action.web;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.POST;
-
 import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-import com.mingsoft.basic.common.QiNiuUploadFile;
+import com.mingsoft.base.constant.Const;
+import com.mingsoft.basic.action.BaseAction;
+import com.mingsoft.util.FileUtil;
+import com.mingsoft.util.StringUtil;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
@@ -27,6 +12,7 @@ import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
+import net.mingsoft.basic.util.BasicUtil;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -38,12 +24,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.mingsoft.base.constant.Const;
-import com.mingsoft.basic.action.BaseAction;
-import com.mingsoft.util.FileUtil;
-import com.mingsoft.util.StringUtil;
-
-import net.mingsoft.basic.util.BasicUtil;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * 上传文件

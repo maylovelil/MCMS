@@ -16,7 +16,7 @@
 	   var ue = UE.getEditor('editor_${name}', {
        		imageScaleEnabled :true,
        		// 服务器统一请求接口路径
-       		serverUrl: URL + "jsp/msController.jsp?jsonConfig=%7BvideoUrlPrefix:'${base}',fileUrlPrefix:'${base}',imageUrlPrefix:'${base}',imagePathFormat:'/upload/${appId?default(0)}/editor/%7Btime%7D',filePathFormat:'/upload/${appId?default(0)}/editor/%7Btime%7D',videoPathFormat:'/upload/${appId?default(0)}/editor/%7Btime%7D'%7D", 
+       		serverUrl: URL + "jsp/msController.jsp?jsonConfig=%7BvideoUrlPrefix:'${base}',fileUrlPrefix:'${base}',imageUrlPrefix:'${base}',imagePathFormat:'/upload/${appId?default(0)}/editor/%7Btime%7D',filePathFormat:'/upload/${appId?default(0)}/editor/%7Btime%7D',videoPathFormat:'/upload/${appId?default(0)}/editor/%7Btime%7D'%7D",
 			autoHeightEnabled: true,
 			autoFloatEnabled: false,
 			scaleEnabled: true,
