@@ -66,6 +66,19 @@ $('#articleDateTime').on('apply.daterangepicker', function(ev, picker) {
 });
 var articleBasicId=0;
 $(function(){
+    $("#basicTitleChinese").parents(".form-group").hide();
+    $("#basicTitleChinese").css("disabled",true);
+    $("#basicDescriptionChinese").parents(".form-group").hide();
+    $("#basicDescriptionChinese").css("disabled",true);
+    $("#editor_articleContent").parents(".form-group").hide();
+    $("#editor_articleContent").css("disabled",true);
+
+    $("#basicTitleEnglish").parents(".form-group").show();
+    $("#basicTitleEnglish").css("disabled",false);
+    $("#basicDescriptionEnglish").parents(".form-group").show();
+    $("#basicDescriptionEnglish").css("disabled",false);
+    $("#editor_articleContentEn").parents(".form-group").show();
+    $("#editor_articleContentEn").css("disabled",false);
 	<#if article.articleLanguage == 0>
 		$("input:radio[name='articleLanguage']:first").attr("checked",true);
 	</#if>
