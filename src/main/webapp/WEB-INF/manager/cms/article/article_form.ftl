@@ -8,7 +8,7 @@
 	</@ms.nav>
 	<@ms.panel>
 		<@ms.form isvalidation=true name="articleForm" action="${managerPath}/cms/article/${autoCURD}.do">
-			<#assign columnTypes=[{"id":"1","name":"中文文章"},{"id":"2","name":"英文文章"}]>
+			<#assign columnTypes=[{"id":"1","name":"中文文章"},{"id":"2","name":"英文文章"},{"id":"3","name":"中英文对照文章"}]>
 			<@ms.radio name="articleLanguage" label="文章类型"  list=columnTypes listKey="id" listValue="name" value="${article.articleLanguage?default(1)}" />
 
 			<@ms.text name="basicTitle" id="basicTitleChinese" colSm="2"  width="400" label="文章标题(中文)"	title="文章标题(中文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitle?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
@@ -250,6 +250,21 @@ $(function(){
             $("#basicDescriptionEnglish").css("disabled",true);
             $("#editor_articleContentEn").parents(".form-group").hide();
             $("#editor_articleContentEn").css("disabled",true);
+
+
+            $("#basicTitleChinese").parents(".form-group").show();
+            $("#basicTitleChinese").css("disabled",false);
+            $("#basicDescriptionChinese").parents(".form-group").show();
+            $("#basicDescriptionChinese").css("disabled",false);
+            $("#editor_articleContent").parents(".form-group").show();
+            $("#editor_articleContent").css("disabled",false);
+        }else if($(this).val()== 3){
+            $("#basicTitleEnglish").parents(".form-group").show();
+            $("#basicTitleEnglish").css("disabled",false);
+            $("#basicDescriptionEnglish").parents(".form-group").show();
+            $("#basicDescriptionEnglish").css("disabled",false);
+            $("#editor_articleContentEn").parents(".form-group").show();
+            $("#editor_articleContentEn").css("disabled",false);
 
 
             $("#basicTitleChinese").parents(".form-group").show();
