@@ -227,7 +227,8 @@ $(function(){
 	     $("#saveUpdate").attr("disabled",false);
 	});
     //切换中英文文章类型
-    $("input:radio[name='articleLanguage']").click(function(){
+    $("input[name='articleLanguage']").click(function(){
+        alert($(this).val());
         if($(this).val()== 2){
             $("input[name='basicTitle']").css("disabled",false);
         }else if($(this).val()== 1){
