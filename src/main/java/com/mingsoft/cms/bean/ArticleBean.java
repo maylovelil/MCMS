@@ -166,10 +166,17 @@ public class ArticleBean {
 	 * 点击次数
 	 */
 	private int articleHit;
-	
-	
-	
-	
+
+	private int articleLanguage;
+
+	public int getArticleLanguage() {
+		return articleLanguage;
+	}
+
+	public void setArticleLanguage(int articleLanguage) {
+		this.articleLanguage = articleLanguage;
+	}
+
 	public int getArticleFreeOrder() {
 		return articleFreeOrder;
 	}

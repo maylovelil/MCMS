@@ -67,7 +67,9 @@ public class ArticleEntity extends BasicEntity{
 	 * 文章属性
 	 */
 	private String articleType ;
-	
+
+	private int articleLanguage;
+
 	/**
 	 * 文章的来源
 	 */
@@ -118,7 +120,16 @@ public class ArticleEntity extends BasicEntity{
 	public ColumnEntity getColumn() {
 		return column;
 	}
-	
+
+
+	public int getArticleLanguage() {
+		return articleLanguage;
+	}
+
+	public void setArticleLanguage(int articleLanguage) {
+		this.articleLanguage = articleLanguage;
+	}
+
 	/**
 	 * 设置文章所属的栏目实体
 	 * @param column

@@ -4,7 +4,7 @@
 <mapper namespace="com.mingsoft.cms.dao.IArticleDao">
 	<!-- 表栏目名 开始 -->
 	<sql id="column_list">
-		a.ARTICLE_BASICID,a.ARTICLE_CONTENT,a.ARTICLE_CONTENT_EN,a.ARTICLE_AUTHOR,a.ARTICLE_TYPE,a.ARTICLE_SOURCE,a.ARTICLE_URL,a.ARTICLE_KEYWORD,a.ARTICLE_FREEORDER,a.ARTICLE_WEBID,
+		a.ARTICLE_BASICID,a.ARTICLE_CONTENT,a.ARTICLE_CONTENT_EN,a.ARTICLE_AUTHOR,a.ARTICLE_TYPE,a.ARTICLE_SOURCE,a.ARTICLE_URL,a.ARTICLE_KEYWORD,a.ARTICLE_FREEORDER,a.ARTICLE_WEBID,a.ARTICLE_LANGUAGE
 		b.BASIC_ID,b.BASIC_TITLE,b.BASIC_TITLE_EN,b.BASIC_DESCRIPTION,b.BASIC_DESCRIPTION_EN,b.BASIC_THUMBNAILS,b.BASIC_HIT,b.BASIC_DATETIME,b.BASIC_UPDATETIME,b.BASIC_PEOPLEID,b.BASIC_CATEGORYID,b.BASIC_SORT
 	</sql>
 	<!-- 表栏目名 结束 -->
@@ -22,6 +22,8 @@
 		<result column="ARTICLE_KEYWORD" property="articleKeyword" />	<!-- 文章关键字 -->
 		<result column="ARTICLE_FREEORDER" property="articleFreeOrder" /><!-- 
 			文章自定义显示顺序 -->
+		<result column="ARTICLE_LANGUAGE" property="articleLanguage"/>
+
 		<result column="ARTICLE_WEBID" property="articleWebId" />				<!-- 站点id -->
 		<result column="BASIC_ID" property="basicId" />					<!-- 与表basic绑定 自增长ID -->
 		<result column="BASIC_TITLE" property="basicTitle" />			<!-- 文章标题 -->
@@ -60,6 +62,8 @@
 		<result column="ARTICLE_KEYWORD" property="articleKeyword" />	<!-- 文章关键字 -->
 		<result column="ARTICLE_FREEORDER" property="articleFreeOrder" /><!-- 
 			文章自定义显示顺序 -->
+		<result column="ARTICLE_LANGUAGE" property="articleLanguage"/>
+
 		<result column="ARTICLE_WEBID" property="articleWebId" />				<!-- 站点id -->
 
 		<result column="BASIC_ID" property="basicId" />					<!-- 与表basic绑定 自增长ID -->
@@ -98,7 +102,7 @@
 		BASIC_ID,BASIC_CATEGORYID,BASIC_TITLE,BASIC_TITLE_EN,BASIC_DESCRIPTION,BASIC_DESCRIPTION_EN,BASIC_THUMBNAILS,BASIC_HIT,BASIC_DATETIME,BASIC_UPDATETIME,BASIC_PEOPLEID,BASIC_SORT,
 		ARTICLE_BASICID,ARTICLE_AUTHOR,ARTICLE_CONTENT,ARTICLE_CONTENT_EN,ARTICLE_TYPE,ARTICLE_SOURCE,ARTICLE_URL,ARTICLE_KEYWORD,ARTICLE_FREEORDER,ARTICLE_WEBID,
 		COLUMN_KEYWORD,COLUMN_DESCRIP,COLUMN_TYPE,COLUMN_URL,COLUMN_LISTURL,COLUMN_PATH,COLUMN_CM_ID,COLUMN_CATEGORY_ID,
-		CATEGORY_TITLE,CATEGORY_TITLE_EN,CATEGORY_APPID,CATEGORY_ID
+		CATEGORY_TITLE,CATEGORY_TITLE_EN,CATEGORY_APPID,CATEGORY_ID,ARTICLE_LANGUAGE
 	</sql>
 	<!-- 文章基础数据返回数据列表结束 -->
 
@@ -111,8 +115,8 @@
 		<result column="ARTICLE_SOURCE" property="articleSource" />		<!-- 文章来源 -->
 		<result column="ARTICLE_URL" property="articleUrl" />			<!-- 文章跳转链接地址 -->
 		<result column="ARTICLE_KEYWORD" property="articleKeyword" />	<!-- 文章关键字 -->
-		<result column="ARTICLE_FREEORDER" property="articleFreeOrder" /><!-- 
-			文章自定义显示顺序 -->
+		<result column="ARTICLE_FREEORDER" property="articleFreeOrder" /><!-- 文章自定义显示顺序 -->
+		<result column="ARTICLE_LANGUAGE" property="articleLanguage"/>
 
 		<result column="BASIC_TITLE" property="articleTitle" />			<!-- 文章标题 -->
 		<result column="BASIC_TITLE_EN" property="articleTitleEn" />			<!-- 文章标题 -->
@@ -143,6 +147,7 @@
 			<if test="articleKeyword != null">ARTICLE_KEYWORD,</if>
 			<if test="articleFreeOrder != null">ARTICLE_FREEORDER,</if>
 			<if test="articleWebId != null">ARTICLE_WEBID,</if>
+			<if test="articleLanguage != null">ARTICLE_LANGUAGE</if>
 		</trim>
 		<!-- 注入控制层字段 -->
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -156,6 +161,7 @@
 			<if test="articleKeyword != null">#{articleKeyword},</if>
 			<if test="articleFreeOrder != null">#{articleFreeOrder},</if>
 			<if test="articleWebId != null">#{articleWebId},</if>
+			<if test="articleLanguage != null">#{articleLanguage},</if>
 		</trim>
 	</insert>
 	<!-- 添加文章信息 结束 -->
@@ -180,6 +186,7 @@
 			<if test="articleKeyword != null">ARTICLE_KEYWORD=#{articleKeyword},</if>
 			<if test="articleFreeOrder != null">ARTICLE_FREEORDER=#{articleFreeOrder},</if>
 			<if test="articleWebId != null">ARTICLE_WEBID=#{articleWebId},</if>
+			<if test="articleLanguage != null">ARTICLE_LANGUAGE=#{articleLanguage},</if>
 		</set>
 		where ARTICLE_BASICID = #{basicId}
 	</update>
