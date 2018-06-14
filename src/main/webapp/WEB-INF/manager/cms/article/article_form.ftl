@@ -9,7 +9,7 @@
 	<@ms.panel>
 		<@ms.form isvalidation=true name="articleForm" action="${managerPath}/cms/article/${autoCURD}.do">
 			<#assign columnTypes=[{"id":"1","name":"中文文章"},{"id":"2","name":"英文文章"}]>
-			<@ms.radio name="articleType" label="文章类型"  list=columnTypes listKey="id" listValue="name" onclick="articleTypeFunction(this)" value="${article.articleType?default(1)}" />
+			<@ms.radio name="articleType" label="文章类型"  list=columnTypes listKey="id" listValue="name" onclick="articleTypeFunction()" value="${article.articleType?default(1)}" />
 
 			<@ms.text name="basicTitle" colSm="2" width="400" label="文章标题(中文)"	title="文章标题(中文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitle?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
 			<@ms.text name="basicTitleEn" colSm="2" width="400" label="文章标题(英文)"	title="文章标题(英文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitleEn?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
@@ -243,11 +243,12 @@ function clickZtreeId(event,treeId,treeNode){
 
 	function articleTypeFunction() {
         var a = $("input[name='articleType']:checked").val();
+        console.log(a);
         if(a == 1){
-            $("input[name='basicTitle']).css("display","none");
+            $("input[name='basicTitleEn']).css("display","none");
 		}
 		if(a == 2){
-
+            $("input[name='basicTitle']).css("display","none");
 		}
 
     }
