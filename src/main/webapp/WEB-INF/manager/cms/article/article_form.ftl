@@ -41,8 +41,8 @@
 			<div id="addFieldForm">
 			</div>
 			<@ms.hidden name="articleTypeJson" />
-			<@ms.editor colSm="2" id="articleContentChinese" name="articleContent" label="文章内容(中文)" content="${article.articleContent?default('')}"  appId="${appId?default(0)}"/>
-			<@ms.editor colSm="2" id="articleContentEnglish" name="articleContentEn" label="文章内容(英文)" content="${article.articleContentEn?default('')}"  appId="${appId?default(0)}"/>
+			<@ms.editor colSm="2" name="articleContent" label="文章内容(中文)" content="${article.articleContent?default('')}"  appId="${appId?default(0)}"/>
+			<@ms.editor colSm="2" name="articleContentEn" label="文章内容(英文)" content="${article.articleContentEn?default('')}"  appId="${appId?default(0)}"/>
 
 			<@ms.hidden name="modelId"  value="${Session.model_id_session?default('0')}" />
 		</@ms.form>
@@ -234,15 +234,15 @@ $(function(){
             $("#basicTitleChinese").css("disabled",true);
             $("#basicDescriptionChinese").parents(".form-group").hide();
             $("#basicDescriptionChinese").css("disabled",true);
-            $("#articleContentChinese").parents(".form-group").hide();
-            $("#articleContentChinese").css("disabled",true);
+            $("#editor_articleContent").parents(".form-group").hide();
+            $("#editor_articleContent").css("disabled",true);
         }else if($(this).val()== 1){
             $("#basicTitleEnglish").parents(".form-group").hide();
             $("#basicTitleEnglish").css("disabled",true);
             $("#basicDescriptionEnglish").parents(".form-group").hide();
             $("#basicDescriptionEnglish").css("disabled",true);
-            $("#articleContentEnglish").parents(".form-group").hide();
-            $("#articleContentEnglish").css("disabled",true);
+            $("#editor_articleContentEn").parents(".form-group").hide();
+            $("#editor_articleContentEn").css("disabled",true);
         }
     });
 
