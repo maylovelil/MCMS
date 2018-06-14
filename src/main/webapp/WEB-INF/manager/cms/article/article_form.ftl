@@ -11,8 +11,8 @@
 			<#assign columnTypes=[{"id":"1","name":"中文文章"},{"id":"2","name":"英文文章"}]>
 			<@ms.radio name="articleLanguage" label="文章类型"  list=columnTypes listKey="id" listValue="name" value="${article.articleLanguage?default(1)}" />
 
-			<@ms.text name="basicTitle" id="basicTitleChinese" colSm="2"  width="400" label="文章标题(中文)"	title="文章标题(中文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitle?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
-			<@ms.text name="basicTitleEn" id="basicTitleEnglish" colSm="2" width="400" label="文章标题(英文)"	title="文章标题(英文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitleEn?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
+			<@ms.text name="basicTitle" colSm="2"  width="400" label="文章标题(中文)"	title="文章标题(中文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitle?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
+			<@ms.text name="basicTitleEn" colSm="2" width="400" label="文章标题(英文)"	title="文章标题(英文)" size="5"  placeholder="请输入文章标题"  value="${article.basicTitleEn?default('')}"  validation={"maxlength":"300","required":"true", "data-bv-notempty-message":"文章标题不能为空","data-bv-stringlength-message":"标题在300个字符以内!", "data-bv-notempty-message":"必填项目"}/>
 			<@ms.text name="basicSort"  colSm="2" width="200" label="自定义顺序" title="自定义顺序" size="5"  placeholder="请输入文章顺序" value="${article.basicSort?c?default(0)}" validation={"data-bv-between":"true","required":"true", "data-bv-between-message":"自定义顺序必须大于0","data-bv-between-min":"0", "data-bv-between-max":"99999999","data-bv-notempty-message":"自定义顺序不能为空"}/>
 			<#if articleType?has_content>
 				<@ms.checkboxlist colSm="2" name="checkbox" label="文章属性" list=articleType listKey="key"  listValue="value" />
@@ -33,21 +33,21 @@
             </#if>
             <@ms.hidden id="basicDateTime" name="basicDateTime" value=""/>
             <@ms.date id="articleDateTime" name="articleDateTime" time=true label="发布时间" single=true readonly="readonly" width="300" value="${(article.basicDateTime?default(.now))?string('yyyy-MM-dd HH:mm')}" validation={"required":"true", "data-bv-notempty-message":"必填项目"} placeholder="点击该框选择时间段"  />
-			<@ms.textarea colSm="2" name="basicDescription" id="basicDescriptionChinese" label="文章描述(中文)" wrap="Soft" rows="4"  size=""  value="${article.basicDescription?default('')}" placeholder="请输入对该文章的简短描述，以便用户查看文章简略" validation={"maxlength":"600","data-bv-stringlength-message":"文章描述在600个字符以内!"}/>
-			<@ms.textarea colSm="2" name="basicDescriptionEn" id="basicDescriptionEnglish" label="文章描述(英文)" wrap="Soft" rows="4"  size=""  value="${article.basicDescriptionEn?default('')}" placeholder="请输入对该文章的简短描述，以便用户查看文章简略" validation={"maxlength":"600","data-bv-stringlength-message":"文章描述在600个字符以内!"}/>
+			<@ms.textarea colSm="2" name="basicDescription" label="文章描述(中文)" wrap="Soft" rows="4"  size=""  value="${article.basicDescription?default('')}" placeholder="请输入对该文章的简短描述，以便用户查看文章简略" validation={"maxlength":"600","data-bv-stringlength-message":"文章描述在600个字符以内!"}/>
+			<@ms.textarea colSm="2" name="basicDescriptionEn" label="文章描述(英文)" wrap="Soft" rows="4"  size=""  value="${article.basicDescriptionEn?default('')}" placeholder="请输入对该文章的简短描述，以便用户查看文章简略" validation={"maxlength":"600","data-bv-stringlength-message":"文章描述在600个字符以内!"}/>
 
 			<@ms.textarea colSm="2" name="articleKeyword" label="关键字" wrap="Soft" rows="4"  size="" placeholder="请输入文章关键字"   value="${article.articleKeyword?default('')}" validation={"maxlength":"155", "data-bv-stringlength-message":"文章作者在155个字符以内!"}/>
 			<!--新填字段内容开始-->
-			<div id="addFieldForm">		
+			<div id="addFieldForm">
 			</div>
 			<@ms.hidden name="articleTypeJson" />
-			<@ms.editor colSm="2" name="articleContent" id="articleContentChinese" label="文章内容(中文)" content="${article.articleContent?default('')}"  appId="${appId?default(0)}"/>
-			<@ms.editor colSm="2" name="articleContentEn" id="articleContentEnglish"  label="文章内容(英文)" content="${article.articleContentEn?default('')}"  appId="${appId?default(0)}"/>
+			<@ms.editor colSm="2" name="articleContent" label="文章内容(中文)" content="${article.articleContent?default('')}"  appId="${appId?default(0)}"/>
+			<@ms.editor colSm="2" name="articleContentEn" label="文章内容(英文)" content="${article.articleContentEn?default('')}"  appId="${appId?default(0)}"/>
 
 			<@ms.hidden name="modelId"  value="${Session.model_id_session?default('0')}" />
 		</@ms.form>
 	</@ms.panel>
-</@ms.html5>     
+</@ms.html5>
 <script>
 //重写时间控件
 $('#articleDateTime').daterangepicker({
@@ -72,13 +72,13 @@ $(function(){
 
 	//页面标题
 	var articleTitle="<#if categoryTitle?has_content>${categoryTitle}&nbsp;</#if><#if article.basicId !=0><small>编辑文章</small><#else><small>添加文章</small></#if>";
-	$(".ms-content-body-title>span").html(articleTitle);	
+	$(".ms-content-body-title>span").html(articleTitle);
 	//隐藏跳转地址
 	$("input[name='articleUrl']").parent().hide();
-	
+
 	//文章属性
 	var actionUrl="";
-	
+
 	<#if article.basicId !=0>
 	actionUrl = "${managerPath}/cms/article/${article.basicId?c?default(0)}/update.do";
 	var type="${article.articleType?default('')}";
@@ -97,8 +97,8 @@ $(function(){
 	articleBasicId=${article.basicId?c?default(0)};
 	<#else>
 	actionUrl = "${managerPath}/cms/article/save.do";
-	</#if>	
-	
+	</#if>
+
 	//获取当前栏目的自定义模型
 	var url="${managerPath}/mdiy/contentModel/contentModelField/"+${categoryId?default(0)}+"/queryField.do";
 	var articleId="basicId="+${article.basicId?c?default(0)};
@@ -117,9 +117,9 @@ $(function(){
 				}
 			}
 		});
-	});	
-	
-	//更新或保存				
+	});
+
+	//更新或保存
 	$("#saveUpdate").click(function(){
 		//禁用按钮
 		$("#saveUpdate").attr("disabled",true);
@@ -127,12 +127,12 @@ $(function(){
 		var bottonText = $("#saveUpdate").text().trim();
 		//设置按钮加载状态值
 		$("#saveUpdate").attr("data-loading-text",bottonText+"中");
-		
+
 		var articleDateTimeValue = $("#articleDateTime").val()+":00";//让时间能精确到秒与后台对应
 		$("#basicDateTime").val(articleDateTimeValue); //给basicDateTime字段赋值
 		//获取所有栏目属性被选中的值
 		var typeJson=""
-		$("#articleTypeField").find("select").each(function(index){ 
+		$("#articleTypeField").find("select").each(function(index){
 			var typeValue=0;
 			if($(this).find("option:selected").val()==undefined){
 				return;
@@ -143,7 +143,7 @@ $(function(){
 			}else{
 				typeJson =typeJson+ "{bcCategoryId:\"" + typeValue + "\",bcBasicId:'${article.basicId?default(0)}'},"
 			}
-			
+
 		})
 		$("input[name=articleTypeJson]").val("["+typeJson+"]");
 		var basicCategoryId="";
@@ -245,6 +245,7 @@ $(function(){
             $("#articleContentEnglish").css("disabled",true);
         }
     });
+
 });
 
 //选择栏目后查询自定义模型
