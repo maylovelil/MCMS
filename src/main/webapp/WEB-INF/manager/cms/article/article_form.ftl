@@ -66,22 +66,10 @@ $('#articleDateTime').on('apply.daterangepicker', function(ev, picker) {
 });
 var articleBasicId=0;
 $(function(){
-    $("#basicTitleChinese").parents(".form-group").hide();
-    $("#basicTitleChinese").css("disabled",true);
-    $("#basicDescriptionChinese").parents(".form-group").hide();
-    $("#basicDescriptionChinese").css("disabled",true);
-    $("#editor_articleContent").parents(".form-group").hide();
-    $("#editor_articleContent").css("disabled",true);
-
-    $("#basicTitleEnglish").parents(".form-group").show();
-    $("#basicTitleEnglish").css("disabled",false);
-    $("#basicDescriptionEnglish").parents(".form-group").show();
-    $("#basicDescriptionEnglish").css("disabled",false);
-    $("#editor_articleContentEn").parents(".form-group").show();
-    $("#editor_articleContentEn").css("disabled",false);
-	<#if article.articleLanguage == 0>
-		$("input:radio[name='articleLanguage']:first").attr("checked",true);
-	</#if>
+	<#if article.articleLanguage == 2>chineseFunction();</#if>
+	<#if article.articleLanguage == 1>englishFunction();</#if>
+	<#if article.articleLanguage == 3>allFunction();</#if>
+	<#if article.articleLanguage == 0>chineseFunction;</#if>
 
 	//页面标题
 	var articleTitle="<#if categoryTitle?has_content>${categoryTitle}&nbsp;</#if><#if article.basicId !=0><small>编辑文章</small><#else><small>添加文章</small></#if>";
@@ -242,51 +230,61 @@ $(function(){
     //切换中英文文章类型
     $("input[name='articleLanguage']").click(function(){
         if($(this).val()== 2){
-            $("#basicTitleChinese").parents(".form-group").hide();
-            $("#basicTitleChinese").css("disabled",true);
-            $("#basicDescriptionChinese").parents(".form-group").hide();
-            $("#basicDescriptionChinese").css("disabled",true);
-            $("#editor_articleContent").parents(".form-group").hide();
-            $("#editor_articleContent").css("disabled",true);
-
-            $("#basicTitleEnglish").parents(".form-group").show();
-            $("#basicTitleEnglish").css("disabled",false);
-            $("#basicDescriptionEnglish").parents(".form-group").show();
-            $("#basicDescriptionEnglish").css("disabled",false);
-            $("#editor_articleContentEn").parents(".form-group").show();
-            $("#editor_articleContentEn").css("disabled",false);
+            chineseFunction();
         }else if($(this).val()== 1){
-            $("#basicTitleEnglish").parents(".form-group").hide();
-            $("#basicTitleEnglish").css("disabled",true);
-            $("#basicDescriptionEnglish").parents(".form-group").hide();
-            $("#basicDescriptionEnglish").css("disabled",true);
-            $("#editor_articleContentEn").parents(".form-group").hide();
-            $("#editor_articleContentEn").css("disabled",true);
-
-
-            $("#basicTitleChinese").parents(".form-group").show();
-            $("#basicTitleChinese").css("disabled",false);
-            $("#basicDescriptionChinese").parents(".form-group").show();
-            $("#basicDescriptionChinese").css("disabled",false);
-            $("#editor_articleContent").parents(".form-group").show();
-            $("#editor_articleContent").css("disabled",false);
+            englishFunction();
         }else if($(this).val()== 3){
-            $("#basicTitleEnglish").parents(".form-group").show();
-            $("#basicTitleEnglish").css("disabled",false);
-            $("#basicDescriptionEnglish").parents(".form-group").show();
-            $("#basicDescriptionEnglish").css("disabled",false);
-            $("#editor_articleContentEn").parents(".form-group").show();
-            $("#editor_articleContentEn").css("disabled",false);
-
-
-            $("#basicTitleChinese").parents(".form-group").show();
-            $("#basicTitleChinese").css("disabled",false);
-            $("#basicDescriptionChinese").parents(".form-group").show();
-            $("#basicDescriptionChinese").css("disabled",false);
-            $("#editor_articleContent").parents(".form-group").show();
-            $("#editor_articleContent").css("disabled",false);
+            allFunction();
         }
     });
+
+    function englishFunction(){
+        $("#basicTitleChinese").parents(".form-group").hide();
+        $("#basicTitleChinese").css("disabled",true);
+        $("#basicDescriptionChinese").parents(".form-group").hide();
+        $("#basicDescriptionChinese").css("disabled",true);
+        $("#editor_articleContent").parents(".form-group").hide();
+        $("#editor_articleContent").css("disabled",true);
+
+        $("#basicTitleEnglish").parents(".form-group").show();
+        $("#basicTitleEnglish").css("disabled",false);
+        $("#basicDescriptionEnglish").parents(".form-group").show();
+        $("#basicDescriptionEnglish").css("disabled",false);
+        $("#editor_articleContentEn").parents(".form-group").show();
+        $("#editor_articleContentEn").css("disabled",false);
+	}
+	function chineseFunction(){
+        $("#basicTitleEnglish").parents(".form-group").hide();
+        $("#basicTitleEnglish").css("disabled",true);
+        $("#basicDescriptionEnglish").parents(".form-group").hide();
+        $("#basicDescriptionEnglish").css("disabled",true);
+        $("#editor_articleContentEn").parents(".form-group").hide();
+        $("#editor_articleContentEn").css("disabled",true);
+
+
+        $("#basicTitleChinese").parents(".form-group").show();
+        $("#basicTitleChinese").css("disabled",false);
+        $("#basicDescriptionChinese").parents(".form-group").show();
+        $("#basicDescriptionChinese").css("disabled",false);
+        $("#editor_articleContent").parents(".form-group").show();
+        $("#editor_articleContent").css("disabled",false);
+	}
+	function allFunction(){
+        $("#basicTitleEnglish").parents(".form-group").show();
+        $("#basicTitleEnglish").css("disabled",false);
+        $("#basicDescriptionEnglish").parents(".form-group").show();
+        $("#basicDescriptionEnglish").css("disabled",false);
+        $("#editor_articleContentEn").parents(".form-group").show();
+        $("#editor_articleContentEn").css("disabled",false);
+
+
+        $("#basicTitleChinese").parents(".form-group").show();
+        $("#basicTitleChinese").css("disabled",false);
+        $("#basicDescriptionChinese").parents(".form-group").show();
+        $("#basicDescriptionChinese").css("disabled",false);
+        $("#editor_articleContent").parents(".form-group").show();
+        $("#editor_articleContent").css("disabled",false);
+	}
 
 });
 
