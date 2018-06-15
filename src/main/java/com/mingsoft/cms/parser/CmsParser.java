@@ -335,6 +335,15 @@ public class CmsParser extends IGeneralParser {
 				}
 				// 从数据库取出文章列表数组
 				BasicUtil.startPage(0,size,false);
+
+				ArticleEntity articleEntity = new ArticleEntity();
+				List<Integer> integerList = null;
+				if(MycLangUtils.isZh()){
+					integerList = Lists.newArrayList(1,3);
+				}else{
+					integerList = Lists.newArrayList(2,3);
+				}
+				articleEntity.setArticleLanguageTypes(integerList);
 				List<ArticleEntity> listArticles = articleBiz.query(app.getAppId(), columnIds, flag, noFlag,orderBy, order.equals("desc") ? true : false,null);
 				BasicUtil.endPage(listArticles);
 				// 替换列表标签
