@@ -70,6 +70,10 @@ $(function(){
 	<#if article.articleLanguage == 1>chineseFunction();</#if>
 	<#if article.articleLanguage == 3>allFunction();</#if>
 	<#if article.articleLanguage == 0>chineseFunction();</#if>
+	<#if article.articleLanguage == ''>
+		$("input:radio[name='articleLanguage']:first").attr("checked",true);
+	</#if>
+
 
 	//页面标题
 	var articleTitle="<#if categoryTitle?has_content>${categoryTitle}&nbsp;</#if><#if article.basicId !=0><small>编辑文章</small><#else><small>添加文章</small></#if>";
