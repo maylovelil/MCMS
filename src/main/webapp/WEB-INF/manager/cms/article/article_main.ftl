@@ -1,11 +1,16 @@
 <@ms.html5>
 	<@ms.nav title="文章列表"></@ms.nav>
 	<@ms.searchForm   name="searchForm" action="">
+
+			<#assign articleLanguageUrls=[{"id":"1","name":"中文文章"},{"id":"2","name":"英文文章"},{"id":"3","name":"中英文对照文章"},{"id":"","name":"全部"}]>
+			<@ms.select label="文章类型"    name="articleLanguage" id="articleLanguageSelect" listValue="name"   listKey="id"  value="${articleLanguage?default('')}" list=articleLanguageUrls  />
+
 			<#if articleTypeList?has_content>
 				<@ms.select label="文章属性"     name="articleType" id="forumSelect"  list=articleTypeList  listValue="value"   listKey="key"    value="${articleType?default('')}"/>
 			<#else>
 				<@ms.select label="文章属性"     name="articleType" id="forumSelect" value="" list=["默认属性"]  />
 			</#if>
+
 			<@ms.text label="文章标题"  name="basicTitle" value="" title="请输入文章标题"  placeholder="请输入文章标题" />
 			<@ms.searchFormButton>
 				<@ms.queryButton id="submitSearch" />								
