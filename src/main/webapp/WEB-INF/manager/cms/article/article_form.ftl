@@ -73,6 +73,9 @@ $(function(){
 	<#if article.articleLanguage == ''>
 		$("input:radio[name='articleLanguage']:first").attr("checked",true);
 	</#if>
+	<#if article.articleLanguage == null>
+		$("input:radio[name='articleLanguage']:first").attr("checked",true);
+	</#if>
 
 
 	//页面标题
