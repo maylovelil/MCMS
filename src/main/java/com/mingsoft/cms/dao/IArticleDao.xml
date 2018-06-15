@@ -230,6 +230,14 @@
 					and b.BASIC_TITLE like
 					CONCAT('%',#{article.basicTitle},'%')
 				</if>
+				<if test="article.articleLanguage != 0">and a.ARTICLE_LANGUAGE = #{article.articleLanguage}</if>
+				<if test="article.articleLanguageTypes != null">
+					and a.ARTICLE_LANGUAGE in
+					<foreach collection="article.articleLanguageTypes" index="index" item="articleLanguage"
+							 open="(" separator="," close=")">
+						#{articleLanguage}
+					</foreach>
+				</if>
 			</if>
 			<if test="basicCategoryIds != null">
 				and b.BASIC_CATEGORYID in
@@ -238,6 +246,7 @@
 					#{categoryId}
 				</foreach>
 			</if>
+
 			<if test="flag != null">and a.ARTICLE_TYPE like CONCAT('%',#{flag},'%')</if>
 			<if test="noFlag != null">and a.ARTICLE_TYPE not like CONCAT('%',#{noFlag},'%')
 			</if>
@@ -260,6 +269,14 @@
 				and b.BASIC_TITLE like
 				CONCAT('%',#{article.basicTitle},'%')
 			</if>
+			<if test="article.articleLanguage != 0">and a.ARTICLE_LANGUAGE = #{article.articleLanguage}</if>
+			<if test="article.articleLanguageTypes != null">
+				and a.ARTICLE_LANGUAGE in
+				<foreach collection="article.articleLanguageTypes" index="index" item="articleLanguage"
+						 open="(" separator="," close=")">
+					#{articleLanguage}
+				</foreach>
+			</if>
 		</if>
 		<if test="basicCategoryIds != null">
 			and b.BASIC_CATEGORYID in
@@ -268,6 +285,7 @@
 				#{categoryId}
 			</foreach>
 		</if>
+
 		<if test="flag != null">and a.ARTICLE_TYPE like CONCAT('%',#{flag},'%')</if>
 		<if test="noFlag != null">and a.ARTICLE_TYPE not like CONCAT('%',#{noFlag},'%')</if>
 		<if test="orderBy != null">

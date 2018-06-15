@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Lists;
 import com.mingsoft.cms.parser.impl.*;
 import com.mingsoft.cms.util.MycLangUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -658,6 +659,14 @@ public class CmsParser extends IGeneralParser {
 
 					BasicUtil.startPage(page.getPageNo()+1,page.getPageSize(),false);
 					// 从数据库取出文章列表数组
+					ArticleEntity articleEntity = new ArticleEntity();
+					List<Integer> integerList = null;
+					if(MycLangUtils.isZh()){
+						integerList = Lists.newArrayList(1,3);
+					}else{
+						integerList = Lists.newArrayList(2,3);
+					}
+					articleEntity.setArticleLanguageTypes(integerList);
 					List<ArticleEntity> listArticles = articleBiz.query(this.app.getAppId(), columnIds, flag, noFlag,  orderBy, order.equals("desc") ? true : false,null);
 					// 替换列表标签
 					htmlContent = new com.mingsoft.cms.parser.impl.ListParser(app,htmlContent, listArticles,  this.getWebsiteUrl(), property, true, fieldBiz, contentBiz).parse();

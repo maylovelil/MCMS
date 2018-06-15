@@ -23,6 +23,7 @@ package com.mingsoft.cms.entity;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.List;
 
 import com.mingsoft.base.constant.Const;
 import com.mingsoft.basic.entity.AppEntity;
@@ -106,7 +107,18 @@ public class ArticleEntity extends BasicEntity{
 	 * 文章分类url地址，主要是用户生成html使用
 	 */
 	private String articleTypeLinkURL;
-	
+
+
+	private List<Integer> articleLanguageTypes;
+
+	public List<Integer> getArticleLanguageTypes() {
+		return articleLanguageTypes;
+	}
+
+	public void setArticleLanguageTypes(List<Integer> articleLanguageTypes) {
+		this.articleLanguageTypes = articleLanguageTypes;
+	}
+
 	/**
 	 * 一对一管理栏目
 	 */
@@ -120,6 +132,8 @@ public class ArticleEntity extends BasicEntity{
 	public ColumnEntity getColumn() {
 		return column;
 	}
+
+
 
 
 	public int getArticleLanguage() {
