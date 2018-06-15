@@ -2,7 +2,7 @@
 	<@ms.nav title="文章列表"></@ms.nav>
 	<@ms.searchForm   name="searchForm" action="">
 
-			<#assign articleLanguageUrls=[{"id":"","name":"全部"},{"id":"1","name":"中文文章"},{"id":"2","name":"英文文章"},{"id":"3","name":"中英文对照文章"}]>
+			<#assign articleLanguageUrls=[{"id":"0","name":"全部"},{"id":"1","name":"中文文章"},{"id":"2","name":"英文文章"},{"id":"3","name":"中英文对照文章"}]>
 			<@ms.select label="文章类型"    name="articleLanguage" id="articleLanguageSelect" listValue="name"   listKey="id"  value="${articleLanguage?default('')}" list=articleLanguageUrls  />
 
 			<#if articleTypeList?has_content>
