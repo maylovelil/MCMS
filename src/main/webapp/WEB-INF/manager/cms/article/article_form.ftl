@@ -36,7 +36,7 @@
 			<@ms.textarea colSm="2" id="basicDescriptionChinese" name="basicDescription" label="文章描述(中文)" wrap="Soft" rows="4"  size=""  value="${article.basicDescription?default('')}" placeholder="请输入对该文章的简短描述，以便用户查看文章简略" validation={"maxlength":"600","data-bv-stringlength-message":"文章描述在600个字符以内!"}/>
 			<@ms.textarea colSm="2" id="basicDescriptionEnglish" name="basicDescriptionEn" label="文章描述(英文)" wrap="Soft" rows="4"  size=""  value="${article.basicDescriptionEn?default('')}" placeholder="请输入对该文章的简短描述，以便用户查看文章简略" validation={"maxlength":"600","data-bv-stringlength-message":"文章描述在600个字符以内!"}/>
 
-			<@ms.textarea colSm="2" name="articleKeyword" label="关键字" wrap="Soft" rows="4"  size="" placeholder="请输入文章关键字"   value="${article.articleKeyword?default('')}" validation={"maxlength":"155", "data-bv-stringlength-message":"文章作者在155个字符以内!"}/>
+			<#--<@ms.textarea colSm="2" name="articleKeyword" label="关键字" wrap="Soft" rows="4"  size="" placeholder="请输入文章关键字"   value="${article.articleKeyword?default('')}" validation={"maxlength":"155", "data-bv-stringlength-message":"文章作者在155个字符以内!"}/>-->
 			<!--新填字段内容开始-->
 			<div id="addFieldForm">
 			</div>
