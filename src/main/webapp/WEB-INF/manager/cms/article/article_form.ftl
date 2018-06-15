@@ -66,10 +66,10 @@ $('#articleDateTime').on('apply.daterangepicker', function(ev, picker) {
 });
 var articleBasicId=0;
 $(function(){
-	<#if article.articleLanguage == 2>englishFunction;</#if>
-	<#if article.articleLanguage == 1>chineseFunction()();</#if>
+	<#if article.articleLanguage == 2>englishFunction();</#if>
+	<#if article.articleLanguage == 1>chineseFunction();</#if>
 	<#if article.articleLanguage == 3>allFunction();</#if>
-	<#if article.articleLanguage == 0>chineseFunction;</#if>
+	<#if article.articleLanguage == 0>chineseFunction();</#if>
 
 	//页面标题
 	var articleTitle="<#if categoryTitle?has_content>${categoryTitle}&nbsp;</#if><#if article.basicId !=0><small>编辑文章</small><#else><small>添加文章</small></#if>";
