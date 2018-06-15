@@ -39,18 +39,11 @@
   }, 500);
 
   function chainMyc(){
-      var url=window.location.href;
-      if(url.indexOf("/en/") != -1){
-          url = url.replace('/en/','/');
-      }
+      var url = "http://www.crytst.com/";
       window.location.href = url;
   }
   function englishMyc(){
-      var url=window.location.href;
-      var host=window.location.host;
-      if(url.indexOf("/en/") == -1){
-          url = url.replace(host,host+'/en');
-      }
+      var url = "http://www.crytst.com/en/";
       window.location.href = url;
   }
 </script>
