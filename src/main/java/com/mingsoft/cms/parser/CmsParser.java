@@ -347,7 +347,12 @@ public class CmsParser extends IGeneralParser {
 				List<ArticleEntity> listArticles = articleBiz.query(app.getAppId(), columnIds, flag, noFlag,orderBy, order.equals("desc") ? true : false,articleEntity);
 				BasicUtil.endPage(listArticles);
 				// 替换列表标签
-				htmlContent = new com.mingsoft.cms.parser.impl.ListParser(app,htmlContent, listArticles,  this.getWebsiteUrl(), property, false, fieldBiz, contentBiz).parse();
+				if(listArticles.size() != 0) {
+					htmlContent = new com.mingsoft.cms.parser.impl.ListParser(app, htmlContent, listArticles, this.getWebsiteUrl(), property, false, fieldBiz, contentBiz).parse();
+				}else{
+					htmlContent = new com.mingsoft.cms.parser.impl.ListParser(app,htmlContent, null,  this.getWebsiteUrl(), property, false, fieldBiz, contentBiz).parse();
+
+				}
 			}else{
 				htmlContent = new com.mingsoft.cms.parser.impl.ListParser(app,htmlContent, null,  this.getWebsiteUrl(), property, false, fieldBiz, contentBiz).parse();
 			}
@@ -678,7 +683,11 @@ public class CmsParser extends IGeneralParser {
 					articleEntity.setArticleLanguageTypes(integerList);
 					List<ArticleEntity> listArticles = articleBiz.query(this.app.getAppId(), columnIds, flag, noFlag,  orderBy, order.equals("desc") ? true : false,articleEntity);
 					// 替换列表标签
-					htmlContent = new com.mingsoft.cms.parser.impl.ListParser(app,htmlContent, listArticles,  this.getWebsiteUrl(), property, true, fieldBiz, contentBiz).parse();
+					if(listArticles.size() != 0) {
+						htmlContent = new com.mingsoft.cms.parser.impl.ListParser(app, htmlContent, listArticles, this.getWebsiteUrl(), property, true, fieldBiz, contentBiz).parse();
+					}else{
+						htmlContent = new com.mingsoft.cms.parser.impl.ListParser(app,htmlContent, null,  this.getWebsiteUrl(), property, true, fieldBiz, contentBiz).parse();
+					}
 				}else{
 					htmlContent = new com.mingsoft.cms.parser.impl.ListParser(app,htmlContent, null,  this.getWebsiteUrl(), property, true, fieldBiz, contentBiz).parse();
 				}
