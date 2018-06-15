@@ -73,7 +73,7 @@ $(function(){
 	<#if article.articleLanguage == ''>
 		$("input:radio[name='articleLanguage']:first").attr("checked",true);
 	</#if>
-	<#if article.articleLanguage == null>
+	<#if article.articleLanguage??>
 		$("input:radio[name='articleLanguage']:first").attr("checked",true);
 	</#if>
 
