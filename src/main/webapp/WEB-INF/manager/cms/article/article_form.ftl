@@ -66,8 +66,8 @@ $('#articleDateTime').on('apply.daterangepicker', function(ev, picker) {
 });
 var articleBasicId=0;
 $(function(){
-	<#if article.articleLanguage == 2>chineseFunction();</#if>
-	<#if article.articleLanguage == 1>englishFunction();</#if>
+	<#if article.articleLanguage == 2>englishFunction;</#if>
+	<#if article.articleLanguage == 1>chineseFunction()();</#if>
 	<#if article.articleLanguage == 3>allFunction();</#if>
 	<#if article.articleLanguage == 0>chineseFunction;</#if>
 
@@ -230,9 +230,9 @@ $(function(){
     //切换中英文文章类型
     $("input[name='articleLanguage']").click(function(){
         if($(this).val()== 2){
-            chineseFunction();
-        }else if($(this).val()== 1){
             englishFunction();
+        }else if($(this).val()== 1){
+            chineseFunction();
         }else if($(this).val()== 3){
             allFunction();
         }
