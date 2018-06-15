@@ -667,7 +667,7 @@ public class CmsParser extends IGeneralParser {
 						integerList = Lists.newArrayList(2,3);
 					}
 					articleEntity.setArticleLanguageTypes(integerList);
-					List<ArticleEntity> listArticles = articleBiz.query(this.app.getAppId(), columnIds, flag, noFlag,  orderBy, order.equals("desc") ? true : false,null);
+					List<ArticleEntity> listArticles = articleBiz.query(this.app.getAppId(), columnIds, flag, noFlag,  orderBy, order.equals("desc") ? true : false,articleEntity);
 					// 替换列表标签
 					htmlContent = new com.mingsoft.cms.parser.impl.ListParser(app,htmlContent, listArticles,  this.getWebsiteUrl(), property, true, fieldBiz, contentBiz).parse();
 				}else{
