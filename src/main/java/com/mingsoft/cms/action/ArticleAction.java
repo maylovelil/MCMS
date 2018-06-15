@@ -242,11 +242,12 @@ public class ArticleAction extends BaseAction {
 			// 判断栏目是否是单篇
 			if (column != null && column.getColumnType() == ColumnTypeEnum.COLUMN_TYPE_COVER.toInt()) {
 				isEditCategory = true; // 是单页
-				columnType = column.getColumnType();;
+				columnType = column.getColumnType();
 			}
 		}
 		mode.addAttribute("categoryTitle", categoryTitle);
 		mode.addAttribute("isEditCategory", isEditCategory); // 新增状态
+		mode.addAttribute("addPage",true);
 		mode.addAttribute("columnType", columnType);
 		mode.addAttribute("categoryId", categoryId);
 		mode.addAttribute("articleImagesUrl", "/upload/"+BasicUtil.getAppId()+"/");
@@ -546,6 +547,7 @@ public class ArticleAction extends BaseAction {
 			model.addAttribute("categoryId", categoryId);// 编辑封面
 			model.addAttribute("isEditCategory", true);// 编辑封面
 			model.addAttribute("columnType", columnType);
+			model.addAttribute("addPage",true);
 			return view("/cms/article/article_form");
 		} else if (id > 0) { // 文章id获取
 			// 允许编辑文章时更改分类
@@ -573,6 +575,7 @@ public class ArticleAction extends BaseAction {
 			}
 			model.addAttribute("columnType", columnType);
 			model.addAttribute("categoryId", column.getCategoryId());// 编辑封面
+			model.addAttribute("addPage",true);
 			return view("/cms/article/article_form");
 		} else {// 非法
 			// return view("/cms/article/article_form");

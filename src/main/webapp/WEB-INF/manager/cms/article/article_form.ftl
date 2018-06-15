@@ -70,7 +70,7 @@ $(function(){
 	<#if article.articleLanguage == 1>chineseFunction();</#if>
 	<#if article.articleLanguage == 3>allFunction();</#if>
 	<#if article.articleLanguage == 0>chineseFunction();</#if>
-	<#if isEditCategory >
+	<#if addPage>
 		$("input:radio[name='articleLanguage']:first").attr("checked",true);
 	</#if>
 
