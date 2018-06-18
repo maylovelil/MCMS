@@ -383,6 +383,11 @@ public class ArticleAction extends BaseAction {
 					getResString("err.length", this.getResString("basicTitle"), "1", "300"));
 			return false;
 		}
+		if (!StringUtil.checkLength(article.getBasicTitleEn(), 1, 300)) {
+			this.outJson(response, ModelCode.CMS_ARTICLE, false,
+					getResString("err.length", this.getResString("basicTitleEn"), "1", "300"));
+			return false;
+		}
 		// 验证文章来源长度,若超过定义长度则截取
 		if (!StringUtil.isBlank(article.getArticleSource())
 				&& !StringUtil.checkLength(article.getArticleSource(), 1, 300)) {
