@@ -388,6 +388,9 @@ public class GeneraterAction extends BaseAction {
 						writePath = columnPath + File.separator + IParserRegexConstant.HTML_INDEX;
 					}
 					String pagePath = app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator + app.getAppId() + File.separator + column.getColumnPath() + File.separator + "list";
+					if(app.getAppNginxStatus() == 1){
+						pagePath = app.getMappingUrl() + File.separator  +  column.getColumnPath() + File.separator + "list";
+					}
 					map.put(CmsParser.LIST_LINK_PATH, pagePath);
 					map.put(CmsParser.CUR_PAGE_NO, i + 1);
 					String pageContent = cmsParser.parse(listTtmpContent,app, column,map);
@@ -563,6 +566,9 @@ public class GeneraterAction extends BaseAction {
 							writePath = columnPath + File.separator + IParserRegexConstant.HTML_INDEX;
 						}
 						String pagePath = app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator + app.getAppId() + File.separator + column.getColumnPath() + File.separator + "list";
+						if(app.getAppNginxStatus() == 1){
+							pagePath = app.getMappingUrl() + File.separator  + MycLangUtils.GLOB_EN + File.separator + column.getColumnPath() + File.separator + "list";
+						}
 						map.put(CmsParser.LIST_LINK_PATH, pagePath);
 						map.put(CmsParser.CUR_PAGE_NO, i + 1);
 						String pageContent = cmsParser.parse(listTtmpContent,app, column,map);
