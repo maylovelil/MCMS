@@ -154,7 +154,8 @@ public abstract class IGeneralParser extends IParser {
 
 		htmlContent = this.parseRequestMap();
 		// 替换\{ms:global.appMap/\}
-		String appMapUrl = app.getAppHostUrl()+app.getManagerPath()+"/cms/generate/makeMap.do";
+		String appMapUrl = "http://admin.crytst.com/myc/xmg/cms/generate//makeMap.do";
+
 		htmlContent = new AppMapParser(htmlContent,appMapUrl).parse();
 		return htmlContent;
 	}
