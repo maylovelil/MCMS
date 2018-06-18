@@ -352,10 +352,24 @@ public class ArticleAction extends BaseAction {
 	public boolean validateForm(ArticleEntity article, HttpServletResponse response) {
 		// 对表单数据进行再次验证
 		// 验证文章标题是否为空
-		if (StringUtil.isBlank(article.getBasicTitle())) {
-			this.outJson(response, ModelCode.CMS_ARTICLE, false,
-					getResString("err.empty", this.getResString("basicTitle")));
-			return false;
+		if(article.getArticleLanguage() == 1) {
+			if (StringUtil.isBlank(article.getBasicTitle())) {
+				this.outJson(response, ModelCode.CMS_ARTICLE, false,
+						getResString("err.empty", this.getResString("basicTitle")));
+				return false;
+			}
+		}else if(article.getArticleLanguage() == 2){
+			if (StringUtil.isBlank(article.getBasicTitleEn())) {
+				this.outJson(response, ModelCode.CMS_ARTICLE, false,
+						getResString("err.empty", this.getResString("basicTitle")));
+				return false;
+			}
+		}else if(article.getArticleLanguage() == 3){
+			if (StringUtil.isBlank(article.getBasicTitle()) || StringUtil.isBlank(article.getBasicTitleEn())) {
+				this.outJson(response, ModelCode.CMS_ARTICLE, false,
+						getResString("err.empty", this.getResString("basicTitle")));
+				return false;
+			}
 		}
 		// 验证文章所属是否为0
 		if (article.getBasicCategoryId() == 0) {
