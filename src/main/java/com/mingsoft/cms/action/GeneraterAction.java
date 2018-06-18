@@ -301,6 +301,11 @@ public class GeneraterAction extends BaseAction {
 		app.setManagerPath(managerPath);
 		String mobileStyle = app.getAppMobileStyle(); // 手机端模版
 		String url = app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator + app.getAppId();
+		if(app.getAppNginxStatus() == 1){
+			url = app.getMappingUrl();
+		}
+
+
 		// 站点生成后保存的html地址
 		String generatePath = getRealPath(request, IParserRegexConstant.HTML_SAVE_PATH) + File.separator + app.getAppId() + File.separator;
 		FileUtil.createFolder(generatePath);
@@ -473,6 +478,9 @@ public class GeneraterAction extends BaseAction {
 		app.setManagerPath(managerPath);
 		String mobileStyle = app.getAppMobileStyle(); // 手机端模版
 		String url = app.getAppHostUrl() + File.separator + IParserRegexConstant.HTML_SAVE_PATH + File.separator + app.getAppId() + File.separator + MycLangUtils.GLOB_EN;
+		if(app.getAppNginxStatus() == 1){
+			url = app.getMappingUrl() + File.separator  + MycLangUtils.GLOB_EN;
+		}
 		// 站点生成后保存的html地址
 		String generatePath = getRealPath(request, IParserRegexConstant.HTML_SAVE_PATH) + File.separator + app.getAppId() + File.separator + MycLangUtils.GLOB_EN +File.separator;
 		FileUtil.createFolder(generatePath);
