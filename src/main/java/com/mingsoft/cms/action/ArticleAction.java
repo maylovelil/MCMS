@@ -40,6 +40,7 @@ import com.google.common.collect.Lists;
 import com.mingsoft.basic.common.QiNiuUploadFile;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
@@ -119,6 +120,9 @@ public class ArticleAction extends BaseAction {
 	 * 判断是否为checkbox类型
 	 */
 	private static final int checkBox = 11;
+
+	@Value("no-image")
+	private static String NO_IMAGE;
 
 	/**
 	 * 获取文章属性
@@ -309,7 +313,9 @@ public class ArticleAction extends BaseAction {
 		// 问题:由于上传的图片路径后面可能带有｜符合。所以要进行将“｜”替换空
 		// 空值判断
 		if (!StringUtil.isBlank(article.getBasicThumbnails())) {
-			article.setBasicThumbnails(article.getBasicThumbnails().replace("|", ""));
+			article.setBasicThumbnails(article.getBasicThumbnails());
+		}else{
+			article.setBasicThumbnails(NO_IMAGE);
 		}
 		ColumnEntity column = (ColumnEntity) columnBiz.getEntity(article.getBasicCategoryId());
 		article.setColumn(column);
@@ -463,6 +469,8 @@ public class ArticleAction extends BaseAction {
 		// 空值判断
 		if (!StringUtil.isBlank(article.getBasicThumbnails())) {
 			article.setBasicThumbnails(article.getBasicThumbnails().replace("|", ""));
+		}else{
+			article.setBasicThumbnails(NO_IMAGE);
 		}
 		// 获取更改前的文章实体
 		ArticleEntity oldArticle = (ArticleEntity) articleBiz.getEntity(basicId);
