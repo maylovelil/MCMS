@@ -219,7 +219,7 @@ public class ArticleAction extends BaseAction {
 			articleEntity.setBasicDescriptionEn("");
 			newArticleList.add(articleEntity);
 		});
-		EUListBean _list = new EUListBean(newArticleList, (int) BasicUtil.endPage(newArticleList).getTotal());
+		EUListBean _list = new EUListBean(newArticleList, (int) BasicUtil.endPage(articleList).getTotal());
 		//将数据以json数据的形式返回
 		this.outJson(response, net.mingsoft.base.util.JSONArray.toJSONString(_list, new DoubleValueFilter(),new DateValueFilter("yyyy-MM-dd")));
 		
