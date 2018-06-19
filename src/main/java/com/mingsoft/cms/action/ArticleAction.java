@@ -566,7 +566,7 @@ public class ArticleAction extends BaseAction {
 			model.addAttribute("categoryId", categoryId);// 编辑封面
 			model.addAttribute("isEditCategory", true);// 编辑封面
 			model.addAttribute("columnType", columnType);
-			model.addAttribute("addPage",true);
+			model.addAttribute("addPage",false);
 			return view("/cms/article/article_form");
 		} else if (id > 0) { // 文章id获取
 			// 允许编辑文章时更改分类
@@ -594,7 +594,7 @@ public class ArticleAction extends BaseAction {
 			}
 			model.addAttribute("columnType", columnType);
 			model.addAttribute("categoryId", column.getCategoryId());// 编辑封面
-			model.addAttribute("addPage",true);
+			model.addAttribute("addPage",false);
 			return view("/cms/article/article_form");
 		} else {// 非法
 			// return view("/cms/article/article_form");
