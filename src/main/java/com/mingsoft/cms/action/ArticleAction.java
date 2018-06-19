@@ -36,6 +36,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.common.collect.Lists;
 import com.mingsoft.basic.common.QiNiuUploadFile;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -205,7 +206,16 @@ public class ArticleAction extends BaseAction {
 		BasicUtil.startPage();
 		//查询文章列表
 		List<ArticleEntity> articleList = articleBiz.query(appId, basicCategoryIds, articleType, null, null, true, article);
-		EUListBean _list = new EUListBean(articleList, (int) BasicUtil.endPage(articleList).getTotal());
+		//优化返回速度
+		List<ArticleEntity> newArticleList = Lists.newArrayList();
+		articleList.forEach(articleEntity -> {
+			articleEntity.setArticleContent("");
+			articleEntity.setArticleContentEn("");
+			articleEntity.setBasicDescription("");
+			articleEntity.setBasicDescriptionEn("");
+			newArticleList.add(articleEntity);
+		});
+		EUListBean _list = new EUListBean(newArticleList, (int) BasicUtil.endPage(newArticleList).getTotal());
 		//将数据以json数据的形式返回
 		this.outJson(response, net.mingsoft.base.util.JSONArray.toJSONString(_list, new DoubleValueFilter(),new DateValueFilter("yyyy-MM-dd")));
 		
