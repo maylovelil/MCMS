@@ -48,7 +48,7 @@
 		        $('#ms__uploadPic_${inputName}').swfupload({
 		            upload_url: "${basePath}/file/upload.do",
 		            post_params:{"uploadPath":"${path}","uploadFloderPath":"${uploadFloderPath}","isRename":"true","maxSize":"${maxSize}","allowedFile":"${filetype}","allowedFile":""},
-		            file_size_limit: ${maxSize?default("1")}*1024,
+		            file_size_limit: ${maxSize?default("10")}*1024,
 		            file_types: "${filetype?default("*.jpg;*.png;*.gif;*.bmp;*.jpeg")}",
 		            file_types_description: "Image files",
 		            file_upload_limit: ${size?default("5")},
