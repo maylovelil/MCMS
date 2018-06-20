@@ -93,8 +93,8 @@
 	        field: 'articleAuthor',
 	        title: '作者'
 	    }, {
-	        field: 'basicHit',
-	        title: '点击量',
+	        field: 'basicDatetime',
+	        title: '发布时间',
 	        align: 'center'
 	    }, {
 	        field: 'basicSort',

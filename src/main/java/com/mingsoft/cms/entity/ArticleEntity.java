@@ -91,6 +91,9 @@ public class ArticleEntity extends BasicEntity{
 	 */
 	@Deprecated
 	private int articleFreeOrder;
+
+
+	private String basicDatetime;
 	
 	
 	/**
@@ -134,7 +137,13 @@ public class ArticleEntity extends BasicEntity{
 	}
 
 
+	public String getBasicDatetime() {
+		return basicDatetime;
+	}
 
+	public void setBasicDatetime(String basicDatetime) {
+		this.basicDatetime = basicDatetime;
+	}
 
 	public int getArticleLanguage() {
 		return articleLanguage;
