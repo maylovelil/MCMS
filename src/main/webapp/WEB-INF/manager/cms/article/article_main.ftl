@@ -93,7 +93,7 @@
 	        field: 'articleAuthor',
 	        title: '作者'
 	    }, {
-	        field: 'basicDatetime',
+	        field: 'basicDateTime',
 	        title: '发布时间',
 	        align: 'center'
 	    }, {
