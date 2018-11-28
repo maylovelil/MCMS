@@ -2690,7 +2690,7 @@ y.params.hashnav&&y.hashnav&&y.hashnav.init(),y.params.a11y&&y.a11y&&y.a11y.init
  *
  */
 var lazyloadbg_set = $('input[name=lazyloadbg]').val(),
-    lazyloadbg=lazyloadbg_set?lazyloadbg_set:'http://p9u7r9csc.bkt.clouddn.com/index/loading.gif',
+    lazyloadbg=lazyloadbg_set?lazyloadbg_set:'http://static.crytst.com/index/loading.gif',
     lazyloadbg_base64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC";
 if (!!window.ActiveXObject || "ActiveXObject" in window || ucBro || lazyloadbg=='base64') lazyloadbg=lazyloadbg_base64;
 (function($, window, document, undefined) {
@@ -2975,7 +2975,7 @@ $.components.register("matchHeight", {
 }(function(a) {
     "use strict";
     var lazyloadbg_set = $('input[name=lazyloadbg]').val(),
-        lazyloadbg=lazyloadbg_set?lazyloadbg_set:'http://p9u7r9csc.bkt.clouddn.com/index/loading.gif',
+        lazyloadbg=lazyloadbg_set?lazyloadbg_set:'http://static.crytst.com/index/loading.gif',
         lazyloadbg_base64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC";
     if (!!window.ActiveXObject || "ActiveXObject" in window || ucBro) lazyloadbg=lazyloadbg_base64;
     var b = window.Slick || {};

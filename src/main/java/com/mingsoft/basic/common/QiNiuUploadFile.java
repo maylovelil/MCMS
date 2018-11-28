@@ -31,7 +31,7 @@ public class QiNiuUploadFile {
     private static String qiNiuAk = "Ciwl0XpqMR2K29Z6i2uSxXo9TOaRxXDZWyU4BaN0";
     private static String qiNiuSk = "CV9wybrFwaONlgfdw9fsdL6tzETcl1Pt20M1D5eY";
     private static String qiNiuBucket = "my-mingxun";
-    private static String qiNiuHost = "p9f59h2gx.bkt.clouddn.com";
+    private static String qiNiuHost = "img.crytst.com";
     private static String serverPath= ConfigUtils.getStringValue("serverPath");
     private static String baiduImage = "http://img.baidu.com/";
     private static String http_url = "http://";

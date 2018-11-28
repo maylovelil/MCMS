@@ -20,15 +20,15 @@ jQuery(function($){
         // Components
         slide_links        : 'blank',    // Individual links for each slide (Options: false, 'num', 'name', 'blank')
         slides             : [    // Slideshow Images
-                                 {image : 'http://p9u7r9csc.bkt.clouddn.com/skin/manager/4.6.0/images/e.jpg'},
-                                 {image : 'http://p9u7r9csc.bkt.clouddn.com/skin/manager/4.6.0/images/f.jpg'},
-                                 {image : 'http://p9u7r9csc.bkt.clouddn.com/skin/manager/4.6.0/images/b.jpg'},
-                                 {image : 'http://p9u7r9csc.bkt.clouddn.com/skin/manager/4.6.0/images/d.jpg'},
-                                 {image : 'http://p9u7r9csc.bkt.clouddn.com/skin/manager/4.6.0/images/a.jpg'},
-                                 {image : 'http://p9u7r9csc.bkt.clouddn.com/skin/manager/4.6.0/images/c.jpg'},
-                                 {image : 'http://p9u7r9csc.bkt.clouddn.com/skin/manager/4.6.0/images/1.jpg'},
-                                 {image : 'http://p9u7r9csc.bkt.clouddn.com/skin/manager/4.6.0/images/2.jpg'},
-                                 {image : 'http://p9u7r9csc.bkt.clouddn.com/skin/manager/4.6.0/images/3.jpg'}
+                                 {image : 'http://static.crytst.com/skin/manager/4.6.0/images/e.jpg'},
+                                 {image : 'http://static.crytst.com/skin/manager/4.6.0/images/f.jpg'},
+                                 {image : 'http://static.crytst.com/skin/manager/4.6.0/images/b.jpg'},
+                                 {image : 'http://static.crytst.com/skin/manager/4.6.0/images/d.jpg'},
+                                 {image : 'http://static.crytst.com/skin/manager/4.6.0/images/a.jpg'},
+                                 {image : 'http://static.crytst.com/skin/manager/4.6.0/images/c.jpg'},
+                                 {image : 'http://static.crytst.com/skin/manager/4.6.0/images/1.jpg'},
+                                 {image : 'http://static.crytst.com/skin/manager/4.6.0/images/2.jpg'},
+                                 {image : 'http://static.crytst.com/skin/manager/4.6.0/images/3.jpg'}
                              ]
 
     });
