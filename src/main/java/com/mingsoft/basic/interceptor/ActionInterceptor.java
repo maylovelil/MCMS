@@ -21,17 +21,15 @@ The MIT License (MIT) * Copyright (c) 2016 MY科技(mingsoft.net)
 
 package com.mingsoft.basic.interceptor;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.mingsoft.base.constant.Const;
 import com.mingsoft.basic.constant.e.SessionConstEnum;
 import com.mingsoft.util.StringUtil;
-
 import net.mingsoft.base.util.SpringUtil;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 所有action的拦截器，主要是设置base与basepath
@@ -51,6 +49,9 @@ public class ActionInterceptor extends BaseInterceptor {
 	private String managerViewPath;
 	@Value("${qiniu.host}")
 	private String qiNiuHose;
+
+	@Value("${base.path}")
+	private String basePathPro;
 
 	/**
 	 * 所有action的拦截,主要拦截base与basepath
@@ -78,6 +79,9 @@ public class ActionInterceptor extends BaseInterceptor {
 		com.mingsoft.basic.constant.Const.VIEW = this.managerViewPath;
 		String base = request.getScheme() + "://" + request.getServerName()
 				+ (request.getServerPort() == 80 ? "" : ":" + request.getServerPort());
+		if(!StringUtils.isEmpty(basePathPro)){
+			base = basePathPro;
+		}
 		request.setAttribute(BASE_MANAGER_PATH, managerPath);
 		request.setAttribute(BASE, Const.BASE);
 		request.setAttribute(MANAGER_PATH,Const.BASE+managerPath);
