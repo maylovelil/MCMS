@@ -48,13 +48,13 @@
   <script type="text/javascript" src="${static}/plugins/bootstrap.daterangepicker/1.3.4/moment.js"></script>
   <script type="text/javascript" src="${static}/plugins/bootstrap.daterangepicker/1.3.4/daterangepicker.js"></script>
   <script type="text/javascript" src="${static}/plugins/jquery.cookie/2.2.0/jquery.cookie.js"></script>
-    
+
   <!----上传图片--->
-  <script type="text/javascript" src="http://static.crytst.com/swfupload.js"></script>
-  <script type="text/javascript" src="${static}/plugins/jquery.swfupload/1.0.0/jquery.swfupload.js"></script>
-  <script type="text/javascript" src="${static}/plugins/jquery.swfupload/1.0.0/fileprogress.js"></script>
+  <script type="text/javascript" src="${base}/static/plugins/jquery.swfupload/1.0.0/swfupload.js"></script>
+  <script type="text/javascript" src="${base}/static/plugins/jquery.swfupload/1.0.0/jquery.swfupload.js"></script>
+  <script type="text/javascript" src="${base}/static/plugins/jquery.swfupload/1.0.0/fileprogress.js"></script>
   <!--script type="text/javascript" src="${static}/plugins/plupload/2.2.1/plupload.full.min.js"></script-->
-  
+
   <!--后台UI--> 
   <script type="text/javascript" src="${static}/skin/manager/${manager_ui}/js/ms.manager.js"></script>
   <script type="text/javascript" src="${static}/skin/manager/${manager_ui}/js/ms.web.js"></script>
